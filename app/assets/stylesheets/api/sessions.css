@@ -1,0 +1,117 @@
+html, body, main, h3, div, label, input, section, header, form, span, h1{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  text-decoration: inherit;
+  background: transparent;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #fff;
+}
+
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+.leftSide {
+  display: block;
+  width: 420px;
+  background: #045DBB;
+  flex-grow: 1;
+}
+
+.rightSide {
+  width: 420px;
+  height: auto;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 60px;
+  flex-grow: 1;
+}
+
+form > h3 {
+  font-size: 21px;
+  margin-bottom: 30px;
+}
+
+form {
+  margin-top: 150px;
+}
+
+.link {
+  float: right;
+  text-decoration: none;
+  background: #E5EFF9;
+  color: #757E87;
+  font-size: 15px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.authField {
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: ;
+  padding: 6px 12px;
+  font-size: 23px;
+  border-radius: 3px;
+  font-weight: 300;
+  margin: 10px 0;
+}
+
+.submit, .guestLogIn {
+  background: #009dff;
+  color: #fff;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px 12px;
+}
+
+.divider {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+  margin: 40px 0px;
+  position: relative;
+}
+
+.divider > hr {
+  border-top: 1px solid #eee;
+}
+
+.divider > span {
+  position: absolute;
+  top: -10px;
+  text-align: center;
+  width: 40px;
+  background: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .leftSide {
+    display: none;
+  }
+}
