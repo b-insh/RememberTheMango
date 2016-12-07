@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
   validates :title, :completed, :author, presence: true
-  validate :title, uniqueness: { scope: :author }
+  validates :title, uniqueness: { scope: :author }
 
   # list
 
