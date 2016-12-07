@@ -45,9 +45,47 @@ class SessionForm extends React.Component {
       </div>
     );
 
+    let leftSideGraphics = "";
+    if (this.props.formType === 'signup') {
+      leftSideGraphics = (
+        <div>
+          <div className="row group">
+
+            <span className="imageContainer">
+              <div className="img signupImage1"></div>
+            </span>
+
+            <span className="imageContainer">
+              <div className="img signupImage2"></div>
+            </span>
+
+            <span className="imageContainer">
+              <div className="img signupImage3"></div>
+            </span>
+
+          </div>
+
+          <div className="welcome join">
+            <h2>Join millions of people getting more organized and productive!</h2>
+          </div>
+      </div>
+    );
+    } else {
+      leftSideGraphics = (
+        <div>
+            <div className="welcome quote">
+            <h2>“Don’t sit at home and wait for mango tree to bring mangoes to you wherever you are. It won’t happen. If you are truly hungry for change, go out of your comfort zone and change the world.”</h2>
+            <h3> - Israelmore Ayivor</h3>
+          </div>
+        </div>
+      )
+
+    }
+
     return(
       <section className="container group">
         <section className="leftSide">
+          { leftSideGraphics }
         </section>
 
         <section className="group rightSide">

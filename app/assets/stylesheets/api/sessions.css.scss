@@ -1,4 +1,4 @@
-html, body, main, h3, div, label, input, section, header, form, span, h1{
+html, body, main, div, label, input, section, header, form, span, h1, h2, h3{
   margin: 0;
   padding: 0;
   outline: 0;
@@ -32,7 +32,7 @@ body {
 .leftSide {
   display: block;
   width: 420px;
-  background: #045DBB;
+  background-color: #045DBB;
   flex-grow: 1;
 }
 
@@ -87,6 +87,10 @@ form {
   padding: 10px 12px;
 }
 
+.submit {
+  margin-top: 20px;
+}
+
 .divider {
   display: block;
   text-align: center;
@@ -109,8 +113,87 @@ form {
 }
 
 @media only screen and (max-width: 768px) {
-
   .leftSide {
     display: none;
   }
+}
+
+.row {
+  margin: 0 auto;
+  width: 380px;
+  height: 100px;
+  margin-top: 300px;
+}
+
+.row > span {
+  float: left;
+}
+
+.img {
+  height: 100%;
+  background-size: contain;
+  width: 90px;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-position-x: 8px;
+  background-position-y: 12px;
+  padding: 1px 6px;
+  margin: 0 auto;
+}
+
+.imageContainer {
+  width: 33.33333%;
+  height: inherit;
+}
+
+.signupImage1 {
+  display: block;
+  background-image: image-url("hp_person2.png");
+  background-repeat: no-repeat;
+  background-color: #1C7ADC;
+}
+
+.signupImage2 {
+  display: block;
+  background-image: image-url("hp_person1.png");
+  background-repeat: no-repeat;
+  background-color: #21B578;
+}
+
+.signupImage3 {
+  display: block;
+  background-image: image-url("hp_person3.png");
+  background-repeat: no-repeat;
+  background-color: #3995FC;
+}
+
+.welcome {
+  color: #fff;
+  margin: 0 auto;
+  max-width: 420px;
+  padding-top: 30px;
+}
+
+.join {
+  font-weight: 500;
+  opacity: .5;
+  text-align: center;
+}
+
+.quote {
+  margin-top: 200px;
+  text-align: left;
+  font-weight: lighter;
+}
+
+.welcome h2 {
+  font-size: 28px;
+}
+
+.quote h3 {
+  opacity: .75;
+  font-size: 18px;
+  margin-top: 25px;
 }
