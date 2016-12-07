@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
 class Greeting extends React.Component {
 
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -23,7 +22,7 @@ class Greeting extends React.Component {
           <input type="submit" value="Log Out" onClick={ this.handleLogout } />
         </div>
       );
-    } else if (currentUser === null) {
+    } else if ( this.props.location.pathname === '/' ){
       return(
         <div>
           <Link to={'/signup'}>Sign Up</Link>
@@ -32,8 +31,10 @@ class Greeting extends React.Component {
           { this.props.children }
         </div>
       );
+    } else {
+      return null;
     }
   }
 }
 
-export default Greeting;
+export default withRouter(Greeting);

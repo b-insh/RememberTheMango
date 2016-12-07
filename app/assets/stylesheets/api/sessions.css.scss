@@ -1,4 +1,4 @@
-html, body, main, div, label, input, section, header, form, span, h1, h2, h3{
+html, body, main, div, label, input, section, header, form, span, ul, li, h1, h2, h3{
   margin: 0;
   padding: 0;
   outline: 0;
@@ -15,6 +15,10 @@ html, body, main, div, label, input, section, header, form, span, h1, h2, h3{
 body {
   font-family: 'Open Sans', sans-serif;
   background: #fff;
+}
+
+ul {
+  list-style: none;
 }
 
 .group:after {
@@ -75,6 +79,10 @@ form {
   border-radius: 3px;
   font-weight: 300;
   margin: 10px 0;
+}
+
+.authField:focus {
+  box-shadow: 0 0 1px 1px #38aafc;
 }
 
 .submit, .guestLogIn {
@@ -196,4 +204,24 @@ form {
   opacity: .75;
   font-size: 18px;
   margin-top: 25px;
+}
+
+.errorContainer {
+  color: #ea5400;
+  margin-left: 10px;
+}
+
+.signinError {
+  color: #000;
+  background: rgba(234, 82, 0, 0.15);
+  padding: 15px 20px;
+  display: block;
+  border-radius: 3px;
+  margin: 0 auto;
+
+}
+
+#hasError {
+  background: #fdede5;
+  box-shadow: 0 0 1px 1px #ea5400;
 }

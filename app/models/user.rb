@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
-  validates :username, presence: true, uniqueness: true, length: { minimum: 2 }
+  validates :username, presence: { message: "" }, uniqueness: true, length: { message: "Minimum is 2 characters", minimum: 2 }
   validates :session_token, presence: true, uniqueness: true
   validates :password_digest, presence: { message: "Password can't be blank" }
-  validates :fname, :lname, :email, presence: true
-  validates :password, length: { minimum: 5, allow_nil: true }
+  validates :fname, presence: { message: "First name is required" }
+  validates :lname, presence: { message: "Last name is required" }
+  validates :email, presence: { message: "Invalid email address" }
+  validates :password, length: { message: "Miniumum is 5 characters", minimum: 5, allow_nil: true }
 
   attr_reader :password
   before_validation :ensure_session_token

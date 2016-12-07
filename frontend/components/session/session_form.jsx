@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = { fname: "", lname: "", email: "", username: "", password: "" };
 
     this.update = this.update.bind(this);
@@ -26,7 +25,7 @@ class SessionForm extends React.Component {
   }
 
   allErrors(property) {
-    if (this.props.errors[property] === undefined) return [];
+    if (this.props.errors[property] === undefined) return null;
     return this.props.errors[property].map((error, index) => {
       return <li key={ index }>{ error }</li>;
     });
@@ -38,21 +37,32 @@ class SessionForm extends React.Component {
     const otherLinkText = this.props.formType === 'login' ? 'Sign up for free' : 'Log in';
     const submitText = this.props.formType === 'login' ? 'Log in' : 'Sign up!';
     const greetingText = this.props.formType === 'login' ? 'Been here before? Welcome back!' : 'Sign up for free.';
+    const fnameErr = this.props.errors["fname"] === undefined ? "" : "hasError";
+    const lnameErr = this.props.errors["lname"] === undefined ? "" : "hasError";
+    const unameErr = this.props.errors["username"] === undefined ? "" : "hasError";
+    const emailErr = this.props.errors["email"] === undefined ? "" : "hasError";
+    const passwordErr = this.props.errors["password"] === undefined ? "" : "hasError";
+    const baseErr = this.props.errors["base"] === undefined ? "" : "signinError";
 
     const newUserFields = this.props.formType === 'login' ? "" : (
       <div>
         <label>
-          <input className="authField" type="text" value={ this.state.fname } onChange={ this.update("fname") } placeholder="First Name" />
+          <input className="authField" id={ fnameErr } type="text" value={ this.state.fname } onChange={ this.update("fname") } placeholder="First Name" />
         </label>
-        { this.allErrors("fname") }
+
+        <ul className="errorContainer">{ this.allErrors("fname") }</ul>
+
         <label>
-          <input className="authField" type="text" value={ this.state.lname } onChange={ this.update("lname") } placeholder="Last Name" />
+          <input className="authField" id={ lnameErr } type="text" value={ this.state.lname } onChange={ this.update("lname") } placeholder="Last Name" />
         </label>
-        { this.allErrors("lname") }
+
+        <ul className="errorContainer">{ this.allErrors("lname") }</ul>
+
         <label>
-          <input className="authField" type="text" value={ this.state.email } onChange={ this.update("email") } placeholder="Email" />
+          <input className="authField" id={ emailErr } type="text" value={ this.state.email } onChange={ this.update("email") } placeholder="Email" />
         </label>
-        { this.allErrors("email") }
+
+        <ul className="errorContainer">{ this.allErrors("email") }</ul>
       </div>
     );
 
@@ -100,21 +110,27 @@ class SessionForm extends React.Component {
         </section>
 
         <section className="group rightSide">
-          <Link className="link" to={ otherLinkUrl }>{ otherLinkText }</Link>
+          <Link onClick={ this.clearErrors } className="link" to={ otherLinkUrl }>{ otherLinkText }</Link>
 
           <form onSubmit={ this.handleSubmit }>
             <h3>{ greetingText }</h3>
-            { this.allErrors("base") }
+
+            <ul className={ baseErr }>{ this.allErrors("base") }</ul>
+
             { newUserFields }
             <label>
-              <input className="authField" type="text" value={ this.state.username } onChange={ this.update("username") } placeholder="Username" />
+              <input className="authField" id={ unameErr } type="text" value={ this.state.username } onChange={ this.update("username") } placeholder="Username" />
             </label>
-            { this.allErrors("username") }
+
+            <ul className="errorContainer">{ this.allErrors("username") }</ul>
+
             <label>
-              <input className="authField" type="password" value={ this.state.password } onChange={ this.update("password") } placeholder="Password" />
+              <input className="authField" id={ passwordErr } type="password" value={ this.state.password } onChange={ this.update("password") } placeholder="Password" />
             </label>
-            { this.allErrors("password") }
-            <input onClick={ this.clearErrors } className="submit authField" type="submit" value={ submitText } />
+
+            <ul className="errorContainer">{ this.allErrors("password") }</ul>
+
+            <input className="submit authField" type="submit" value={ submitText } />
             <div className="divider">
               <hr />
               <span> OR </span>
