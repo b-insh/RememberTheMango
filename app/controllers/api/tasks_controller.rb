@@ -5,9 +5,7 @@ class Api::TasksController < ApplicationController
   end
 
   def create
-    # @task = current_user.tasks.new(task_params)
-    @task = Task.new(task_params)
-    @task.author_id = current_user.id
+    @task = current_user.tasks.new(task_params)
     if @task.save
       render json: :index, status: 200
     else

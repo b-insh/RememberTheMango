@@ -1,7 +1,7 @@
 import React from 'react';
 
-class TaskIndex extends React.Component {
-  constructor({ tasks, fetchTasks, newTask, editTask, removeTask }) {
+class Sidebar extends React.Component {
+  constructor({ tasks }) {
     super();
 
   }
@@ -10,11 +10,12 @@ class TaskIndex extends React.Component {
     return(
       <section className="mainContent">
         <section className="sidebar">
-
+          <p>All Tasks</p>
+          <p>Today</p>
         </section>
       </section>
     );
   }
 }
 
-export default TaskIndex;
+export default Sidebar;
