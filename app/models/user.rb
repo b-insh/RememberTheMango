@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
   attr_reader :password
   before_validation :ensure_session_token
 
+  has_many :tasks,
+    class_name: :Task,
+    primary_key: :id,
+    foreign_key: :author_id;
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil

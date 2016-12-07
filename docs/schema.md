@@ -9,15 +9,16 @@ password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 fname           | string    | not null
 lname           | string    | not null
-email           | string    | not null
+email           | string    | not null, indexed, unique
+img             | bytea     |
 
 ## tasks
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-title       | string    | not null, unique
-start       | date      |
-due         | date      |
+title       | string    | not null, unique in scope of author
+start_date  | date      |
+due_date    | date      |
 estimate    | string    |
 location    | string    |  <!-- how does this work?  like would the locations be stored as strings here ("app academy") and elsewhere I store the location string with it's actual coordinates/address or something? -->
 completed   | boolean   | not null, default: false

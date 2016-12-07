@@ -13,6 +13,8 @@ class Greeting extends React.Component {
     this.props.logout();
   }
 
+
+
   render() {
     const { currentUser, logout } = this.props;
     if (currentUser) {

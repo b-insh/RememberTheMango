@@ -12,12 +12,13 @@
   tasks: {
     1: {
       title: "Do your laundry",
-      start: 4 Dec 2016,
+      start_date: 4 Dec 2016,
       estimate: "5 minutes",
-      due: 5 Dec 2016,
+      due_date: 5 Dec 2016,
       // location: "Bushwick",
       author_id: 1,
-      list_id: 1
+      list_id: 1,
+      completed: false,
       // tags: {
       //   1: {
       //     id: 1

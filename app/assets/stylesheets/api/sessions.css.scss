@@ -95,6 +95,10 @@ form {
   padding: 10px 12px;
 }
 
+.submit:hover, .guestLogIn:hover {
+  background: #027fce;
+}
+
 .submit {
   margin-top: 20px;
 }
@@ -207,7 +211,7 @@ form {
 }
 
 .errorContainer {
-  color: #ea5400;
+  color: #ef8143;
   margin-left: 10px;
 }
 
@@ -224,4 +228,5 @@ form {
 #hasError {
   background: #fdede5;
   box-shadow: 0 0 1px 1px #ea5400;
+  border: none;
 }
