@@ -1,7 +1,7 @@
 class Task < ActiveRecord::Base
-  validates :title, :completed, :author, presence: true
+  validates :title, :author, presence: true
   validates :title, uniqueness: { scope: :author }
-
+  validates_inclusion_of :completed, in: [true, false] }
   # list
 
   belongs_to :author,

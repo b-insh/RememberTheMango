@@ -210,7 +210,7 @@ form {
   margin-top: 25px;
 }
 
-.errorContainer {
+.errorContainer:before {
   color: #ef8143;
   margin-left: 10px;
 }
@@ -222,8 +222,16 @@ form {
   display: block;
   border-radius: 3px;
   margin: 0 auto;
-
 }
+
+// .errorIcon {
+//   color: #ef8143;
+//   border-radius: 50%;
+//   font-family: "Material Icons";
+//   font-size: 24px;
+// }
+//<span className="errorIcon">error</span>
+
 
 #hasError {
   background: #fdede5;

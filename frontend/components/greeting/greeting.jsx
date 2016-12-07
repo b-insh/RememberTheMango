@@ -13,16 +13,19 @@ class Greeting extends React.Component {
     this.props.logout();
   }
 
-
-
   render() {
     const { currentUser, logout } = this.props;
     if (currentUser) {
       return(
-        <div>
-          <h1>Logged in as: { currentUser.username }</h1>
-          <input type="submit" value="Log Out" onClick={ this.handleLogout } />
-        </div>
+        <nav className="nav_bar group">
+          <span className="settings">settings
+            <div className="drop_down">
+              <h3 className="name"> { currentUser.fname } { currentUser.lname }</h3>
+              <h3 className="email">{ currentUser.email }</h3>
+              <input className="logout" type="submit" value="Log Out" onClick={ this.handleLogout } />
+            </div>
+          </span>
+        </nav>
       );
     } else if ( this.props.location.pathname === '/' ){
       return(

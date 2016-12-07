@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
+import { fetchTasks, newTask, removeTask, editTask } from './actions/task_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -15,3 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store }/>, root);
 });
+
+window.fetchTasks = fetchTasks;
+window.newTask = newTask;
+window.removeTask = removeTask;
+window.editTask = editTask;
