@@ -1,0 +1,104 @@
+section, nav, br, div, ul, li{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  text-decoration: inherit;
+  background: transparent;
+}
+
+.welcome_page {
+  height: 100vh;
+  width: auto;
+  background-color: rgb(0, 96, 191);
+  margin: 0 auto;
+}
+
+.welcome_nav {
+  height: 115px;
+  padding: 50px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0470588);
+  margin: 0 auto;
+}
+
+.welcome_links {
+  float: right;
+  display: block;
+}
+
+.welcome_links a {
+  text-decoration: none;
+  color: #fff;
+  opacity: .75;
+  margin: 20px 15px;
+  font-size: 15px;
+}
+
+.welcome_links li {
+  float: left;
+  display: block;
+}
+
+.welcome_signup_link:hover {
+  border: 2px solid rgb(225, 225, 225);
+}
+
+.welcome_login_link a:hover, .welcome_signup_link a:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+.welcome_signup_link {
+  border: 2px solid rgba(225, 225, 225, .75);
+  border-radius: 4px;
+  padding: 4px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.welcome_login_link {
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 4px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.test {
+  margin: 0 auto;
+}
+
+.welcome_content {
+  height: 100vh;
+}
+
+.welcome_content a {
+  text-decoration: none;
+  background: #d24b03;
+  border-radius: 4px;
+  padding: 12px 32px;
+  font-size: 23px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  display: block;
+  margin: 0 auto;
+  max-width: 170px;
+}
+
+.smart_app_text {
+  font-size: 44px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  color: #fff;
+}
