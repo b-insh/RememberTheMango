@@ -3,7 +3,7 @@
 [Heroku link][heroku]
 [Trello link][trello]
 
-[heroku]: https://rememberthemango.herokuapp.com/
+[heroku]: http://rememberthemango.herokuapp.com/#/welcome
 [trello]: https://trello.com/b/0dVe4kNt/remember-the-mango
 
 ## Minimum Viable Product

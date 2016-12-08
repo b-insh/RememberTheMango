@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
     this.allErrors = this.allErrors.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearErrors = this.props.clearErrors;
+    this.guestLogin = this.guestLogin.bind(this);
   }
 
   handleSubmit(e) {
@@ -31,6 +32,12 @@ class SessionForm extends React.Component {
     });
   }
 
+  guestLogin() {
+    const guestUser = {username: "mangomango", password: "ilovemangoes123"};
+    this.props.login(guestUser).then(() => {
+      this.props.router.push('/');
+    });
+  }
 
   render() {
     const otherLinkUrl = this.props.formType === 'login' ? 'signup' : 'login';
@@ -135,7 +142,7 @@ class SessionForm extends React.Component {
               <hr />
               <span> OR </span>
             </div>
-            <input className="guestLogIn authField" type="submit" value="Log in as guest"/>
+            <input onClick={ this.guestLogin } className="guestLogIn authField" type="submit" value="Log in as guest"/>
           </form>
         </section>
       </section>
