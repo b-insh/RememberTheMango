@@ -21,6 +21,14 @@ class SessionForm extends React.Component {
     });
   }
 
+  guestLogin(e) {
+    e.preventDefault();
+    const guestUser = {username: "mangomango", password: "ilovemangoes123"};
+    this.props.login(guestUser).then(() => {
+      this.props.router.push('/');
+    });
+  }
+
   update(property) {
     return e => this.setState({ [property]: e.target.value });
   }
@@ -29,13 +37,6 @@ class SessionForm extends React.Component {
     if (this.props.errors[property] === undefined) return null;
     return this.props.errors[property].map((error, index) => {
       return <li key={ index }>{ error }</li>;
-    });
-  }
-
-  guestLogin() {
-    const guestUser = {username: "mangomango", password: "ilovemangoes123"};
-    this.props.login(guestUser).then(() => {
-      this.props.router.push('/');
     });
   }
 
@@ -110,6 +111,16 @@ class SessionForm extends React.Component {
 
     }
 
+    const guestUserLogin = this.props.location.pathname === '/login' ? (
+      <section className="guestLoginSection">
+        <div className="divider">
+          <hr />
+          <span> OR </span>
+        </div>
+        <input onClick={ this.guestLogin } className="guestLogIn authField" type="submit" value="Log in as guest"/>
+      </section>
+    ) : "";
+
     return(
       <section className="container group">
         <section className="leftSide">
@@ -138,11 +149,7 @@ class SessionForm extends React.Component {
             <ul className="errorContainer">{ this.allErrors("password") }</ul>
 
             <input className="submit authField" type="submit" value={ submitText } />
-            <div className="divider">
-              <hr />
-              <span> OR </span>
-            </div>
-            <input onClick={ this.guestLogin } className="guestLogIn authField" type="submit" value="Log in as guest"/>
+            { guestUserLogin }
           </form>
         </section>
       </section>

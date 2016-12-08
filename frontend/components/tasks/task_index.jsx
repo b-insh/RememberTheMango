@@ -6,12 +6,12 @@ class TaskIndex extends React.Component {
 
   }
 
-  render() {
-    return(
-      <section className="mainContent">
-        <section className="sidebar">
 
-        </section>
+  render() {
+    const tasks = this.props.tasks;
+    return(
+      <section className="task-index">
+
       </section>
     );
   }

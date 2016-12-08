@@ -4,10 +4,9 @@ class Api::SessionsController < ApplicationController
       params[:user][:username],
       params[:user][:password]
     )
-
     if @user
       login(@user)
-      render 'api/users/show', status: 200
+      render 'api/sessions/show', status: 200
     else
       render json: { base: ["Sorry, that wasn't a valid login. Please try again."] }, status: 422
     end

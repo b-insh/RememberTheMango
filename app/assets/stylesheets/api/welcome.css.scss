@@ -12,14 +12,14 @@ section, nav, br, div, ul, li{
   background: transparent;
 }
 
-.welcome_page {
+.welcome-page {
   height: 100vh;
   width: auto;
   background-color: rgb(0, 96, 191);
   margin: 0 auto;
 }
 
-.welcome_nav {
+.welcome-nav {
   height: 115px;
   padding: 50px;
   box-sizing: border-box;
@@ -27,34 +27,36 @@ section, nav, br, div, ul, li{
   margin: 0 auto;
 }
 
-.welcome_links {
+.welcome-links {
   float: right;
   display: block;
 }
 
-.welcome_links a {
+.welcome-links a {
   text-decoration: none;
   color: #fff;
   opacity: .75;
   margin: 20px 15px;
   font-size: 15px;
+  height: 100%;
+  width: 100%
 }
 
-.welcome_links li {
+.welcome-links li {
   float: left;
   display: block;
 }
 
-.welcome_signup_link:hover {
+.welcome-signup-link:hover {
   border: 2px solid rgb(225, 225, 225);
 }
 
-.welcome_login_link a:hover, .welcome_signup_link a:hover {
+.welcome-login-link a:hover, .welcome-signup-link a:hover {
   color: #fff;
   opacity: 1;
 }
 
-.welcome_signup_link {
+.welcome-signup-link {
   border: 2px solid rgba(225, 225, 225, .75);
   border-radius: 4px;
   padding: 4px 0;
@@ -63,7 +65,7 @@ section, nav, br, div, ul, li{
   margin-left: 30px;
 }
 
-.welcome_login_link {
+.welcome-login-link {
   border: 2px solid transparent;
   border-radius: 4px;
   padding: 4px 0;
@@ -75,11 +77,11 @@ section, nav, br, div, ul, li{
   margin: 0 auto;
 }
 
-.welcome_content {
+.welcome-content {
   height: 100vh;
 }
 
-.welcome_content a {
+.welcome-content a {
   text-decoration: none;
   background: #d24b03;
   border-radius: 4px;
@@ -95,7 +97,7 @@ section, nav, br, div, ul, li{
   max-width: 170px;
 }
 
-.smart_app_text {
+.smart-app-text {
   font-size: 44px;
   text-align: center;
   margin: 0 auto;

@@ -10,19 +10,19 @@ class Welcome extends React.Component {
     const { currentUser } = this.props;
     if (this.props.location.pathname === "/welcome") {
       return (
-        <section className="welcome_page">
-          <nav className="welcome_nav group">
-            <ul className="welcome_links group">
-              <li className="welcome_login_link">
+        <section className="welcome-page">
+          <nav className="welcome-nav group">
+            <ul className="welcome-links group">
+              <li className="welcome-login-link">
                 <Link to={'/login'}>Log in</Link>
               </li>
-              <li className="welcome_signup_link">
+              <li className="welcome-signup-link">
                 <Link to={'/signup'}>Sign up for free</Link>
               </li>
             </ul>
           </nav>
-          <section className="welcome_content">
-            <h1 className="smart_app_text">The smart to-do app for busy people.</h1>
+          <section className="welcome-content">
+            <h1 className="smart-app-text">The smart to-do app for busy people.</h1>
             <Link to={'/signup'}>Sign up free</Link>
           </section>
           { this.props.children }
