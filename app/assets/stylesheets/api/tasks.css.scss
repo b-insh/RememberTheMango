@@ -25,6 +25,11 @@ section, div, span, input, ul, li {
   padding: 10px 0 10px 10px;
 }
 
+.task-bar {
+  width: 100%;
+  min-width: 270px;
+}
+
 .task-status {
   height: 30px;
   float: right;
@@ -33,11 +38,37 @@ section, div, span, input, ul, li {
 
 .task-status li {
   padding-bottom: 7px;
-  width: 65px;
   display: block;
   cursor: pointer;
   float: left;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 15px 0 20px;
+}
+
+.action-icons {
+  text-align: center;
+  float: left;
+  font-family: "Material Icons";
+  color: #f7c247;
+  margin-left: 5px;
+  font-size: 28px;
+}
+
+.actions-icons li {
+  display: block;
+}
+
+.delete-task {
+  float: left;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+}
+
+.complete-task {
+  float: left;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
 }
 
 .highlight {
@@ -62,7 +93,7 @@ section, div, span, input, ul, li {
   box-sizing: border-box;
   border-radius: 3px;
   padding: 10px;
-  margin: 10px 17px 10px 0;
+  margin: 0 17px 10px 0;
   max-width: 98%;
 }
 
@@ -86,42 +117,8 @@ section, div, span, input, ul, li {
   float: right;
 }
 
-.button-close {
-  display: none;
-}
-
-.add-task {
-  border-top: 1px dotted #e5e5e5;
-}
-
-.task-actions {
-  display: block;
-  font-family: "Material Icons";
-  color: #f7c247;
-}
 .hidden {
   display: none;
-}
-.action-icons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-left: 5px;
-  font-size: 28px;
-}
-
-.actions-icons li {
-  display: block;
-  width: 20px;
-}
-
-.delete-task {
-  cursor: pointer;
-}
-
-.complete-task {
-  margin-bottom: -2px;
-  cursor: pointer;
 }
 
 .tasks-index {
@@ -135,10 +132,8 @@ section, div, span, input, ul, li {
   padding: 3px;
 }
 
-
 .tasks-list li:last-child {
   border-bottom: 1px dotted #e5e5e5;
-
 }
 
 .tasks-list li:hover {

@@ -1,13 +1,13 @@
 class Api::TasksController < ApplicationController
   def index
     @tasks = Task.all
-    render json: @tasks
+    render :index
   end
 
   def create
     @task = current_user.tasks.new(task_params)
     if @task.save
-      render json: :index, status: 200
+      render :show
     else
       render json: @task.errors, status: 422
     end
@@ -16,7 +16,7 @@ class Api::TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      render json: :index, status: 200
+      render :index, status: 200
     else
       render json: @task.errors, status: 422
     end
@@ -29,7 +29,7 @@ class Api::TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     @task.delete
-    render json: :index
+    render :show
   end
 
   private

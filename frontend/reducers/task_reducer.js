@@ -22,7 +22,7 @@ const taskReducer = (state = initialState, action) => {
       return newState;
     case DELETE_TASK:
       newState = merge({}, state);
-      delete newState[action.todo];
+      delete newState[action.task.id];
       return newState;
     case RECEIVE_TASK_ERRORS:
       return {

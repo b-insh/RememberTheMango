@@ -2,8 +2,8 @@ import React from 'react';
 import TaskItem from './task_item';
 
 class TaskIndex extends React.Component {
-  constructor({ tasks, fetchTasks, newTask, editTask, removeTask }) {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleNewTask = this.handleNewTask.bind(this);
     this.handleSelectTask = this.handleSelectTask.bind(this);
@@ -12,8 +12,10 @@ class TaskIndex extends React.Component {
     this.undisplayButton = this.undisplayButton.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
     this.toggleIncomplete = this.toggleIncomplete.bind(this);
+    this.handleDeleteTask = this.handleDeleteTask.bind(this);
 
-    this.state = { title: "", selectedTask: null, buttonStatus: "button-close", completeTasks: "", incompleteTasks: "highlight", taskActions: "hidden"};
+
+    this.state = { allTasks: this.props.tasks, title: "", selectedTask: null, buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight"};
   }
 
   componentDidMount() {
@@ -24,31 +26,34 @@ class TaskIndex extends React.Component {
     this.setState({ title: e.target.value });
   }
 
-  handleNewTask() {
+  handleNewTask(e) {
     const task = Object.assign({}, this.state);
-    this.props.newTask(task).then(() => {
-      this.props.fetchTasks();
-    });
+    this.props.newTask(task);
 
     this.setState({ title: "" });
   }
 
   handleSelectTask(task) {
-    this.setState({ selectedTask: task });
-    if (this.state.selectedTask) {
-      this.setState({ taskActions: "action-icons"});
-    }
+    this.setState({ selectedTask: task })
+    this.setState({ iconDisplay: "action-icons"});
   }
 
   displayButton() {
-    if (this.state.buttonStatus === "button-close" || this.state.title !== "" ) {
+    if (this.state.buttonStatus === "hidden") {
       this.setState({ buttonStatus: "button-open" });
     }
   }
 
-  undisplayButton() {
+  handleDeleteTask() {
+    this.props.removeTask(this.state.selectedTask)
+  }
+
+  undisplayButton(e) {
+    if (e.currentTarget.contains(e.relatedTarget)) {
+      this.handleNewTask(e);
+    }
     if (this.state.buttonStatus === "button-open") {
-      this.setState({ buttonStatus: "button-close"});
+      this.setState({ buttonStatus: "hidden"});
     }
   }
 
@@ -67,13 +72,12 @@ class TaskIndex extends React.Component {
   // completeTask(task) {
   //   let updateTask = e.current.target;
   //   const updatedTask = Object.assign({}, this.state, { complete: true });
-  //   debugger
   //   this.props.editTask(updatedTask);
   // }
 
   render() {
     const selectedTask = this.state.selectedTask;
-    const allTasks = this.props.tasks.map( (task, index) => {
+    const tasks = this.props.tasks.map( (task, index) => {
       return (
         <TaskItem
           task={ task }
@@ -89,33 +93,33 @@ class TaskIndex extends React.Component {
     return(
       <section className="tasks group">
 
-        <ul className="task-status group">
-          <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
-          <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
-        </ul>
+        <section className="task-bar">
+            <ul className="task-status group">
+              <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
+              <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
+            </ul>
 
-        <section className="task-actions">
-          <ul className={ this.state.taskActions }>
-            <li className="delete-task" onClick={ () => this.props.removeTask(this.state.selectedTask).then(() => this.props.fetchTasks())}>delete</li>
-            <li className="complete-task" >check circle</li>
-          </ul>
-        </section>
+            <ul className={ this.state.iconDisplay }>
+              <li className="delete-task" onClick={ this.handleDeleteTask }>delete</li>
+              <li className="complete-task">check circle</li>
+            </ul>
 
-        <section className="add-task group" onBlur={ this.undisplayButton }>
+          </section>
 
-          <input className="task-text" type="text" value={ this.state.title } placeholder="Add a task..." onChange={ (e) => this.updateTask(e) } onFocus={ this.displayButton } />
+          <section className="add-task group" onFocus={ this.displayButton } onBlur={ this.undisplayButton }>
 
-          <div className="button-wrapper">
-            <input type="submit" onClick={ this.handleNewTask } className={ buttonClass } value="Add Task" />
-          </div>
-        </section>
+            <input className="task-text" type="text" value={ this.state.title } placeholder="Add a task..." onChange={ (e) => this.updateTask(e) }/>
 
+            <div className="button-wrapper" >
+              <input type="submit" onClick={ this.handleNewTask } className={ buttonClass } value="Add Task" />
+            </div>
+          </section>
 
-        <section className="tasks-index">
-          <ul className="tasks-list">
-            { allTasks }
-          </ul>
-        </section>
+          <section className="tasks-index">
+            <ul className="tasks-list">
+              { tasks }
+            </ul>
+          </section>
 
       </section>
     );
