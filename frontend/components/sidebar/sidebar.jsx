@@ -8,11 +8,9 @@ class Sidebar extends React.Component {
 
   render() {
     return(
-      <section className="mainContent">
-        <section className="sidebar">
-          <p>All Tasks</p>
-          <p>Today</p>
-        </section>
+      <section className="sidebar">
+        <p>All Tasks</p>
+        <p>Today</p>
       </section>
     );
   }

@@ -23,7 +23,7 @@ estimate    | string    |
 location    | string    |  <!-- how does this work?  like would the locations be stored as strings here ("app academy") and elsewhere I store the location string with it's actual coordinates/address or something? -->
 completed   | boolean   | not null, default: false
 author_id   | integer   | not null, foreign key (references users), indexed
-list_id     | integer   | not null, foreign key (references lists), indexed
+list_id     | integer   | foreign key (references lists), indexed
 
 ## lists
 column name | data type | details

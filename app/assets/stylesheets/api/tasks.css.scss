@@ -1,0 +1,165 @@
+section, div, span, input, ul, li {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  text-decoration: inherit;
+  background: transparent;
+}
+
+.task-text:focus::-webkit-input-placeholder { opacity: 0; }
+.task-text:focus:-moz-placeholder { opacity: 0; }
+.task-text:focus:-ms-input-placeholder { opacity: 0; }
+
+.tasks {
+  width: 100%;
+  margin-left: 5px;
+  background: #fff;
+  margin: 5px;
+  border-radius: 6px;
+  padding: 10px 0 10px 10px;
+}
+
+.task-status {
+  height: 30px;
+  float: right;
+  margin-bottom: 10px;
+}
+
+.task-status li {
+  padding-bottom: 7px;
+  width: 65px;
+  display: block;
+  cursor: pointer;
+  float: left;
+  margin: 10px 20px 10px 20px;
+}
+
+.highlight {
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+}
+
+.add-task {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.task-text:focus {
+  box-shadow: 0 0 1px 1px #38aafc;
+}
+
+.task-text {
+  font-size: 14px;
+  width: 100%;
+  display: block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px 17px 10px 0;
+  max-width: 98%;
+}
+
+.button-wrapper {
+  width: 100%;
+  height: auto;
+}
+
+.button-open {
+  height: 30px;
+  width: 90px;
+  font-weight: bold;
+  padding: 7px 15px;
+  background: #0060bf;
+  border-radius: 3px;
+  text-align: right;
+  color: #fff;
+  margin: 0 17px 10px 0;
+  margin-right: 2%;
+  display: block;
+  float: right;
+}
+
+.button-close {
+  display: none;
+}
+
+.add-task {
+  border-top: 1px dotted #e5e5e5;
+}
+
+.task-actions {
+  display: block;
+  font-family: "Material Icons";
+  color: #f7c247;
+}
+.hidden {
+  display: none;
+}
+.action-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 5px;
+  font-size: 28px;
+}
+
+.actions-icons li {
+  display: block;
+  width: 20px;
+}
+
+.delete-task {
+  cursor: pointer;
+}
+
+.complete-task {
+  margin-bottom: -2px;
+  cursor: pointer;
+}
+
+.tasks-index {
+  display: block;
+}
+
+.tasks-list li {
+  border-top: 1px dotted #e5e5e5;
+  cursor: pointer;
+  display: block;
+  padding: 3px;
+}
+
+
+.tasks-list li:last-child {
+  border-bottom: 1px dotted #e5e5e5;
+
+}
+
+.tasks-list li:hover {
+  background: #fcebc4;
+}
+
+.inactive {
+  pointer-events: none;
+  opacity: .5;
+}
+
+.selected-task {
+  font-weight: bold;
+}
+
+// .button-wrapper {
+//   width: 100%;
+// }
+//
+// .add-task-button {
+//   transition-property: height;
+//   transition-duration: 5s;
+//   transition-timing-function: ease-in-out;
+// }

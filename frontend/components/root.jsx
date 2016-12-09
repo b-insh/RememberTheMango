@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory }from 'react-router';
 import App from './app';
 import SessionFormContainer from './session/session_form_container';
-import SidebarContainer from './sidebar/sidebar_container';
 import WelcomeContainer from './welcome/welcome_container';
+import HomePage from './home_page';
 
 
 const Root = ({ store }) => {
@@ -31,7 +31,7 @@ const Root = ({ store }) => {
           <Route path="/signup" component={ SessionFormContainer } />
         </Route>
         <Route path="/" component={ App } onEnter={ _ensureLoggedIn }>
-          <IndexRoute component={ SidebarContainer }/>
+          <IndexRoute component={ HomePage } />
         </Route>
       </Router>
     </Provider>
