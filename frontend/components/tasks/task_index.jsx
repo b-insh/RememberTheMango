@@ -13,9 +13,10 @@ class TaskIndex extends React.Component {
     this.toggleComplete = this.toggleComplete.bind(this);
     this.toggleIncomplete = this.toggleIncomplete.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
+    this.toggleCompleteTask = this.toggleCompleteTask.bind(this);
+    this.toggleIncompleteTask = this.toggleIncompleteTask.bind(this);
 
-
-    this.state = { allTasks: this.props.tasks, title: "", selectedTask: null, buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight"};
+    this.state = { title: "", selectedTask: null, buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight"};
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ class TaskIndex extends React.Component {
   handleNewTask(e) {
     const task = Object.assign({}, this.state);
     this.props.newTask(task);
-
+    debugger
     this.setState({ title: "" });
   }
 
@@ -38,14 +39,14 @@ class TaskIndex extends React.Component {
     this.setState({ iconDisplay: "action-icons"});
   }
 
+  handleDeleteTask() {
+    this.props.removeTask(this.state.selectedTask)
+  }
+
   displayButton() {
     if (this.state.buttonStatus === "hidden") {
       this.setState({ buttonStatus: "button-open" });
     }
-  }
-
-  handleDeleteTask() {
-    this.props.removeTask(this.state.selectedTask)
   }
 
   undisplayButton(e) {
@@ -69,11 +70,15 @@ class TaskIndex extends React.Component {
     }
   }
 
-  // completeTask(task) {
-  //   let updateTask = e.current.target;
-  //   const updatedTask = Object.assign({}, this.state, { complete: true });
-  //   this.props.editTask(updatedTask);
-  // }
+  toggleCompleteTask() {
+    let completedTask = Object.assign({}, this.state.selectedTask, { completed: true });
+    this.props.editTask(completedTask);
+  }
+
+  toggleIncompleteTask() {
+    let incompleteTask = Object.assign({}, this.state.selectedTask, { completed: false });
+    this.props.editTask(incompleteTask);
+  }
 
   render() {
     const selectedTask = this.state.selectedTask;
@@ -96,12 +101,13 @@ class TaskIndex extends React.Component {
         <section className="task-bar">
             <ul className="task-status group">
               <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
-              <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
+              <li className={ this.state.completeTasks }>Completed</li>
             </ul>
 
             <ul className={ this.state.iconDisplay }>
               <li className="delete-task" onClick={ this.handleDeleteTask }>delete</li>
-              <li className="complete-task">check circle</li>
+              <li className="complete-task" onClick={ this.toggleCompleteTask }>check circle</li>
+              <li className="uncomplete-task" onClick={ this.toggleIncompleteTask }>restore</li>
             </ul>
 
           </section>
