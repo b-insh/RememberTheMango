@@ -4,7 +4,7 @@ export const fetchTasks = (success, error) => {
   });
 };
 
-export const fetchTask = (task, success, error) => {
+export const fetchTaskDetail = (task, success, error) => {
   return $.ajax({
     url: `/api/session/${task.id}`,
   });

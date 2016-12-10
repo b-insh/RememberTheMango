@@ -4,7 +4,9 @@ import { Router, Route, IndexRoute, hashHistory }from 'react-router';
 import App from './app';
 import SessionFormContainer from './session/session_form_container';
 import WelcomeContainer from './welcome/welcome_container';
-import HomePage from './home_page';
+import TaskIndexContainer from './tasks/task_index_container';
+import TaskDetailContainer from './tasks/task_detail_container';
+
 
 
 const Root = ({ store }) => {
@@ -31,7 +33,10 @@ const Root = ({ store }) => {
           <Route path="/signup" component={ SessionFormContainer } />
         </Route>
         <Route path="/" component={ App } onEnter={ _ensureLoggedIn }>
-          <IndexRoute component={ HomePage } />
+          <Route path="/tasks" component={ TaskIndexContainer }>
+            <Route path="/tasks/:id" component={ TaskDetailContainer }/>
+          </Route>
+
         </Route>
       </Router>
     </Provider>

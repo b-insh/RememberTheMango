@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class TaskItem extends React.Component {
 
@@ -16,8 +17,10 @@ class TaskItem extends React.Component {
 
     return (
       <li className={ className } onClick={ () => handleSelectTask(task) } key={ task.id }>
-        <span className={ completed }>stars</span>
-        { task.title }
+        <Link to={ `tasks/${task.id}` }>
+          <span className={ completed }>stars</span>
+          { task.title }
+        </Link>
       </li>
     );
   }

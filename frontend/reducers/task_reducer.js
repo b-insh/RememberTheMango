@@ -3,7 +3,7 @@ import merge from 'lodash/merge';
 
 const initialState = {
   tasks: {},
-  taskErrors: []
+  taskErrors: [],
 };
 
 const taskReducer = (state = initialState, action) => {

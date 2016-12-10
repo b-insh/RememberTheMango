@@ -8,7 +8,7 @@ section, div, span, input, ul, li {
   color: inherit;
   vertical-align: inherit;
   box-sizing: inherit;
-  text-decoration: inherit;
+  text-decoration: none;
   background: transparent;
 }
 
@@ -17,7 +17,11 @@ section, div, span, input, ul, li {
 .task-text:focus:-ms-input-placeholder { opacity: 0; }
 
 .tasks {
-  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 40px;
+  left: 180px;
+  width: 50%;
   margin-left: 5px;
   background: #fff;
   margin: 5px;
@@ -132,11 +136,17 @@ section, div, span, input, ul, li {
   display: block;
 }
 
+
 .tasks-list li {
   border-top: 1px dotted #e5e5e5;
   cursor: pointer;
   display: block;
   padding: 3px;
+}
+
+.tasks-list a {
+  text-decoration: none;
+  color: #000;
 }
 
 .tasks-list li:last-child {

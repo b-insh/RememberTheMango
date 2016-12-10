@@ -30,13 +30,13 @@ class TaskIndex extends React.Component {
   handleNewTask(e) {
     const task = Object.assign({}, this.state);
     this.props.newTask(task);
-    debugger
     this.setState({ title: "" });
   }
 
   handleSelectTask(task) {
     this.setState({ selectedTask: task })
     this.setState({ iconDisplay: "action-icons"});
+
   }
 
   handleDeleteTask() {
@@ -101,7 +101,7 @@ class TaskIndex extends React.Component {
         <section className="task-bar">
             <ul className="task-status group">
               <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
-              <li className={ this.state.completeTasks }>Completed</li>
+              <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
             </ul>
 
             <ul className={ this.state.iconDisplay }>
@@ -126,7 +126,7 @@ class TaskIndex extends React.Component {
               { tasks }
             </ul>
           </section>
-
+          { this.props.children }
       </section>
     );
   }
