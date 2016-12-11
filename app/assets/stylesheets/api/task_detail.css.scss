@@ -11,6 +11,10 @@
   padding: 10px;
 }
 
+.task-detail li {
+  margin: 5px;
+}
+
 .detail-top {
   display: block;
   margin-bottom: 10px;
@@ -26,13 +30,34 @@
 
 .task-name {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   font-size: 20px;
   float: left;
+}
+
+.task-data:hover .non-attributes {
+  display: block;
+  opacity: 1;
+  width: 100%;
 }
 
 .task-name:hover {
   border: 1px solid #ccc;
   border-radius: 3px;
-  padding: 10px;
+  padding: 5px;
+}
+
+.task-data:hover input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.non-attributes {
+  display: block;
+  opacity: 0;
+}
+
+.input-attr {
+  padding: 2px 5px;
+  box-sizing: border-box;
 }
