@@ -1,4 +1,37 @@
 .task-detail {
-  border: 1px solid #f00;
   width: 50%;
+  height: 100vh;
+  position: absolute;
+  box-sizing: border-box;
+  border-left: 2px solid #ccc;
+  top: 0;
+  left: 730px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.detail-top {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.close {
+  float: right;
+}
+
+.close a {
+  text-decoration: none;
+}
+
+.task-name {
+  padding: 10px;
+  font-size: 20px;
+  float: left;
+}
+
+.task-name:hover {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 10px;
 }

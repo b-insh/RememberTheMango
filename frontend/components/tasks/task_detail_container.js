@@ -3,18 +3,15 @@ import { editTask, fetchTaskDetail } from '../../actions/task_actions';
 import TaskDetail from './task_detail';
 
 const mapStateToProps = state => {
-  debugger
   return {
-    task: state.taskDetail.taskDetail,
+    task: state.taskDetail,
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  debugger
   return {
-    fetchTaskDetail: () => (
-      dispatch(fetchTaskDetail(ownProps.params.id))
-    )
+    fetchTaskDetail: (id) => (dispatch(fetchTaskDetail(id))),
+    editTask: (task) => (dispatch(editTask(task))),
   }
 };
 

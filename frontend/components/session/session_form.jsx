@@ -17,7 +17,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user).then(() => {
-      this.props.router.push('/');
+      this.props.router.push('/tasks');
     });
   }
 
@@ -25,7 +25,7 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const guestUser = {username: "mangomango", password: "ilovemangoes123"};
     this.props.login(guestUser).then(() => {
-      this.props.router.push('/');
+      this.props.router.push('/tasks');
     });
   }
 

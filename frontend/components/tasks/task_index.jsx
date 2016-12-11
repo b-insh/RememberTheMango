@@ -34,13 +34,13 @@ class TaskIndex extends React.Component {
   }
 
   handleSelectTask(task) {
-    this.setState({ selectedTask: task })
+    this.setState({ selectedTask: task });
     this.setState({ iconDisplay: "action-icons"});
 
   }
 
   handleDeleteTask() {
-    this.props.removeTask(this.state.selectedTask)
+    this.props.removeTask(this.state.selectedTask);
   }
 
   displayButton() {

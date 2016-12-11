@@ -4,9 +4,9 @@ export const fetchTasks = (success, error) => {
   });
 };
 
-export const fetchTaskDetail = (task, success, error) => {
+export const fetchTaskDetail = (taskId, success, error) => {
   return $.ajax({
-    url: `/api/session/${task.id}`,
+    url: `/api/tasks/${taskId}`,
   });
 };
 
@@ -19,6 +19,7 @@ export const createTask = (task, success, error) => {
 };
 
 export const updateTask = (task, success, error) => {
+  debugger
   return $.ajax({
     method: "PATCH",
     url: `/api/tasks/${task.id}`,
