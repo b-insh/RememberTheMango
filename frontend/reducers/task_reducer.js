@@ -17,7 +17,6 @@ const taskReducer = (state = initialState, action) => {
       newState[action.task.id] = action.task;
       return newState;
     case UPDATE_TASK:
-      debugger
       newState = merge({}, state);
       newState[action.task.id] = action.task;
       return newState;

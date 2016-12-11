@@ -32,7 +32,6 @@ class TaskDetail extends React.Component {
 
   handleEditTask(e) {
     if (e.key == 'Enter') {
-      debugger
       const newTitle = { title: this.state.title }
       const editedTask = Object.assign(this.props.task, newTitle);
       this.props.editTask(editedTask);
@@ -58,15 +57,15 @@ class TaskDetail extends React.Component {
     const attributes = this.getAttributes(task);
       return (
         <section className="task-detail">
-        <ul className="detail-top group">
-          <li><h2 className="close"><Link to={ "/tasks" }>close x</Link></h2></li>
-          <li><input type="text" value={ this.state.title } className="task-name" onChange={ this.update("title")} onKeyPress={ this.handleEditTask }/></li>
-        </ul>
+          <ul className="detail-top group">
+            <li><h2 className="close"><Link to={ "/tasks" }>close x</Link></h2></li>
+            <li><input type="text" value={ this.state.title } className="task-name" onChange={ this.update("title")} onKeyPress={ this.handleEditTask }/></li>
+          </ul>
 
-        <ul className="attributes">
-          { attributes }
-        </ul>
-         {this.props.children}
+          <ul className="attributes">
+            { attributes }
+          </ul>
+          {this.props.children}
         </section>
       )
     } else {

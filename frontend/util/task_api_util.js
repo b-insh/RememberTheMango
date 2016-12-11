@@ -19,7 +19,6 @@ export const createTask = (task, success, error) => {
 };
 
 export const updateTask = (task, success, error) => {
-  debugger
   return $.ajax({
     method: "PATCH",
     url: `/api/tasks/${task.id}`,

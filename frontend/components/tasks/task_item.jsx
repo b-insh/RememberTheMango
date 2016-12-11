@@ -16,12 +16,12 @@ class TaskItem extends React.Component {
     }
 
     return (
-      <li className={ className } onClick={ () => handleSelectTask(task) } key={ task.id }>
-        <Link to={ `tasks/${task.id}` }>
+      <Link to={ `tasks/${task.id}` }>
+        <li className={ className } onClick={ () => handleSelectTask(task) } key={ task.id }>
           <span className={ completed }>stars</span>
           { task.title }
-        </Link>
-      </li>
+        </li>
+      </Link>
     );
   }
 }
