@@ -1,12 +1,12 @@
 export const fetchTasks = (success, error) => {
   return $.ajax({
-    url: "/api/tasks",
+    url: "/api/tasks"
   });
 };
 
 export const fetchTaskDetail = (taskId, success, error) => {
   return $.ajax({
-    url: `/api/tasks/${taskId}`,
+    url: `/api/tasks/${taskId}`
   });
 };
 

@@ -1,15 +1,20 @@
 import { connect } from 'react-redux';
-import { fetchTasks, newTask, editTask, removeTask } from '../../actions/task_actions';
+import { fetchLists, newList, deleteList, fetchList } from '../../actions/list_actions';
+import { selectAllLists } from '../../reducers/selectors';
 import Sidebar from './sidebar';
 
 const mapStateToProps = state => {
   return {
-    tasks: state.tasks,
+    lists: selectAllLists(state),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchLists: () => dispatch(fetchLists()),
+    fetchList: (list) => dispatch(fetchList(list)),
+    newList: (list) => dispatch(newList(list)),
+    deleteList: (list) => dispatch(deleteList(list)),
   };
 };
 

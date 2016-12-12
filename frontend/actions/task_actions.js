@@ -20,7 +20,7 @@ export const receiveTasks = tasks => ({
 export const receiveTaskDetail = task => ({
   type: RECEIVE_TASK_DETAIL,
   task
-})
+});
 
 export const createTask = task => ({
   type: CREATE_TASK,
