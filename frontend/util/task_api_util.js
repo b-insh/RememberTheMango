@@ -1,16 +1,16 @@
-export const fetchTasks = (success, error) => {
+export const fetchTasks = () => {
   return $.ajax({
     url: "/api/tasks"
   });
 };
 
-export const fetchTaskDetail = (taskId, success, error) => {
+export const fetchTaskDetail = (taskId) => {
   return $.ajax({
     url: `/api/tasks/${taskId}`
   });
 };
 
-export const createTask = (task, success, error) => {
+export const createTask = (task) => {
   return $.ajax({
     method: "POST",
     url: "/api/tasks",
@@ -18,7 +18,7 @@ export const createTask = (task, success, error) => {
   });
 };
 
-export const updateTask = (task, success, error) => {
+export const updateTask = (task) => {
   return $.ajax({
     method: "PATCH",
     url: `/api/tasks/${task.id}`,
@@ -26,9 +26,17 @@ export const updateTask = (task, success, error) => {
   });
 };
 
-export const deleteTask = (task, success, error) => {
+export const deleteTask = (task) => {
   return $.ajax({
     method: "DELETE",
     url: `/api/tasks/${task.id}`
+  });
+};
+
+export const createTaskForList = (task, listId) => {
+  return $.ajax({
+    method: "POST",
+    url: `api/tasks?filter=${listId}`,
+    data: { task: task }
   });
 };

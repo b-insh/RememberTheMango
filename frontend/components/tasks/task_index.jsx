@@ -22,16 +22,19 @@ class TaskIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.pageType === "tasks") {
-      this.props.fetchTasks();
-    } else {
+    if (this.props.pageType) {
       this.props.fetchList(this.props.params.listId);
+    } else {
+      this.props.fetchTasks();
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.params.listId !== newProps.params.listId && this.props.pageType === "lists") {
-      this.props.fetchList(newProps.params.listId);
+    if (this.props.params.listId !== newProps.params.listId && this.props.pageType) {
+      newProps.fetchList(newProps.params.listId);
+    }
+    if (this.props.pageType && this.props.params.listId === newProps.params.listId && this.props.list.tasks.length !== newProps.list.tasks.length) {
+      newProps.fetchList(newProps.params.listId);
     }
   }
 
@@ -40,8 +43,12 @@ class TaskIndex extends React.Component {
   }
 
   handleNewTask(e) {
-    const task = Object.assign({}, this.state);
-    this.props.newTask(task);
+    let task = Object.assign({}, this.state);
+    if (this.props.pageType) {
+      this.props.createTaskForList(task, this.props.routeParams.listId);
+    } else {
+      this.props.newTask(task);
+    }
     this.setState({ title: "" });
   }
 
@@ -118,7 +125,7 @@ class TaskIndex extends React.Component {
     const selectedTask = this.state.selectedTask;
     let path;
     let tasks;
-    if (this.props.pageType === "lists") {
+    if (this.props.pageType) {
       if (this.props.list) {
         tasks = this.props.list.tasks;
         path = `/lists/${this.props.list.id}/tasks`;

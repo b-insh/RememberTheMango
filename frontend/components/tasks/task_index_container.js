@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchTasks, newTask, removeTask } from '../../actions/task_actions';
+import { fetchTasks, newTask, removeTask, createTaskForList } from '../../actions/task_actions';
 import { fetchList } from '../../actions/list_actions';
 import { selectAllTasks } from '../../reducers/selectors';
 import TaskIndex from './task_index';
@@ -12,9 +12,10 @@ const mapStateToProps = state => {
 };
 
   const mapDispatchToProps = (dispatch, ownProps) => {
-  const type = ownProps.location.pathname.includes('tasks') ? 'tasks' : 'lists';
+  const type = ownProps.location.pathname.includes('lists');
   return {
     pageType: type,
+    createTaskForList: (task, listId) => dispatch(createTaskForList(task, listId)),
     fetchTasks: () => dispatch(fetchTasks()),
     newTask: (task) => dispatch(newTask(task)),
     editTask: (task) => dispatch(editTask(task)),

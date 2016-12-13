@@ -1,4 +1,5 @@
 import * as taskAPIUtil from '../util/task_api_util';
+import { receiveList } from '../actions/list_actions';
 
 export const RECEIVE_TASKS = "RECEIVE_TASKS";
 export const RECEIVE_TASK_DETAIL = "RECEIVE_TASK_DETAIL";
@@ -36,6 +37,14 @@ export const deleteTask = task => ({
   type: DELETE_TASK,
   task
 });
+
+export function createTaskForList(task, listId) {
+  return (dispatch) => {
+    return taskAPIUtil.createTaskForList(task, listId).then(
+      list => { dispatch(receiveList(list));
+    });
+  };
+}
 
 export function fetchTasks() {
   return (dispatch) => {
