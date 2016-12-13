@@ -13,6 +13,7 @@ class TaskDetail extends React.Component {
     this.handleListChange = this.handleListChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.updateTask = this.updateTask.bind(this);
+    this.goBack = this.goBack.bind(this);
     this.update = this.update.bind(this);
     this.state = { title: "", location: "", start_date: "", due_date: "", estimate: "", list_id: ""};
   }
@@ -62,10 +63,17 @@ class TaskDetail extends React.Component {
 			this.props.lists.map(list => <option key={list.id} value={list.id}>{list.title}</option>)
 		)
   }
-  // onClick={ () => {
-  //   let location = hashHistory.getCurrentLocation().pathname;
-  //   location = location.slice(0, location.indexOf("/task"));
-  //   hashHistory.push(location);
+
+  goBack() {
+    let location = hashHistory.getCurrentLocation().pathname;
+    if (this.props.location.pathname.includes("lists")) {
+      location = location.slice(0, location.indexOf("/tasks"));
+    }
+    else {
+      location = location.slice(0, location.indexOf(`/${this.props.task.id}`));
+    }
+    hashHistory.push(location);
+  }
 
   render() {
     const task = this.props.task;
@@ -73,10 +81,13 @@ class TaskDetail extends React.Component {
       return (
         <section className="task-detail group stretchLeft">
           <ul className="detail-top group">
-            <li><div className="close"><Link to={ "/tasks" }>close x</Link></div></li>
-
-            <li><textarea value={ this.state.title } className="task-name" onChange={ this.update("title")} onKeyPress={ this.handleEditTask }/></li>
-            </ul>
+            <li>
+              <div className="close" onClick={ this.goBack }>close x</div>
+            </li>
+            <li>
+              <textarea value={ this.state.title } className="task-name" onChange={ this.update("title")} onKeyPress={ this.handleEditTask }/>
+            </li>
+          </ul>
             <div>
 		            <span className="attr-name">start</span>
 		            <DatePicker

@@ -1,0 +1,61 @@
+.list-detail {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  bottom: 0;
+  background: #e4eef8;
+  font-family: "Open Sans", sans-serif;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  width: 33%;
+  padding: 20px;
+}
+
+.list-detail-title {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.task-summary, .overdue-tasks, .completed-tasks{
+  display: inline-block;
+  border-radius: 6px;
+  padding: 4px 8px;
+  text-align: left;
+  background-color: rgb(219, 232, 246);
+  margin-right: 8px;
+  float: left;
+  margin-bottom: 10px;
+  height: 45px;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.task-noun, .estimate-word, .overdue-text, .completed-text{
+  font-size: 12px;
+}
+
+.num-tasks {
+  color: #0060bf;
+  display: block;
+  font-size: 19px;
+}
+.task-amount {
+  float: left;
+  margin-right: 15px;
+}
+.formatted-estimate, .completed-num, .overdue-num {
+  font-size: 19px;
+  display: block;
+}
+
+.sum-text {
+  border-left: 1px solid #c5dcf2;
+  padding-left: 10px;
+  float: left;
+}
+
+.overdue-completed {
+  display: inline-block;
+}
