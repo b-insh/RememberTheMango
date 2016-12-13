@@ -2,7 +2,7 @@
   position: absolute;
   right: 0;
   top: 45px;
-  width: 40%;
+  width: 37%;
   // float: left;
   height: 100vh;
   box-sizing: border-box;
@@ -63,14 +63,7 @@
   border: 1px solid #ccc;
   border-radius: 3px;
 }
-.attributes {
-  padding: 5px;
-}
 
-.non-attributes {
-  display: block;
-  width: 100%;
-}
 .list-name-dropdown {
   border: 1px solid #ccc;
   border-radius: 3px;
@@ -79,12 +72,30 @@
   background: #fff;
   font-size: 13px;
 }
-.list-label {
+
+.attr-name {
   font-weight: bold;
-  margin-right: 10px;
-  margin-left: 5px;
+  margin: 10px;
 }
-.input-attr {
-  padding: 2px 5px;
-  box-sizing: border-box;
+
+.estimate, .location, .datepicker {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 5px;
+  padding: 3px;
+}
+
+.task-input {
+  margin-left: 15px;
+  margin-bottom: 10px;
+}
+
+.update-task {
+  font-weight: bold;
+  background: #216ba5;
+  color: #fff;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 0 auto;
+  display: block;
 }

@@ -11,7 +11,8 @@ class Sidebar extends React.Component {
     this.onModalClose = this.onModalClose.bind(this);
     this.createList = this.createList.bind(this);
     this.update = this.update.bind(this);
-    this.state = { modalOpen: false, title: "", selectedListIdx: ""};
+    this.dropDownLists = this.dropDownLists.bind(this);
+    this.state = { modalOpen: false, title: "", selectedListIdx: "", visibleLists: "list-items pullDown invisible"};
   }
 
   componentDidMount() {
@@ -41,6 +42,14 @@ class Sidebar extends React.Component {
     return e => this.setState({ [property]: e.target.value });
   }
 
+  dropDownLists() {
+    if (this.state.visibleLists === "list-items pullDown invisible") {
+      this.setState({ visibleLists: "list-items pullDown visible"});
+    } else {
+      this.setState({ visibleLists: "list-items pullDown invisible" });
+    }
+  }
+
   render() {
 
     const lists = this.props.lists.map( (list, index) => {
@@ -62,11 +71,11 @@ class Sidebar extends React.Component {
         </section>
         <section className="sidebar-lists">
           <ul className="lists group">
-            <li className="lists-header">
+            <li className="lists-header" onClick={ this.dropDownLists }>
               Lists
               <span className="add-list" onClick={ this.toggleModal }>add circle</span>
             </li>
-            <ul className="list-items">
+            <ul className={ this.state.visibleLists }>
             { lists }
             </ul>
           </ul>
