@@ -18,15 +18,17 @@ section, div, span, input, ul, li {
 
 .tasks {
   height: 100vh;
-  position: absolute;
-  top: 40px;
-  left: 180px;
-  width: 40%;
+  // position: absolute;
+  // top: 40px;
+  // left: 180px;
+  float: left;
+  margin-top: 45px;
   margin-left: 5px;
   background: #fff;
-  margin: 5px;
   border-radius: 6px;
-  padding: 10px 0 10px 10px;
+  // min-width: 584px;
+  width: 40%;
+  padding: 10px;
 }
 
 .task-bar {
@@ -166,19 +168,7 @@ section, div, span, input, ul, li {
 .selected-task {
   font-weight: bold;
 }
- .completed {
-   font-family: "Material Icons";
-   color: #0f0;
-   font-size: 16px;
-   margin-right: 5px;
- }
 
-// .button-wrapper {
-//   width: 100%;
-// }
-//
-// .add-task-button {
-//   transition-property: height;
-//   transition-duration: 5s;
-//   transition-timing-function: ease-in-out;
-// }
+ .completed {
+   text-decoration: line-through;
+ }

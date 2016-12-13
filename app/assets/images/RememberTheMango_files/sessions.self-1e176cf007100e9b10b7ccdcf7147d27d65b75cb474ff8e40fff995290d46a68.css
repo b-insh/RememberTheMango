@@ -1,0 +1,264 @@
+/* line 1, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+html, body, main, div, label, input, section, header, form, span, ul, li, h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  text-decoration: inherit;
+  background: transparent;
+}
+
+/* line 15, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #fff;
+}
+
+/* line 20, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+ul {
+  list-style: none;
+}
+
+/* line 24, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.group:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* line 30, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+/* line 36, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.leftSide {
+  display: block;
+  width: 420px;
+  background-color: #045DBB;
+  flex-grow: 1;
+}
+
+/* line 43, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.rightSide {
+  width: 420px;
+  height: auto;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 60px;
+  flex-grow: 1;
+}
+
+/* line 52, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+form > h3 {
+  font-size: 21px;
+  margin-bottom: 30px;
+}
+
+/* line 57, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+form {
+  margin-top: 150px;
+}
+
+/* line 61, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.link {
+  float: right;
+  text-decoration: none;
+  background: #E5EFF9;
+  color: #757E87;
+  font-size: 15px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+/* line 73, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.authField {
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  font-size: 23px;
+  border-radius: 3px;
+  font-weight: 300;
+  margin: 10px 0;
+}
+
+/* line 84, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.authField:focus {
+  box-shadow: 0 0 1px 1px #38aafc;
+}
+
+/* line 88, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.submit, .guestLogIn {
+  background: #009dff;
+  color: #fff;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px 12px;
+}
+
+/* line 98, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.submit:hover, .guestLogIn:hover {
+  background: #027fce;
+}
+
+/* line 102, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.submit {
+  margin-top: 20px;
+}
+
+/* line 106, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.divider {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  color: #ccc;
+  margin: 40px 0px;
+  position: relative;
+}
+
+/* line 115, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.divider > hr {
+  border-top: 1px solid #eee;
+}
+
+/* line 119, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.divider > span {
+  position: absolute;
+  top: -10px;
+  text-align: center;
+  width: 40px;
+  background: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  /* line 128, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+  .leftSide {
+    display: none;
+  }
+}
+/* line 133, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.row {
+  margin: 0 auto;
+  width: 380px;
+  height: 100px;
+  margin-top: 300px;
+}
+
+/* line 140, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.row > span {
+  float: left;
+}
+
+/* line 144, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.img {
+  height: 100%;
+  background-size: contain;
+  width: 90px;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  background-position-x: 8px;
+  background-position-y: 12px;
+  padding: 1px 6px;
+  margin: 0 auto;
+}
+
+/* line 158, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.imageContainer {
+  width: 33.33333%;
+  height: inherit;
+}
+
+/* line 163, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.signupImage1 {
+  display: block;
+  background-image: url(/assets/hp_person2-cc0eef0bf755f0445591aea65eb8c989ee627ccd6f756e34c4fc7b8194d67e11.png);
+  background-repeat: no-repeat;
+  background-color: #1C7ADC;
+}
+
+/* line 170, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.signupImage2 {
+  display: block;
+  background-image: url(/assets/hp_person1-6d23daa399192d9153360384e9340c70640cfad49018b912fedf837dd10a63ae.png);
+  background-repeat: no-repeat;
+  background-color: #21B578;
+}
+
+/* line 177, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.signupImage3 {
+  display: block;
+  background-image: url(/assets/hp_person3-5b7b83f27434dbaa8b00e235bbd1eb90a799b94fff089e8a9c48e1fe39952a7d.png);
+  background-repeat: no-repeat;
+  background-color: #3995FC;
+}
+
+/* line 184, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.welcome {
+  color: #fff;
+  margin: 0 auto;
+  max-width: 420px;
+  padding-top: 30px;
+}
+
+/* line 191, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.join {
+  font-weight: 500;
+  opacity: .5;
+  text-align: center;
+}
+
+/* line 197, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.quote {
+  margin-top: 200px;
+  text-align: left;
+  font-weight: lighter;
+}
+
+/* line 203, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.welcome h2 {
+  font-size: 28px;
+}
+
+/* line 207, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.quote h3 {
+  opacity: .75;
+  font-size: 18px;
+  margin-top: 25px;
+}
+
+/* line 213, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.errorContainer {
+  color: #ef8143;
+  margin-left: 10px;
+}
+
+/* line 218, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+.signinError {
+  color: #000;
+  background: rgba(234, 82, 0, 0.15);
+  padding: 15px 20px;
+  display: block;
+  border-radius: 3px;
+  margin: 0 auto;
+}
+
+/* line 236, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sessions.css.scss */
+#hasError {
+  background: #fdede5;
+  box-shadow: 0 0 1px 1px #ea5400;
+  border: none;
+}

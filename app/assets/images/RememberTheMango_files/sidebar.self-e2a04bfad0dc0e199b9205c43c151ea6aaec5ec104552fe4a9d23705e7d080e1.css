@@ -1,0 +1,153 @@
+/* line 1, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+section, p {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  text-decoration: inherit;
+  background: transparent;
+}
+
+/* line 15, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.sidebar {
+  float: left;
+  margin-top: 40px;
+  height: 100vh;
+  width: 180px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* line 27, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.sidebar p {
+  padding: 0 10px;
+  font-size: 13px;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+/* line 33, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.sidebar a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+/* line 39, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.sidebar-tasks {
+  margin: 5px;
+}
+
+/* line 43, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.sidebar-lists {
+  padding: 10px;
+}
+
+/* line 47, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.sidebar-lists li {
+  padding: 5px 0 5px 5px;
+  box-sizing: border-box;
+}
+
+/* line 52, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.list-items li:hover {
+  background: #a1c6ea;
+}
+
+/* line 56, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.add-list {
+  display: none;
+}
+
+/* line 60, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.list-highlight {
+  font-weight: bold;
+  color: #0060BF;
+}
+
+/* line 64, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.lists-header {
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* line 71, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.lists-header:hover .add-list {
+  display: inline-block;
+  font-family: "Material Icons";
+  font-size: 14px;
+  float: right;
+  color: #fff;
+  background: #0060bf;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* line 84, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.lists {
+  list-style: none;
+  margin: 5px;
+}
+
+/* line 89, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.lists a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+/* line 97, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.close-modal {
+  float: right;
+  color: #ccc;
+  font-size: 18px;
+  display: block;
+  cursor: pointer;
+}
+
+/* line 105, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.modal-content {
+  padding: 30px;
+  font-family: "Helvetica-Neue", sans-serif;
+}
+
+/* line 110, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.modal-content > h3 {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* line 116, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.modal-content > label {
+  display: block;
+  font-size: 14px;
+}
+
+/* line 121, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.title-input {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+/* line 130, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/sidebar.css.scss */
+.add-list-button {
+  font-weight: bold;
+  color: #fff;
+  background: #2e8ceb;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 6px 13px;
+  margin-top: 15px;
+}

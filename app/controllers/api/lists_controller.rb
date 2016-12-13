@@ -1,11 +1,11 @@
 class Api::ListsController < ApplicationController
   def index
-    @lists = List.all
+    @lists = current_user.lists
     render :index
   end
 
   def create
-    @list = current_user.tasks.new(list_params)
+    @list = current_user.lists.new(list_params)
     if @list.save
       render :show
     else
@@ -14,11 +14,11 @@ class Api::ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
   end
 
   def destroy
-    @list = List.find(params[:id])
+    @list = current_user.lists.find(params[:id])
     @list.delete
     render :show
   end

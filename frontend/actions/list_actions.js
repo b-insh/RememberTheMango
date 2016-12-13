@@ -32,7 +32,6 @@ export const receiveListErrors = errors => ({
 });
 
 export function fetchLists() {
-  debugger
   return (dispatch) => {
     return listAPIUtil.fetchLists().then(
       lists => { dispatch(receiveLists(lists));
@@ -40,9 +39,9 @@ export function fetchLists() {
   };
 }
 
-export function fetchList(list) {
+export function fetchList(listId) {
   return (dispatch) => {
-    return listAPIUtil.fetchList(list).then(
+    return listAPIUtil.fetchList(listId).then(
       list => { dispatch(receiveList(list));
     });
   };

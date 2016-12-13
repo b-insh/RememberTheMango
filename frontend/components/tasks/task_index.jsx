@@ -15,12 +15,24 @@ class TaskIndex extends React.Component {
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
     this.toggleCompleteTask = this.toggleCompleteTask.bind(this);
     this.toggleIncompleteTask = this.toggleIncompleteTask.bind(this);
+    this.findIncompleteTasks = this.findIncompleteTasks.bind(this);
+    this.findCompleteTasks = this.findCompleteTasks.bind(this);
 
     this.state = { title: "", selectedTask: null, buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight"};
   }
 
   componentDidMount() {
-    this.props.fetchTasks();
+    if (this.props.pageType === "tasks") {
+      this.props.fetchTasks();
+    } else {
+      this.props.fetchList(this.props.params.id);
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.params.id !== newProps.params.id && this.props.pageType === "lists") {
+      this.props.fetchList(newProps.params.id);
+    }
   }
 
   updateTask(e) {
@@ -80,23 +92,56 @@ class TaskIndex extends React.Component {
     this.props.editTask(incompleteTask);
   }
 
+  findCompleteTasks(tasks) {
+    const completeTasks = [];
+    if (tasks) {
+      tasks.forEach( task => {
+        if (task.completed) { completeTasks.push(task); }
+      });
+      return completeTasks;
+    }
+  }
+
+  findIncompleteTasks(tasks) {
+    const incompleteTasks = [];
+    if(tasks) {
+      tasks.forEach( task => {
+        if (!task.completed) { incompleteTasks.push(task); }
+      });
+      return incompleteTasks;
+    }
+  }
+
   render() {
     const selectedTask = this.state.selectedTask;
-    const tasks = this.props.tasks.map( (task, index) => {
-      return (
-        <TaskItem
+    let tasks;
+    if (this.props.pageType === "lists") {
+      if (this.props.list) {
+        tasks = this.props.list.tasks;
+      } else {
+        tasks = [];
+      }
+    } else {
+      tasks = this.props.tasks;
+    }
+    let findTasks = this.state.incompleteTasks === "highlight" ? this.findIncompleteTasks(tasks) : this.findCompleteTasks(tasks);
+    let renderedTasks;
+    if (findTasks) {
+      renderedTasks = findTasks.map( (task, index) => {
+        return (
+          <TaskItem
           task={ task }
           key={ index }
           handleSelectTask={ this.handleSelectTask }
-          selectedTask={ selectedTask }
-          />
-      );
-    });
+          selectedTask={ selectedTask } />
+        );
+      });
+    }
     const inputClass = this.state.title === "" ? "add-task-button inactive" : "add-task-button";
     const buttonClass = inputClass + " " + this.state.buttonStatus;
 
     return(
-      <section className="tasks group">
+      <section className="tasks pullUp group">
 
         <section className="task-bar">
             <ul className="task-status group">
@@ -123,9 +168,10 @@ class TaskIndex extends React.Component {
 
           <section className="tasks-index">
             <ul className="tasks-list">
-              { tasks }
+              { renderedTasks }
             </ul>
           </section>
+
           { this.props.children }
       </section>
     );

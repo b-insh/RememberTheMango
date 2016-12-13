@@ -23,7 +23,7 @@ const Root = ({ store }) => {
     if (!currentUser) {
       replace('/login');
     }
-  }
+  };
 
   return(
     <Provider store={ store }>
@@ -36,7 +36,9 @@ const Root = ({ store }) => {
           <Route path="/tasks" component={ TaskIndexContainer }>
             <Route path="/tasks/:id" component={ TaskDetailContainer }/>
           </Route>
-
+          <Route path="/lists/:id" component={ TaskIndexContainer }>
+            <Route path="lists/:id/tasks/:id" component={ TaskDetailContainer } />
+          </Route>
         </Route>
       </Router>
     </Provider>

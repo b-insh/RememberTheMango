@@ -1,0 +1,120 @@
+/* line 1, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+section, nav, br, div, ul, li {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  text-decoration: inherit;
+  background: transparent;
+}
+
+/* line 15, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-page {
+  height: 100vh;
+  width: auto;
+  background-color: #0060bf;
+  margin: 0 auto;
+}
+
+/* line 22, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-nav {
+  height: 115px;
+  padding: 50px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04706);
+  margin: 0 auto;
+}
+
+/* line 30, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-links {
+  float: right;
+  display: block;
+}
+
+/* line 35, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-links a {
+  text-decoration: none;
+  color: #fff;
+  opacity: .75;
+  margin: 20px 15px;
+  font-size: 15px;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 45, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-links li {
+  float: left;
+  display: block;
+}
+
+/* line 50, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-signup-link:hover {
+  border: 2px solid #e1e1e1;
+}
+
+/* line 54, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-login-link a:hover, .welcome-signup-link a:hover {
+  color: #fff;
+  opacity: 1;
+}
+
+/* line 59, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-signup-link {
+  border: 2px solid rgba(225, 225, 225, 0.75);
+  border-radius: 4px;
+  padding: 4px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+/* line 68, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-login-link {
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 4px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+/* line 76, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.test {
+  margin: 0 auto;
+}
+
+/* line 80, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-content {
+  height: 100vh;
+}
+
+/* line 84, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.welcome-content a {
+  text-decoration: none;
+  background: #d24b03;
+  border-radius: 4px;
+  padding: 12px 32px;
+  font-size: 23px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  display: block;
+  margin: 0 auto;
+  max-width: 170px;
+}
+
+/* line 100, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/welcome.css.scss */
+.smart-app-text {
+  font-size: 44px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
+  color: #fff;
+}

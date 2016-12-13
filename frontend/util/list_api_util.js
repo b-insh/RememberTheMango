@@ -1,13 +1,12 @@
 export const fetchLists = () => {
-  debugger
   return $.ajax({
     url: "/api/lists"
   });
 };
 
-export const fetchList = (list) => {
+export const fetchList = (listId) => {
   return $.ajax({
-    url: `/api/lists/${list.id}`
+    url: `/api/lists/${listId}`
   });
 };
 

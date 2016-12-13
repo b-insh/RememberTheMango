@@ -13,8 +13,11 @@ section, p {
 }
 
 .sidebar {
-  position: absolute;
-  top: 40px;
+  // position: absolute;
+  // top: 40px;
+  float: left;
+  margin-top: 40px;
+  
   height: 100vh;
   width: 180px;
   padding: 10px;
@@ -25,9 +28,111 @@ section, p {
   padding: 0 10px;
   font-size: 13px;
   font-family: "Helvetica Neue", sans-serif;
-
 }
 
-.sidebar p:selected {
-  color: #0060bf
+.sidebar a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.sidebar-tasks {
+  margin: 5px;
+}
+
+.sidebar-lists {
+  padding: 10px;
+}
+
+.sidebar-lists li {
+  padding: 5px 0 5px 5px;
+  box-sizing: border-box;
+}
+
+.list-items li:hover {
+  background: #a1c6ea;
+}
+
+.add-list {
+  display: none;
+}
+
+.list-highlight {
+  font-weight: bold;
+  color: #0060BF;
+}
+.lists-header {
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+
+.lists-header:hover .add-list {
+  display: inline-block;
+  font-family: "Material Icons";
+  font-size: 14px;
+  float: right;
+  color: #fff;
+  background: #0060bf;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.lists {
+  list-style: none;
+  margin: 5px;
+}
+
+.lists a {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+
+
+.close-modal {
+  float: right;
+  color: #ccc;
+  font-size: 18px;
+  display: block;
+  cursor: pointer;
+}
+
+.modal-content {
+  padding: 30px;
+  font-family: "Helvetica-Neue", sans-serif;
+}
+
+.modal-content > h3 {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.modal-content > label {
+  display: block;
+  font-size: 14px;
+}
+
+.title-input {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.add-list-button {
+  font-weight: bold;
+  color: #fff;
+  background: #2e8ceb;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 6px 13px;
+  margin-top: 15px;
 }

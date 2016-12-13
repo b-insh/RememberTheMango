@@ -3,18 +3,21 @@ import merge from 'lodash/merge';
 
 const initialState = {
   lists: {},
+  selectedList: {},
   listErrors: [],
 };
 
 const listReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState = {};
+  newState = Object.assign({}, state);
   switch(action.type) {
     case RECEIVE_LISTS:
-      debugger
-      return action.lists;
-    case RECEIVE_LIST:       //do i need this
-      return action.list;
+      newState.lists = action.lists;
+      return newState;
+    case RECEIVE_LIST:
+      newState.selectedList = action.list;
+      return newState;
     case CREATE_LIST:
       newState = merge({}, state);
       newState[action.list.id] = action.list;

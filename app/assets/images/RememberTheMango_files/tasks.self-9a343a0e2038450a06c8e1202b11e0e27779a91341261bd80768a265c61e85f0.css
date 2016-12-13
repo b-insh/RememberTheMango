@@ -1,0 +1,205 @@
+/* line 1, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+section, div, span, input, ul, li {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  text-decoration: none;
+  background: transparent;
+}
+
+/* line 15, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.task-text:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+/* line 16, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.task-text:focus:-moz-placeholder {
+  opacity: 0;
+}
+
+/* line 17, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.task-text:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+
+/* line 19, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.tasks {
+  height: 100vh;
+  float: left;
+  margin-top: 45px;
+  margin-left: 5px;
+  background: #fff;
+  border-radius: 6px;
+  width: 40%;
+  padding: 10px;
+}
+
+/* line 34, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.task-bar {
+  width: 100%;
+  min-width: 270px;
+}
+
+/* line 39, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.task-status {
+  height: 30px;
+  float: right;
+  margin-bottom: 10px;
+}
+
+/* line 45, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.task-status li {
+  padding-bottom: 7px;
+  display: block;
+  cursor: pointer;
+  float: left;
+  margin: 10px 15px 0 20px;
+}
+
+/* line 53, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.action-icons {
+  text-align: center;
+  float: left;
+  font-family: "Material Icons";
+  color: #f7c247;
+  margin-left: 5px;
+  font-size: 28px;
+}
+
+/* line 62, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.actions-icons li {
+  display: block;
+}
+
+/* line 66, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.delete-task {
+  float: left;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+}
+
+/* line 73, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.complete-task {
+  float: left;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+}
+
+/* line 80, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.uncomplete-task {
+  float: left;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+}
+
+/* line 87, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.highlight {
+  font-weight: bold;
+  border-bottom: 1px solid #000;
+}
+
+/* line 92, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.add-task {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* line 97, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.task-text:focus {
+  box-shadow: 0 0 1px 1px #38aafc;
+}
+
+/* line 101, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.task-text {
+  font-size: 14px;
+  width: 100%;
+  display: block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px 17px 10px 0;
+  max-width: 98%;
+}
+
+/* line 113, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.button-wrapper {
+  width: 100%;
+  height: auto;
+}
+
+/* line 118, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.button-open {
+  height: 30px;
+  width: 90px;
+  font-weight: bold;
+  padding: 7px 15px;
+  background: #0060bf;
+  border-radius: 3px;
+  text-align: right;
+  color: #fff;
+  margin: 0 17px 10px 0;
+  margin-right: 2%;
+  display: block;
+  float: right;
+}
+
+/* line 133, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.hidden {
+  display: none;
+}
+
+/* line 137, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.tasks-index {
+  display: block;
+}
+
+/* line 142, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.tasks-list li {
+  border-top: 1px dotted #e5e5e5;
+  cursor: pointer;
+  display: block;
+  padding: 3px;
+  width: 100%;
+}
+
+/* line 150, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.tasks-list a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 155, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.tasks-list li:last-child {
+  border-bottom: 1px dotted #e5e5e5;
+}
+
+/* line 159, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.tasks-list li:hover {
+  background: #fcebc4;
+}
+
+/* line 163, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.inactive {
+  pointer-events: none;
+  opacity: .5;
+}
+
+/* line 168, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.selected-task {
+  font-weight: bold;
+}
+
+/* line 172, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/tasks.css.scss */
+.completed {
+  text-decoration: line-through;
+}

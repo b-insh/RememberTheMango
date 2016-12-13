@@ -1,0 +1,94 @@
+/* line 1, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.task-detail {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 40%;
+  height: 100vh;
+  box-sizing: border-box;
+  border-left: 2px solid #ccc;
+  background: #fff;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px;
+}
+
+/* line 16, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.task-detail li {
+  margin: 5px;
+}
+
+/* line 20, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.detail-top {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* line 25, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.close {
+  float: right;
+}
+
+/* line 29, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.close a {
+  text-decoration: none;
+}
+
+/* line 33, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.task-name {
+  width: 100%;
+  padding: 5px;
+  font-size: 20px;
+  float: left;
+  border-style: none;
+  border-color: transparent;
+  overflow-y: auto;
+  height: 50px;
+}
+
+/* line 50, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.task-name:hover {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+/* line 56, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.task-data:hover input {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* line 60, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.attributes {
+  padding: 5px;
+}
+
+/* line 64, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.non-attributes {
+  display: block;
+  width: 100%;
+}
+
+/* line 68, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+#list-name-dropdown {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 155px;
+  padding: 5px;
+  background: #fff;
+  font-size: 13px;
+}
+
+/* line 76, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.list-label {
+  font-weight: bold;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+/* line 81, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/task_detail.css.scss */
+.input-attr {
+  padding: 2px 5px;
+  box-sizing: border-box;
+}

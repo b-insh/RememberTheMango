@@ -1,6 +1,6 @@
 class Api::TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.includes(:list)
     render :index
   end
 
@@ -14,7 +14,7 @@ class Api::TasksController < ApplicationController
   end
 
   def update
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     if @task.update(task_params)
       render :show
     else
@@ -23,11 +23,11 @@ class Api::TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def destroy
-    @task = Task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     @task.delete
     render :show
   end

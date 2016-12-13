@@ -1,13 +1,15 @@
 .task-detail {
-  width: 75%;
-  height: 100vh;
   position: absolute;
+  right: 0;
+  top: 45px;
+  width: 40%;
+  // float: left;
+  height: 100vh;
   box-sizing: border-box;
   border-left: 2px solid #ccc;
-  top: 0;
-  left: 585px;
   background: #fff;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   padding: 10px;
 }
 
@@ -22,10 +24,16 @@
 
 .close {
   float: right;
+  cursor: pointer;
+  color: #000;
 }
 
 .close a {
   text-decoration: none;
+}
+
+.close:hover {
+  color: #C0C0C0;
 }
 
 .task-name {
@@ -33,13 +41,17 @@
   padding: 5px;
   font-size: 20px;
   float: left;
+  border-style: none;
+  border-color: transparent;
+  overflow-y: auto;
+  height: 50px;
 }
-
-.task-data:hover .non-attributes {
-  display: block;
-  opacity: 1;
-  width: 100%;
-}
+//
+// .task-data:hover .non-attributes {
+//   display: block;
+//   opacity: 1;
+//   width: 100%;
+// }
 
 .task-name:hover {
   border: 1px solid #ccc;
@@ -51,12 +63,27 @@
   border: 1px solid #ccc;
   border-radius: 3px;
 }
+.attributes {
+  padding: 5px;
+}
 
 .non-attributes {
   display: block;
-  opacity: 0;
+  width: 100%;
 }
-
+.list-name-dropdown {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 155px;
+  padding: 5px;
+  background: #fff;
+  font-size: 13px;
+}
+.list-label {
+  font-weight: bold;
+  margin-right: 10px;
+  margin-left: 5px;
+}
 .input-attr {
   padding: 2px 5px;
   box-sizing: border-box;

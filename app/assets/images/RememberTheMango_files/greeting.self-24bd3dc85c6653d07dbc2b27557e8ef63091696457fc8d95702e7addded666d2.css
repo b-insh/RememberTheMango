@@ -1,3 +1,4 @@
+/* line 1, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 nav, div, h3 {
   margin: 0;
   padding: 0;
@@ -12,22 +13,24 @@ nav, div, h3 {
   background: transparent;
 }
 
+/* line 15, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .nav-bar {
   width: 100vw;
   height: 40px;
   background: #0060bf;
   display: block;
-  // position: relative;
   position: absolute;
   right: 0;
   top: 0;
   left: 0;
 }
 
+/* line 27, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .dropdown-close {
   display: none;
 }
 
+/* line 31, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .settings {
   font-family: "Material Icons";
   cursor: pointer;
@@ -40,6 +43,7 @@ nav, div, h3 {
   height: 50px;
 }
 
+/* line 43, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .dropdown-open {
   font-family: "Open Sans", sans-serif;
   display: block;
@@ -57,11 +61,13 @@ nav, div, h3 {
   z-index: 1;
 }
 
+/* line 60, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .dropdown-open h3 {
   font-size: 14px;
   text-align: left;
 }
 
+/* line 65, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .logout {
   font-size: 14px;
   cursor: pointer;
@@ -69,11 +75,13 @@ nav, div, h3 {
   margin-top: 10px;
 }
 
+/* line 72, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .name {
   font-weight: bold;
   display: block;
 }
 
+/* line 77, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .email {
   color: #d3d3d3;
   font-weight: normal;
@@ -82,22 +90,23 @@ nav, div, h3 {
   padding-bottom: 5px;
 }
 
+/* line 85, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .header-nav-links {
   float: left;
 }
 
+/* line 89, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .header-nav-links li {
   display: block;
 }
 
+/* line 93, /Users/bethanyhyland/Desktop/RememberTheMango/app/assets/stylesheets/api/greeting.css.scss */
 .dropdown-arrow {
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-
   border-bottom: 10px solid #fff;
-
   position: absolute;
   top: -8px;
   right: 8px;
