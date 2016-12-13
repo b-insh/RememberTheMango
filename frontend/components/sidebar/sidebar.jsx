@@ -27,7 +27,6 @@ class Sidebar extends React.Component {
     this.setState({ modalOpen: false });
   }
 
-
   toggleList(id) {
     this.setState({ selectedListIdx: id});
   }

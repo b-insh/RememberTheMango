@@ -6,6 +6,7 @@ class Api::TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
+    @task.list_id = params[:list_id]
     if @task.save
       render :show
     else

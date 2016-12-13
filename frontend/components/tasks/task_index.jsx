@@ -144,35 +144,35 @@ class TaskIndex extends React.Component {
       <section className="tasks pullUp group">
 
         <section className="task-bar">
-            <ul className="task-status group">
-              <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
-              <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
-            </ul>
+          <ul className="task-status group">
+            <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
+            <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
+          </ul>
 
-            <ul className={ this.state.iconDisplay }>
-              <li className="delete-task" onClick={ this.handleDeleteTask }>delete</li>
-              <li className="complete-task" onClick={ this.toggleCompleteTask }>check circle</li>
-              <li className="uncomplete-task" onClick={ this.toggleIncompleteTask }>restore</li>
-            </ul>
+          <ul className={ this.state.iconDisplay }>
+            <li className="delete-task" onClick={ this.handleDeleteTask }>delete</li>
+            <li className="complete-task" onClick={ this.toggleCompleteTask }>check circle</li>
+            <li className="uncomplete-task" onClick={ this.toggleIncompleteTask }>restore</li>
+          </ul>
 
-          </section>
+        </section>
 
-          <section className="add-task group" onFocus={ this.displayButton } onBlur={ this.undisplayButton }>
+        <section className="add-task group" onFocus={ this.displayButton } onBlur={ this.undisplayButton }>
 
-            <input className="task-text" type="text" value={ this.state.title } placeholder="Add a task..." onChange={ (e) => this.updateTask(e) }/>
+          <input className="task-text" type="text" value={ this.state.title } placeholder="Add a task..." onChange={ (e) => this.updateTask(e) }/>
 
-            <div className="button-wrapper" >
-              <input type="submit" onClick={ this.handleNewTask } className={ buttonClass } value="Add Task" />
-            </div>
-          </section>
+          <div className="button-wrapper" >
+            <input type="submit" onClick={ this.handleNewTask } className={ buttonClass } value="Add Task" />
+          </div>
+        </section>
 
-          <section className="tasks-index">
-            <ul className="tasks-list">
-              { renderedTasks }
-            </ul>
-          </section>
+        <section className="tasks-index">
+          <ul className="tasks-list">
+            { renderedTasks }
+          </ul>
+        </section>
 
-          { this.props.children }
+        { this.props.children }
       </section>
     );
   }
