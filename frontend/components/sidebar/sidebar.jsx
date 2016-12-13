@@ -11,8 +11,9 @@ class Sidebar extends React.Component {
     this.onModalClose = this.onModalClose.bind(this);
     this.createList = this.createList.bind(this);
     this.update = this.update.bind(this);
+    this.toggleList = this.toggleList.bind(this);
     this.dropDownLists = this.dropDownLists.bind(this);
-    this.state = { modalOpen: false, title: "", selectedListIdx: "", visibleLists: "list-items pullDown invisible"};
+    this.state = { modalOpen: false, title: "", selectedListIdx: "", visibleLists: "list-items pullDown visible"};
   }
 
   componentDidMount() {
@@ -29,6 +30,7 @@ class Sidebar extends React.Component {
 
   toggleList(id) {
     this.setState({ selectedListIdx: id});
+
   }
 
   createList() {

@@ -34,10 +34,10 @@ const Root = ({ store }) => {
         </Route>
         <Route path="/" component={ App } onEnter={ _ensureLoggedIn }>
           <Route path="/tasks" component={ TaskIndexContainer }>
-            <Route path="/tasks/:id" component={ TaskDetailContainer }/>
+            <Route path="/tasks/:taskId" component={ TaskDetailContainer }/>
           </Route>
-          <Route path="/lists/:id" component={ TaskIndexContainer }>
-            <Route path="lists/:id/tasks/:id" component={ TaskDetailContainer } />
+          <Route path="/lists/:listId" component={ TaskIndexContainer }>
+            <Route path="tasks/:taskId" component={ TaskDetailContainer } />
           </Route>
         </Route>
       </Router>

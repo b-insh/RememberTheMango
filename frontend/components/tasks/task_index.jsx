@@ -25,13 +25,13 @@ class TaskIndex extends React.Component {
     if (this.props.pageType === "tasks") {
       this.props.fetchTasks();
     } else {
-      this.props.fetchList(this.props.params.id);
+      this.props.fetchList(this.props.params.listId);
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.params.id !== newProps.params.id && this.props.pageType === "lists") {
-      this.props.fetchList(newProps.params.id);
+    if (this.props.params.listId !== newProps.params.listId && this.props.pageType === "lists") {
+      this.props.fetchList(newProps.params.listId);
     }
   }
 
@@ -52,7 +52,9 @@ class TaskIndex extends React.Component {
   }
 
   handleDeleteTask() {
-    this.props.removeTask(this.state.selectedTask);
+    this.props.removeTask(this.state.selectedTask).then(() => {
+      this.props.fetchTasks();
+    });
   }
 
   displayButton() {
@@ -114,12 +116,15 @@ class TaskIndex extends React.Component {
 
   render() {
     const selectedTask = this.state.selectedTask;
+    let path;
     let tasks;
     if (this.props.pageType === "lists") {
       if (this.props.list) {
         tasks = this.props.list.tasks;
+        path = `/lists/${this.props.list.id}/tasks`;
       } else {
         tasks = [];
+        path = "";
       }
     } else {
       tasks = this.props.tasks;
@@ -133,7 +138,8 @@ class TaskIndex extends React.Component {
           task={ task }
           key={ index }
           handleSelectTask={ this.handleSelectTask }
-          selectedTask={ selectedTask } />
+          selectedTask={ selectedTask }
+          path={ path } />
         );
       });
     }
