@@ -12,9 +12,6 @@ class TaskItem extends React.Component {
     if (task && task.completed) {
       className += "completed ";
     }
-    if (path === undefined) {
-      path = "/tasks";
-    }
     return (
       <Link to={ `${path}/${task.id}` }>
         <li className={ className } onClick={ () => handleSelectTask(task) } key={ task.id }>

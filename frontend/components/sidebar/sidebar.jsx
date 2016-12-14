@@ -52,17 +52,19 @@ class Sidebar extends React.Component {
   }
 
   render() {
-
-    const lists = this.props.lists.map( (list, index) => {
+  let lists = this.props.lists;
+  if (lists) {
+    lists = lists.map( (list, index) => {
       let className = this.state.selectedListIdx === list.id ? "list-highlight" : "";
       return (
         <Link to={ `/lists/${list.id}` }>
           <li key={ index } className={ `${className}` } onClick={ () => this.toggleList(list.id) }>
-            { list.title }
+          { list.title }
           </li>
         </Link>
-      )
-    })
+        )
+      })
+    }
 
     return(
       <section className="sidebar">

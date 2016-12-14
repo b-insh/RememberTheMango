@@ -31,6 +31,7 @@ export const receiveListErrors = errors => ({
   errors
 });
 
+
 export function fetchLists() {
   return (dispatch) => {
     return listAPIUtil.fetchLists().then(

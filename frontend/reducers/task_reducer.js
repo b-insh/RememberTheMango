@@ -14,15 +14,15 @@ const taskReducer = (state = initialState, action) => {
       return action.tasks;
     case CREATE_TASK:
       newState = merge({}, state);
-      newState[action.task.taskId] = action.task;
+      newState[action.task.id] = action.task;
       return newState;
     case UPDATE_TASK:
       newState = merge({}, state);
-      newState[action.task.taskId] = action.task;
+      newState[action.task.id] = action.task;
       return newState;
     case DELETE_TASK:
       newState = merge({}, state);
-      delete newState[action.task.taskId];
+      delete newState[action.task.id];
       return newState;
     case RECEIVE_TASK_ERRORS:
       return {

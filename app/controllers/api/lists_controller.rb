@@ -15,12 +15,21 @@ class Api::ListsController < ApplicationController
 
   def show
     @list = current_user.lists.find(params[:id])
+    render "api/lists/show"
   end
 
   def destroy
     @list = current_user.lists.find(params[:id])
     @list.delete
     render :show
+  end
+
+  def remove_task
+    @task = Task.find(params[:filter])
+    if Task.destroy(@task)
+      @list = List.find(params[:id])
+      render 'api/lists/show'
+    end
   end
 
   private

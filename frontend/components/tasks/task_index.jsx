@@ -22,20 +22,7 @@ class TaskIndex extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.pageType) {
-      this.props.fetchList(this.props.params.listId);
-    } else {
       this.props.fetchTasks();
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (this.props.params.listId !== newProps.params.listId && this.props.pageType) {
-      newProps.fetchList(newProps.params.listId);
-    }
-    if (this.props.pageType && this.props.params.listId === newProps.params.listId && this.props.list.tasks.length !== newProps.list.tasks.length) {
-      newProps.fetchList(newProps.params.listId);
-    }
   }
 
   updateTask(e) {
@@ -44,11 +31,7 @@ class TaskIndex extends React.Component {
 
   handleNewTask(e) {
     let task = Object.assign({}, this.state);
-    if (this.props.pageType) {
-      this.props.createTaskForList(task, this.props.routeParams.listId);
-    } else {
-      this.props.newTask(task);
-    }
+    this.props.newTask(task);
     this.setState({ title: "" });
   }
 
@@ -123,19 +106,8 @@ class TaskIndex extends React.Component {
 
   render() {
     const selectedTask = this.state.selectedTask;
-    let path;
-    let tasks;
-    if (this.props.pageType) {
-      if (this.props.list) {
-        tasks = this.props.list.tasks;
-        path = `/lists/${this.props.list.id}/tasks`;
-      } else {
-        tasks = [];
-        path = "";
-      }
-    } else {
-      tasks = this.props.tasks;
-    }
+    const path = "/tasks";
+    const tasks = this.props.tasks;
     let findTasks = this.state.incompleteTasks === "highlight" ? this.findIncompleteTasks(tasks) : this.findCompleteTasks(tasks);
     let renderedTasks;
     if (findTasks) {

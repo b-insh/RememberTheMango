@@ -40,3 +40,17 @@ export const createTaskForList = (task, listId) => {
     data: { task: task }
   });
 };
+
+// export const fetchListTasks = (listId) => {
+//   return $.ajax({
+//     url: `/api/lists/${listId}/tasks`
+//   });
+// };
+
+
+export const removeTaskFromList = (taskId, listId) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/lists/${listId}/remove_task?filter=${taskId}`,
+  });
+};

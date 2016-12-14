@@ -6,6 +6,7 @@ import SessionFormContainer from './session/session_form_container';
 import WelcomeContainer from './welcome/welcome_container';
 import TaskIndexContainer from './tasks/task_index_container';
 import TaskDetailContainer from './tasks/task_detail_container';
+import ListItemContainer from './lists/list_item_container';
 import ListSummaryContainer from './lists/list_summary_container';
 import AllListSummaryContainer from './lists/all_list_summary_container';
 
@@ -40,7 +41,7 @@ const Root = ({ store }) => {
             <IndexRoute component={ AllListSummaryContainer } />
             <Route path="/tasks/:taskId" component={ TaskDetailContainer }/>
           </Route>
-          <Route path="/lists/:listId" component={ TaskIndexContainer }>
+          <Route path="/lists/:listId" component={ ListItemContainer }>
             <IndexRoute component={ ListSummaryContainer } />
             <Route path="tasks/:taskId" component={ TaskDetailContainer } />
           </Route>

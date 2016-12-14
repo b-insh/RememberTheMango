@@ -46,6 +46,22 @@ export function createTaskForList(task, listId) {
   };
 }
 
+export function removeTaskFromList(taskId, listId) {
+  return (dispatch) => {
+    return taskAPIUtil.removeTaskFromList(taskId, listId).then(
+      list => { dispatch(receiveList(list));
+    });
+  };
+}
+//
+// export function fetchListTasks(listId) {
+//   return (dispatch) => {
+//     return taskAPIUtil.fetchListTasks(listId).then(
+//       tasks => { dispatch(receiveTasks(tasks));
+//     });
+//   };
+// }
+
 export function fetchTasks() {
   return (dispatch) => {
     return taskAPIUtil.fetchTasks().then(

@@ -22,7 +22,7 @@ class AllListSummary extends React.Component{
   parseTimeEstimate(tasks) {
     let minutes = 0;
     tasks.forEach( task => {
-      if (task.estimate) {
+      if (!task.completed && task.estimate) {
         return minutes += task.estimate;
       }
     });
@@ -82,7 +82,7 @@ class AllListSummary extends React.Component{
           <div className="sum-text">
             <span className="formatted-estimate">
               <strong>{ hours }</strong>
-              <small>hrs</small>
+              <small>hrs</small>&nbsp;
               <strong>{ minutes }</strong>
               <small>min</small>
             </span>
