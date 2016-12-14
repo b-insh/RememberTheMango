@@ -59,7 +59,7 @@ class ListSummary extends React.Component{
     }
 
     return (
-      <section className="list-detail stretchLeft">
+      <section className="list-detail">
         <h3 className="list-detail-title">
           { list.title }
         </h3>

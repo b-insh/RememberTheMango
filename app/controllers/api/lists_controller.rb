@@ -32,6 +32,14 @@ class Api::ListsController < ApplicationController
     end
   end
 
+  def update_task
+    @task = Task.find(params[:filter])
+    if @task.update({ completed: params[:task][:completed] })
+      @list = List.find(params[:id])
+      render 'api/lists/show'
+    end
+  end
+
   private
   def list_params
     params.require(:list).permit(:title)

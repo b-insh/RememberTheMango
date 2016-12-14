@@ -68,7 +68,7 @@ class AllListSummary extends React.Component{
     }
 
     return (
-      <section className="list-detail stretchLeft">
+      <section className="list-detail">
         <h3 className="list-detail-title">
           All Tasks
         </h3>

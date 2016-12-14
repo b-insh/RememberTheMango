@@ -47,6 +47,13 @@ export const createTaskForList = (task, listId) => {
 //   });
 // };
 
+export const updateTaskForList = (task, listId) => {
+  return $.ajax({
+    method: "PATCH",
+    url: `api/lists/${listId}/update_task?filter=${task.id}`,
+    data: { task: task }
+  });
+};
 
 export const removeTaskFromList = (taskId, listId) => {
   return $.ajax({
