@@ -90,7 +90,7 @@ class ListItem extends React.Component {
     toggleIncompleteTask() {
       let listId = this.props.list.id;
       let incompleteTask = Object.assign({}, this.state.selectedTask, { completed: false });
-      this.props.updateTaskForList(completedTask, listId);
+      this.props.updateTaskForList(incompleteTask, listId);
     }
 
     findCompleteTasks(tasks) {
