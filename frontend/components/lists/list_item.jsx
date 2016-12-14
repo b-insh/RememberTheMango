@@ -29,9 +29,6 @@ class ListItem extends React.Component {
     if (this.props.params.listId !== newProps.params.listId) {
       newProps.fetchList(newProps.params.listId);
     }
-    if (this.props.params.listId === newProps.params.listId && this.props.list.tasks.length !== newProps.list.tasks.length) {
-      newProps.fetchList(newProps.params.listId);
-    }
   }
 
   handleSelectTask(task) {
@@ -45,13 +42,15 @@ class ListItem extends React.Component {
 
     handleNewTask(e) {
       let task = Object.assign({}, this.state, { list_id: this.props.list.id });
-      this.props.createTaskForList(task, this.props.list.id);
+      // this.props.createTaskForList(task, this.props.list.id);
+      this.props.newTask(task);
       this.setState({ title: "" });
     }
 
     handleDeleteTask() {
-      let listId = this.props.list.id;
-      this.props.removeTaskFromList(this.state.selectedTask.id, listId);
+      this.props.removeTask(this.state.selectedTask).then(() => {
+        this.props.fetchList(this.props.params.listId);
+      });
     }
 
     displayButton() {
@@ -84,13 +83,19 @@ class ListItem extends React.Component {
     toggleCompleteTask() {
       let listId = this.props.list.id;
       let completedTask = Object.assign({}, this.state.selectedTask, { completed: true });
-      this.props.updateTaskForList(completedTask, listId);
+      // this.props.updateTaskForList(completedTask, listId);
+      this.props.editTask(completedTask).then(() => {
+        this.props.fetchList(this.props.params.listId);
+      });
     }
 
     toggleIncompleteTask() {
       let listId = this.props.list.id;
       let incompleteTask = Object.assign({}, this.state.selectedTask, { completed: false });
-      this.props.updateTaskForList(incompleteTask, listId);
+      // this.props.updateTaskForList(incompleteTask, listId);
+      this.props.editTask(incompleteTask).then(() => {
+        this.props.fetchList(this.props.params.listId);
+      });
     }
 
     findCompleteTasks(tasks) {
@@ -114,7 +119,6 @@ class ListItem extends React.Component {
     }
 
   render() {
-    const selectedTask = this.state.selectedTask;
     const list = this.props.list;
     let tasks;
     if (list.id) {
@@ -127,7 +131,7 @@ class ListItem extends React.Component {
             task={ task }
             key={ index }
             handleSelectTask={ this.handleSelectTask }
-            selectedTask={ selectedTask }
+            selectedTask={ this.state.selectedTask }
             path={ path } />
           );
       });

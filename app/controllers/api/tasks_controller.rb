@@ -40,6 +40,11 @@ class Api::TasksController < ApplicationController
     render :show
   end
 
+  def search
+    @tasks = Task.where("LOWER(title) ~ ?", params[:query])
+    render :search
+  end
+
   private
   def task_params
     params.require(:task).permit(:title, :start_date, :due_date, :estimate, :location, :completed, :list_id)

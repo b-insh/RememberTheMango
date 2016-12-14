@@ -9,9 +9,8 @@ import TaskDetailContainer from './tasks/task_detail_container';
 import ListItemContainer from './lists/list_item_container';
 import ListSummaryContainer from './lists/list_summary_container';
 import AllListSummaryContainer from './lists/all_list_summary_container';
-
-
-
+import SearchContainer from './search/search_container';
+import SearchSummaryContainer from './search/search_summary_container';
 
 const Root = ({ store }) => {
 
@@ -37,14 +36,22 @@ const Root = ({ store }) => {
           <Route path="/signup" component={ SessionFormContainer } />
         </Route>
         <Route path="/" component={ App } onEnter={ _ensureLoggedIn }>
+
           <Route path="/tasks" component={ TaskIndexContainer }>
             <IndexRoute component={ AllListSummaryContainer } />
             <Route path="/tasks/:taskId" component={ TaskDetailContainer }/>
           </Route>
+
           <Route path="/lists/:listId" component={ ListItemContainer }>
             <IndexRoute component={ ListSummaryContainer } />
             <Route path="tasks/:taskId" component={ TaskDetailContainer } />
           </Route>
+
+          <Route path="/search" component={ SearchContainer }>
+            <IndexRoute component={ SearchSummaryContainer } />
+            <Route path="tasks/:taskId" component={ TaskDetailContainer } />
+          </Route>
+
         </Route>
       </Router>
     </Provider>

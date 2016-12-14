@@ -1,17 +1,25 @@
 import React from 'react';
 
-class ListSummary extends React.Component{
+class SearchSummary extends React.Component{
   constructor(props) {
     super(props);
 
     this.parseTimeEstimate = this.parseTimeEstimate.bind(this);
     this.incompleteTasks = this.incompleteTasks.bind(this);
     this.overdueTasks = this.overdueTasks.bind(this);
+    this.getSearchedTasks = this.getSearchedTasks.bind(this);
   }
 
-  parseTimeEstimate() {
+
+  getSearchedTasks() {
+    let tasks = this.props.tasks;
+    if (tasks) {
+      return Object.keys(tasks).map(taskId => tasks[taskId]);
+    }
+  }
+  parseTimeEstimate(tasks) {
     let minutes = 0;
-    this.props.list.tasks.forEach( task => {
+    tasks.forEach( task => {
       if (!task.completed && task.estimate) {
         return minutes += task.estimate;
       }
@@ -47,20 +55,20 @@ class ListSummary extends React.Component{
   }
 
   render() {
-    const list = this.props.list;
+    const tasks = this.getSearchedTasks();
     let numTasks, overdueTasks, completedTasks, taskNoun, hours, minutes;
-    if(list.tasks) {
-      numTasks = this.incompleteTasks(list.tasks);
-      overdueTasks = this.overdueTasks(list.tasks);
-      completedTasks = list.tasks.length - numTasks;
+    if(tasks) {
+      numTasks = this.incompleteTasks(tasks);
+      overdueTasks = this.overdueTasks(tasks);
+      completedTasks = tasks.length - numTasks;
       taskNoun = numTasks === 1 ? "task" : "tasks";
-      [hours, minutes] = this.parseTimeEstimate();
+      [hours, minutes] = this.parseTimeEstimate(tasks);
     }
 
     return (
       <section className="list-detail">
         <h3 className="list-detail-title">
-          { list.title }
+          Search
         </h3>
 
         <div className="task-summary group">
@@ -94,6 +102,6 @@ class ListSummary extends React.Component{
       </section>
     );
   }
-}
 
-export default ListSummary;
+}
+export default SearchSummary;

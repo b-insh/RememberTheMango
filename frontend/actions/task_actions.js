@@ -7,6 +7,20 @@ export const UPDATE_TASK = "UPDATE_TASK";
 export const CREATE_TASK = "CREATE_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const RECEIVE_TASK_ERRORS = "RECEIVE_TASK_ERRORS";
+export const RECEIVE_QUERY_RESULTS = "RECEIVE_QUERY_RESULTS";
+
+export const receiveQueryResults = searchResults => ({
+  type: RECEIVE_QUERY_RESULTS,
+  searchResults
+});
+
+export function searchTasks(query) {
+  return (dispatch) => {
+    return taskAPIUtil.searchTasks(query).then(
+      searchResults => { dispatch(receiveQueryResults(searchResults));
+    });
+  };
+}
 
 export const receiveTaskErrors = errors => ({
   type: RECEIVE_TASK_ERRORS,
@@ -61,14 +75,6 @@ export function removeTaskFromList(taskId, listId) {
     });
   };
 }
-//
-// export function fetchListTasks(listId) {
-//   return (dispatch) => {
-//     return taskAPIUtil.fetchListTasks(listId).then(
-//       tasks => { dispatch(receiveTasks(tasks));
-//     });
-//   };
-// }
 
 export function fetchTasks() {
   return (dispatch) => {

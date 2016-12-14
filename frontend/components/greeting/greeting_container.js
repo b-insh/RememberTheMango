@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import { searchTasks } from '../../actions/task_actions';
 import Greeting from './greeting';
 
 const mapStateToProps = state => {
@@ -10,7 +11,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    searchTasks: (query) => dispatch(searchTasks(query)),
   };
 };
 

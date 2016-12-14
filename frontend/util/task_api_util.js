@@ -1,3 +1,10 @@
+export const searchTasks = (query) => {
+  return $.ajax({
+    url: "/api/tasks/search",
+    data: { query }
+  });
+};
+
 export const fetchTasks = () => {
   return $.ajax({
     url: "/api/tasks"
@@ -40,12 +47,6 @@ export const createTaskForList = (task, listId) => {
     data: { task: task }
   });
 };
-
-// export const fetchListTasks = (listId) => {
-//   return $.ajax({
-//     url: `/api/lists/${listId}/tasks`
-//   });
-// };
 
 export const updateTaskForList = (task, listId) => {
   return $.ajax({

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import AllListSummary from './all_list_summary';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     lists: state.lists.lists
   };

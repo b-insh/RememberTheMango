@@ -23,6 +23,21 @@ nav, div, h3 {
   left: 0;
 }
 
+.search-bar {
+  border: 1px solid #f00;
+  z-index: 2;
+  float: left;
+  height: 30px;
+  width: 250px;
+  margin-left: 170px;
+  margin-top: 5px;
+}
+
+.search-input {
+  height: 100%;
+}
+
+
 .dropdown-close {
   display: none;
 }

@@ -9,7 +9,6 @@ class AllListSummary extends React.Component{
     this.incompleteTasks = this.incompleteTasks.bind(this);
     this.overdueTasks = this.overdueTasks.bind(this);
     this.getAllTasks = this.getAllTasks.bind(this);
-
   }
 
   getAllTasks(lists) {
@@ -28,7 +27,7 @@ class AllListSummary extends React.Component{
     });
     let hours = 0;
     while (minutes >= 60) {
-      hours += 1;
+      hours ++;
       minutes -= 60;
     }
     return [hours, minutes];
