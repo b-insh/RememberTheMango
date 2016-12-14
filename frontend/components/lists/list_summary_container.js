@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import ListSummary from './list_summary';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
     list: state.lists.selectedList,
   };
