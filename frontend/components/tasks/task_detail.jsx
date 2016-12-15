@@ -54,9 +54,18 @@ class TaskDetail extends React.Component {
     this.setState({list_id: e.target.value});
   }
 
+  // handleDateChange(type) {
+  //   // debugger
+	// 	return (date) => {
+  //     console.log(date);
+	// 		this.setState({ [type]: date._d });
+  //   };
+	// }
+
   handleDateChange(type) {
 		return (date) => {
-			this.setState({ [type]: date ? date._d : date });
+			this.setState({ [type]: date._d }, () => {this.props.editTask({id: this.props.task.id, [type]: this.state[type]})
+      });
 		};
 	}
 
@@ -95,7 +104,6 @@ class TaskDetail extends React.Component {
 		            <DatePicker
 		              className="task-input datepicker"
 		              onChange={ this.handleDateChange("start_date") }
-		              onBlur={ this.update("start_date") }
 		              isClearable={ true }
 		              placeholderText="No Start Date"
 		              selected={ this.state.start_date ? moment(this.state.start_date) : null } />
@@ -105,7 +113,6 @@ class TaskDetail extends React.Component {
 		            <DatePicker
 		              className="task-input datepicker"
 		              onChange={ this.handleDateChange("due_date") }
-		              onBlur={ this.update("due_date") }
 		              isClearable={true}
 		              placeholderText="No Due Date"
 		              selected={ this.state.due_date ? moment(this.state.due_date) : null } />

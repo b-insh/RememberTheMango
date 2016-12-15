@@ -42,7 +42,6 @@ class ListItem extends React.Component {
 
     handleNewTask(e) {
       let task = Object.assign({}, this.state, { list_id: this.props.list.id });
-      // this.props.createTaskForList(task, this.props.list.id);
       this.props.newTask(task);
       this.setState({ title: "" });
     }
@@ -83,7 +82,6 @@ class ListItem extends React.Component {
     toggleCompleteTask() {
       let listId = this.props.list.id;
       let completedTask = Object.assign({}, this.state.selectedTask, { completed: true });
-      // this.props.updateTaskForList(completedTask, listId);
       this.props.editTask(completedTask).then(() => {
         this.props.fetchList(this.props.params.listId);
       });
@@ -92,7 +90,6 @@ class ListItem extends React.Component {
     toggleIncompleteTask() {
       let listId = this.props.list.id;
       let incompleteTask = Object.assign({}, this.state.selectedTask, { completed: false });
-      // this.props.updateTaskForList(incompleteTask, listId);
       this.props.editTask(incompleteTask).then(() => {
         this.props.fetchList(this.props.params.listId);
       });
