@@ -18,7 +18,7 @@ class TaskIndex extends React.Component {
     this.findIncompleteTasks = this.findIncompleteTasks.bind(this);
     this.findCompleteTasks = this.findCompleteTasks.bind(this);
 
-    this.state = { title: "", selectedTask: null, buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight"};
+    this.state = { title: "", selectedTask: "", buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight"};
   }
 
   componentDidMount() {
@@ -26,7 +26,7 @@ class TaskIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    
+
   }
 
   updateTask(e) {
@@ -49,6 +49,7 @@ class TaskIndex extends React.Component {
     this.props.removeTask(this.state.selectedTask).then(() => {
       this.props.fetchTasks();
     });
+    this.props.router.push("/tasks");
   }
 
   displayButton() {
@@ -81,11 +82,13 @@ class TaskIndex extends React.Component {
   toggleCompleteTask() {
     let completedTask = Object.assign({}, this.state.selectedTask, { completed: true });
     this.props.editTask(completedTask);
+    this.setState({ selectedTask: "" });
   }
 
   toggleIncompleteTask() {
     let incompleteTask = Object.assign({}, this.state.selectedTask, { completed: false });
     this.props.editTask(incompleteTask);
+    this.setState({ selectedTask: "" });
   }
 
   findCompleteTasks(tasks) {
@@ -131,7 +134,7 @@ class TaskIndex extends React.Component {
     const buttonClass = inputClass + " " + this.state.buttonStatus;
 
     return(
-      <section className="tasks pullUp group">
+      <section className="tasks group">
 
         <section className="task-bar">
           <ul className="task-status group">

@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: lists
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  author_id  :integer          not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class List < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   validates :author, presence: true

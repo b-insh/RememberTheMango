@@ -1,8 +1,7 @@
 import { RECEIVE_QUERY_RESULTS, DELETE_TASK } from '../actions/task_actions';
 import merge from 'lodash/merge';
 
-const initialState = {
-};
+const initialState = {};
 
 const searchReducer = (state = initialState, action) => {
   Object.freeze(state);

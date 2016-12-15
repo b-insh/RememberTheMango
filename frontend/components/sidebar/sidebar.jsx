@@ -38,6 +38,8 @@ class Sidebar extends React.Component {
     const list = Object.assign({}, this.state);
     this.props.newList(list);
     this.onModalClose();
+    this.props.fetchLists();
+    this.setState({ visibleLists: "list-item pullDown visible"});
   }
 
   update(property) {
@@ -59,11 +61,11 @@ class Sidebar extends React.Component {
   render() {
   let lists = this.props.lists;
   if (lists) {
-    lists = lists.map( (list, index) => {
+    lists = lists.map( (list) => {
       let className = this.state.selectedListIdx === list.id ? "list-highlight" : "";
       return (
         <Link to={ `/lists/${list.id}` }>
-          <li key={ index } className={ `${className}` } onClick={ () => this.toggleList(list.id) }>
+          <li key={ list.id } className={ `${className}` } onClick={ () => this.toggleList(list.id) }>
           { list.title }
           </li>
         </Link>
@@ -82,7 +84,7 @@ class Sidebar extends React.Component {
             <li className="lists-header" onClick={ this.dropDownLists }>
             <div className="pull-down-arrow"></div>Lists
               <span className="add-list" onClick={ this.toggleModal }>add circle</span>
-            </li>
+              </li>
             <ul className={ this.state.visibleLists }>
             { lists }
             </ul>

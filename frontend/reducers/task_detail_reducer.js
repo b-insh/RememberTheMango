@@ -1,15 +1,7 @@
-import { RECEIVE_TASK_DETAIL } from '../actions/task_actions';
+import { RECEIVE_TASK_DETAIL, DELETE_TASK } from '../actions/task_actions';
 import merge from 'lodash/merge';
 
-const defaultTask = {
-  id: "",
-  title: "",
-  start_date: "",
-  due_date: "",
-  estimate: "",
-  location: "",
-  completed: ""
-};
+const defaultTask = {};
 
 const taskDetailReducer = (state = defaultTask, action) => {
   Object.freeze(state);
@@ -24,3 +16,10 @@ const taskDetailReducer = (state = defaultTask, action) => {
 };
 
 export default taskDetailReducer;
+
+
+
+
+// case DELETE_TASK:
+// debugger
+// return newState;

@@ -9,7 +9,9 @@ class Greeting extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.searchTasks = this.searchTasks.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
-    this.state = { dropDownStatus: "dropdown-close", query: "", activeSearchBar: "search-bar group" };
+    this.updateFile = this.updateFile.bind(this);
+    this.handleImageSubmit = this.handleImageSubmit.bind(this);
+    this.state = { dropDownStatus: "dropdown-close", query: "", activeSearchBar: "search-bar group", imageFile: "", imageUrl: "" };
   }
 
   handleLogout(e) {
@@ -52,19 +54,48 @@ class Greeting extends React.Component {
     return e => this.setState({ [property]: e.target.value });
   }
 
+  updateFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({ imageFile: file, imageUrl: fileReader.result });
+    };
+
+    if (file) {
+      fileReader.readAsDataURL(file);
+    }
+  }
+
+  handleImageSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("user[id]", this.props.currentUser.id);
+    formData.append("user[image]", this.state.imageFile);
+    this.props.editUser(formData);
+  }
+
   render() {
     const { currentUser, logout } = this.props;
     return(
       <nav className="nav-bar group">
-      <section className={ this.state.activeSearchBar } onClick={ this.handleSearchClick } onBlur={ this.handleSearchClick }><div className="search-icon">search</div>
-        <input className="search-input" type="text" value={ this.state.query } onChange={ this.update("query") } onKeyPress={ this.searchTasks } />
-      </section>
-        <span onClick={ this.handleClick } className="settings">settings
+        <section className={ this.state.activeSearchBar } onClick={ this.handleSearchClick } onBlur={ this.handleSearchClick }>
+          <div className="search-icon">search</div>
+          <input className="search-input" type="text" value={ this.state.query } onChange={ this.update("query") } onKeyPress={ this.searchTasks } />
+        </section>
+
+        <span><div className="settings" onClick={ this.handleClick }>settings</div>
           <div className={ this.state.dropDownStatus }>
             <span className="dropdown-arrow"></span>
+            <img className="user-icon" src={ currentUser.image_url } />
             <ul className="header-nav-links">
               <li><h3 className="name"> { currentUser.fname } { currentUser.lname }</h3></li>
               <li><h3 className="email">{ currentUser.email }</h3></li>
+
+              <div clasName="input-container">
+                <li><input type="file" className="image-upload" encType="multipart/form-data" onChange={ this.updateFile }/></li>
+              </div>
+
+              <li><button className="image-submit" onClick={ this.handleImageSubmit }>Upload Photo</button></li>
               <li><input className="logout" type="submit" value="Log Out" onClick={ this.handleLogout } /></li>
             </ul>
           </div>
@@ -75,3 +106,9 @@ class Greeting extends React.Component {
 }
 
 export default withRouter(Greeting);
+
+
+
+
+
+// <li><div className="fake-input">Choose File</div></li>

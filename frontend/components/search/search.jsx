@@ -21,7 +21,7 @@ class Search extends React.Component {
     this.findCompleteTasks = this.findCompleteTasks.bind(this);
     this.getSearchedTasks = this.getSearchedTasks.bind(this);
 
-    this.state = { title: "", selectedTask: null, buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight", query: ""};
+    this.state = { title: "", selectedTask: "", buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight", query: ""};
   }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class Search extends React.Component {
     this.setState({ query: query });
     this.props.searchTasks(query);
   }
-  
+
   getSearchedTasks() {
     let tasks = this.props.tasks;
     if (tasks) {
@@ -58,6 +58,7 @@ class Search extends React.Component {
     this.props.removeTask(this.state.selectedTask).then(() => {
       this.props.fetchTasks();
     });
+    this.props.router.push(`/search/${this.state.query}`);
   }
 
   displayButton() {
@@ -90,11 +91,14 @@ class Search extends React.Component {
   toggleCompleteTask() {
     let completedTask = Object.assign({}, this.state.selectedTask, { completed: true });
     this.props.editTask(completedTask);
+    this.setState({ selectedTask: "" });
+
   }
 
   toggleIncompleteTask() {
     let incompleteTask = Object.assign({}, this.state.selectedTask, { completed: false });
     this.props.editTask(incompleteTask);
+    this.setState({ selectedTask: "" });
   }
 
   findCompleteTasks(tasks) {
@@ -140,7 +144,7 @@ class Search extends React.Component {
     const buttonClass = inputClass + " " + this.state.buttonStatus;
 
     return (
-      <section className="tasks pullUp group">
+      <section className="tasks group">
 
         <section className="task-bar">
           <ul className="task-status group">

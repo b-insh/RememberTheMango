@@ -13,6 +13,7 @@ nav, div, h3 {
 }
 
 .nav-bar {
+  font-family: "Open Sans", sans-serif;
   width: 100vw;
   height: 40px;
   background: #0060bf;
@@ -36,11 +37,6 @@ nav, div, h3 {
   padding: 5px;
   box-sizing: border-box;
   position: relative;
-
-}
-
-.active {
-  opacity: 1;
 }
 
 .search-icon {
@@ -59,6 +55,51 @@ nav, div, h3 {
   width: calc(100% - 35px);
   font-size: 14px;
   margin-left: 32px;
+}
+
+.user-icon {
+  width: 64px;
+  height: auto;
+  position: absolute;
+  right: 10px;
+  // top: 10px;
+  bottom: 10px;
+}
+
+.image-upload {
+  margin-top: 10px;
+  z-index: 10;
+}
+
+.image-submit, .fake-input {
+  margin-top: 10px;
+  border: 1px solid #045DBB;
+  color: #045DBB;
+  // font-weight: bold;
+  border-radius: 3px;
+  background: #fff;
+  font-size: 13px;
+}
+
+.image-submit:hover {
+  background: #e4eef8;
+}
+
+.fake-input {
+  position: absolute;
+  top: 50px;
+  display: inline-block;
+  padding: 2px 0 2px 5px;
+  width: 90px;
+  z-index: 1;
+}
+
+.input-container {
+  position: relative;
+}
+
+.active {
+  opacity: 1;
 }
 
 .dropdown-close {
@@ -85,8 +126,8 @@ nav, div, h3 {
   background-color: #fff;
   color: #000;
   position: absolute;
-  top: 34px;
-  right: 0px;
+  top: 43px;
+  right: 16px;
   cursor: default;
   padding: 8px;
   margin-right: -5px;
@@ -104,12 +145,13 @@ nav, div, h3 {
   font-size: 14px;
   cursor: pointer;
   float: left;
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-left: 3px;
 }
 
 .name {
   font-weight: bold;
-  display: block;
+  display: inline-block;
 }
 
 .email {
@@ -118,6 +160,7 @@ nav, div, h3 {
   display: block;
   border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .header-nav-links {

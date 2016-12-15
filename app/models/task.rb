@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id         :integer          not null, primary key
+#  title      :string           not null
+#  start_date :date
+#  due_date   :date
+#  location   :string
+#  completed  :boolean          default(FALSE), not null
+#  author_id  :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  list_id    :integer
+#  estimate   :integer
+#
+
 Rails.application.config.active_record.belongs_to_required_by_default = false
 
 

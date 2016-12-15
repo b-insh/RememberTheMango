@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                 :integer          not null, primary key
+#  username           :string           not null
+#  password_digest    :string           not null
+#  session_token      :string           not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  fname              :string           not null
+#  lname              :string           not null
+#  email              :string           not null
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#
+
 class User < ActiveRecord::Base
   validates :username, presence: { message: "" }, uniqueness: true, length: { message: "Minimum is 2 characters", minimum: 2 }
   validates :session_token, presence: true, uniqueness: true
@@ -6,6 +25,9 @@ class User < ActiveRecord::Base
   validates :lname, presence: { message: "Last name is required" }
   validates :email, presence: { message: "Invalid email address" }
   validates :password, length: { message: "Miniumum is 5 characters", minimum: 5, allow_nil: true }
+
+  has_attached_file :image, default_url: "hp_person1.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   attr_reader :password
   before_validation :ensure_session_token
