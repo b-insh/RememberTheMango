@@ -1,6 +1,7 @@
 import React from 'react';
 import TaskItem from '../tasks/task_item';
 import values from 'lodash/values';
+import { hashHistory } from 'react-router';
 
 class Search extends React.Component {
   constructor(props) {
@@ -20,12 +21,23 @@ class Search extends React.Component {
     this.findCompleteTasks = this.findCompleteTasks.bind(this);
     this.getSearchedTasks = this.getSearchedTasks.bind(this);
 
-    this.state = { title: "", selectedTask: null, buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight"};
+    this.state = { title: "", selectedTask: null, buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight", query: ""};
   }
 
-  // componentDidMount() {
-  //     this.props.fetchTasks();
-  // }
+  componentDidMount() {
+    let location = hashHistory.getCurrentLocation().pathname;
+    const query = location.slice(location.indexOf("/search/") + 8);
+    this.setState({ query: query });
+    this.props.tasks = this.props.searchTasks(query);
+  }
+
+  componentWillReceiveProps(newProps) {
+    let theseTasks = Object.keys(this.props.tasks).map(id => this.props.tasks[id]);
+    let thoseTasks = Object.keys(newProps.tasks).map(id => newProps.tasks[id]);
+    if (theseTasks.length !== thoseTasks.length) {
+      this.props.tasks = this.props.searchTasks(this.state.query);
+    }
+  }
 
   getSearchedTasks() {
     let tasks = this.props.tasks;
@@ -114,7 +126,7 @@ class Search extends React.Component {
   }
 
   render() {
-    const path = "/search/tasks";
+    const path = `/search/${this.state.query}/tasks`;
     const tasks = this.getSearchedTasks();
     let findTasks = this.state.incompleteTasks === "highlight" ? this.findIncompleteTasks(tasks) : this.findCompleteTasks(tasks);
     let renderedTasks;

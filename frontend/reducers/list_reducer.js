@@ -36,9 +36,6 @@ const listReducer = (state = initialState, action) => {
     case CREATE_TASK:
       newState.selectedList.tasks[action.task.id] = action.task;
       return newState;
-    case DELETE_TASK:
-      delete newState.selectedList.tasks[action.task.id];
-      return newState;
     case UPDATE_TASK:
       newState.selectedList.tasks[action.task.id] = action.task;
       return newState;

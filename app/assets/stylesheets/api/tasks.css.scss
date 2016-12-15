@@ -18,15 +18,11 @@ section, div, span, input, ul, li {
 
 .tasks {
   height: 100vh;
-  // position: absolute;
-  // top: 40px;
-  // left: 180px;
   float: left;
   margin-top: 45px;
   margin-left: 5px;
   background: #fff;
   border-radius: 6px;
-  // min-width: 584px;
   width: 40%;
   padding: 10px;
 }
@@ -143,7 +139,7 @@ section, div, span, input, ul, li {
   border-top: 1px dotted #e5e5e5;
   cursor: pointer;
   display: block;
-  padding: 3px;
+  padding: 6px;
   width: 100%;
 }
 

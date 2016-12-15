@@ -9,7 +9,7 @@ class TaskDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleEditTask = this.handleEditTask.bind(this);
+    // this.handleEditTask = this.handleEditTask.bind(this);
     this.handleListChange = this.handleListChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.updateTask = this.updateTask.bind(this);
@@ -36,12 +36,12 @@ class TaskDetail extends React.Component {
     return e => this.setState({ [property]: e.target.value });
   }
 
-  handleEditTask(e) {
-    if(e.key === 'Enter') {
-      const newTask = merge({}, this.props.task, this.state);
-      this.props.editTask(newTask);
-    }
-  }
+  // handleEditTask(e) {
+  //   if(e.key === 'Enter') {
+  //     const newTask = merge({}, this.props.task, this.state);
+  //     this.props.editTask(newTask);
+  //   }
+  // } from title input: onKeyPress={ this.handleEditTask }
 
   updateTask() {
     const updatedTask = merge({}, this.props.task, this.state);
@@ -54,13 +54,6 @@ class TaskDetail extends React.Component {
     this.setState({list_id: e.target.value});
   }
 
-  // handleDateChange(type) {
-  //   // debugger
-	// 	return (date) => {
-  //     console.log(date);
-	// 		this.setState({ [type]: date._d });
-  //   };
-	// }
 
   handleDateChange(type) {
 		return (date) => {
@@ -77,7 +70,7 @@ class TaskDetail extends React.Component {
 
   goBack() {
     let location = hashHistory.getCurrentLocation().pathname;
-    if (this.props.location.pathname.includes("lists")) {
+    if (this.props.location.pathname.includes("lists") || this.props.location.pathname.includes("search")) {
       location = location.slice(0, location.indexOf("/tasks"));
     }
     else {
@@ -96,7 +89,7 @@ class TaskDetail extends React.Component {
               <div className="close" onClick={ this.goBack }>close x</div>
             </li>
             <li>
-              <textarea value={ this.state.title } className="task-name" onChange={ this.update("title")} onKeyPress={ this.handleEditTask }/>
+              <textarea value={ this.state.title } className="task-name" onChange={ this.update("title")} />
             </li>
           </ul>
             <div>

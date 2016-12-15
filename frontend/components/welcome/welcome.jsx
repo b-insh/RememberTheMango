@@ -12,6 +12,7 @@ class Welcome extends React.Component {
       return (
         <section className="welcome-page">
           <nav className="welcome-nav group">
+            <section className="welcome-logo"></section>
             <ul className="welcome-links group">
               <li className="welcome-login-link">
                 <Link to={'/login'}>Log in</Link>

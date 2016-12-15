@@ -13,6 +13,7 @@ class Sidebar extends React.Component {
     this.update = this.update.bind(this);
     this.toggleList = this.toggleList.bind(this);
     this.dropDownLists = this.dropDownLists.bind(this);
+    this.clearSelectedList = this.clearSelectedList.bind(this);
     this.state = { modalOpen: false, title: "", selectedListIdx: "", visibleLists: "list-items pullDown visible"};
   }
 
@@ -51,6 +52,10 @@ class Sidebar extends React.Component {
     }
   }
 
+  clearSelectedList() {
+    this.setState({ selectedListIdx: "" });
+  }
+
   render() {
   let lists = this.props.lists;
   if (lists) {
@@ -68,14 +73,14 @@ class Sidebar extends React.Component {
 
     return(
       <section className="sidebar">
+      <section className="logo"></section>
         <section className="sidebar-tasks">
-          <Link to={ "/tasks" }><p>All Tasks</p></Link>
-          <p>Today</p>
+          <Link to={ "/tasks" }><div className="all-tasks" onClick={ this.clearSelectedList }>All Tasks</div></Link>
         </section>
         <section className="sidebar-lists">
           <ul className="lists group">
             <li className="lists-header" onClick={ this.dropDownLists }>
-              Lists
+            <div className="pull-down-arrow"></div>Lists
               <span className="add-list" onClick={ this.toggleModal }>add circle</span>
             </li>
             <ul className={ this.state.visibleLists }>

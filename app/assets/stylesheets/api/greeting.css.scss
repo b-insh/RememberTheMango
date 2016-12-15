@@ -24,23 +24,47 @@ nav, div, h3 {
 }
 
 .search-bar {
-  border: 1px solid #f00;
   z-index: 2;
   float: left;
   height: 30px;
-  width: 250px;
-  margin-left: 170px;
+  width: 294px;
+  margin-left: 184px;
   margin-top: 5px;
+  background-color: #fff;
+  opacity: .2;
+  border-radius: 3px;
+  padding: 5px;
+  box-sizing: border-box;
+  position: relative;
+
+}
+
+.active {
+  opacity: 1;
+}
+
+.search-icon {
+  font-family: "Material Icons";
+  font-size: 22px;
+  height: 20px;
+  width: 20px;
+  display: block;
 }
 
 .search-input {
+  position: absolute;
+  top: 0;
+  left: -2px;
   height: 100%;
+  width: calc(100% - 35px);
+  font-size: 14px;
+  margin-left: 32px;
 }
-
 
 .dropdown-close {
   display: none;
 }
+
 
 .settings {
   font-family: "Material Icons";
@@ -58,7 +82,7 @@ nav, div, h3 {
   font-family: "Open Sans", sans-serif;
   display: block;
   width: 240px;
-  background-color: white;
+  background-color: #fff;
   color: #000;
   position: absolute;
   top: 34px;

@@ -8,7 +8,8 @@ class Greeting extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.searchTasks = this.searchTasks.bind(this);
-    this.state = { dropDownStatus: "dropdown-close", query: "" };
+    this.handleSearchClick = this.handleSearchClick.bind(this);
+    this.state = { dropDownStatus: "dropdown-close", query: "", activeSearchBar: "search-bar group" };
   }
 
   handleLogout(e) {
@@ -27,15 +28,23 @@ class Greeting extends React.Component {
 
   searchTasks(e) {
     if(e.key === 'Enter') {
-      this.props.searchTasks(this.state.query).then(() => this.props.router.push('/search'));
+      const query = this.state.query;
+      this.props.searchTasks(this.state.query).then(() => this.props.router.push(`/search/${query}`));
       this.setState({ query: "" });
     }
-    //will need to fix this... path is not always the same. need to slice some stuff
   }
 
   componentWillReceiveProps(newProps) {
     if (newProps.currentUser === null) {
       this.props.router.push('/welcome');
+    }
+  }
+
+  handleSearchClick() {
+    if (this.state.activeSearchBar === "active search-bar group") {
+      this.setState({ activeSearchBar: "search-bar group"});
+    } else {
+      this.setState({ activeSearchBar: "active search-bar group"});
     }
   }
 
@@ -47,7 +56,7 @@ class Greeting extends React.Component {
     const { currentUser, logout } = this.props;
     return(
       <nav className="nav-bar group">
-      <section className="search-bar">
+      <section className={ this.state.activeSearchBar } onClick={ this.handleSearchClick } onBlur={ this.handleSearchClick }><div className="search-icon">search</div>
         <input className="search-input" type="text" value={ this.state.query } onChange={ this.update("query") } onKeyPress={ this.searchTasks } />
       </section>
         <span onClick={ this.handleClick } className="settings">settings

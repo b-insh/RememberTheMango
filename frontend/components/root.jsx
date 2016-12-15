@@ -47,7 +47,7 @@ const Root = ({ store }) => {
             <Route path="tasks/:taskId" component={ TaskDetailContainer } />
           </Route>
 
-          <Route path="/search" component={ SearchContainer }>
+          <Route path="/search/:query" component={ SearchContainer }>
             <IndexRoute component={ SearchSummaryContainer } />
             <Route path="tasks/:taskId" component={ TaskDetailContainer } />
           </Route>
