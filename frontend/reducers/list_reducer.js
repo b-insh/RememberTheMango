@@ -32,13 +32,6 @@ const listReducer = (state = initialState, action) => {
         lists: state.lists,
         listErrors: action.errors
       };
-
-    case CREATE_TASK:
-      newState.selectedList.tasks[action.task.id] = action.task;
-      return newState;
-    case UPDATE_TASK:
-      newState.selectedList.tasks[action.task.id] = action.task;
-      return newState;
     default:
       return state;
   }

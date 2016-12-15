@@ -46,6 +46,7 @@ class TaskDetail extends React.Component {
   updateTask() {
     const updatedTask = merge({}, this.props.task, this.state);
     this.props.editTask(updatedTask).then(() => {
+      this.props.fetchTaskDetail(this.props.params.taskId)}).then(() => {
       this.props.fetchList(this.props.task.list_id);
     });
   }

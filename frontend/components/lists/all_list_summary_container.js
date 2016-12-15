@@ -1,10 +1,18 @@
 import { connect } from 'react-redux';
 import AllListSummary from './all_list_summary';
+import { selectAllTasks } from '../../reducers/selectors';
+import { fetchTasks } from '../../actions/task_actions';
 
 const mapStateToProps = state => {
   return {
-    lists: state.lists.lists
+    tasks: selectAllTasks(state),
   };
 };
 
-export default connect(mapStateToProps)(AllListSummary);
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchTasks: () => dispatch(fetchTasks()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllListSummary);

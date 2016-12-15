@@ -8,14 +8,17 @@ class AllListSummary extends React.Component{
     this.parseTimeEstimate = this.parseTimeEstimate.bind(this);
     this.incompleteTasks = this.incompleteTasks.bind(this);
     this.overdueTasks = this.overdueTasks.bind(this);
-    this.getAllTasks = this.getAllTasks.bind(this);
   }
 
-  getAllTasks(lists) {
-    let allTasks = [];
-    let allLists = values(lists);
-    allLists.forEach( list => list.tasks.forEach( task => allTasks.push(task)));
-    return allTasks;
+  // getAllTasks(lists) {
+  //   let allTasks = [];
+  //   let allLists = values(lists);
+  //   allLists.forEach( list => list.tasks.forEach( task => allTasks.push(task)));
+  //   return allTasks;
+  // }
+
+  componentDidMount() {
+    this.props.fetchTasks();
   }
 
   parseTimeEstimate(tasks) {
@@ -56,7 +59,7 @@ class AllListSummary extends React.Component{
   }
 
   render() {
-    const tasks = this.getAllTasks(this.props.lists);
+    const tasks = this.props.tasks;
     let numTasks, overdueTasks, completedTasks, taskNoun, hours, minutes;
     if(tasks) {
       numTasks = this.incompleteTasks(tasks);

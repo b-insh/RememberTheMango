@@ -25,6 +25,10 @@ class TaskIndex extends React.Component {
       this.props.fetchTasks();
   }
 
+  componentWillReceiveProps(newProps) {
+    
+  }
+
   updateTask(e) {
     this.setState({ title: e.target.value });
   }
@@ -105,8 +109,8 @@ class TaskIndex extends React.Component {
   }
 
   render() {
-    // const selectedTask = this.state.selectedTask;
-    const path = "tasks";
+    const closePath = "tasks";
+    const openPath = "tasks";
     const tasks = this.props.tasks;
     let findTasks = this.state.incompleteTasks === "highlight" ? this.findIncompleteTasks(tasks) : this.findCompleteTasks(tasks);
     let renderedTasks;
@@ -118,7 +122,8 @@ class TaskIndex extends React.Component {
           key={ index }
           handleSelectTask={ this.handleSelectTask }
           selectedTask={ this.state.selectedTask }
-          path={ path } />
+          closePath={ closePath }
+          openPath={ openPath } />
         );
       });
     }

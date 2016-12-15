@@ -42,7 +42,9 @@ class ListItem extends React.Component {
 
     handleNewTask(e) {
       let task = Object.assign({}, this.state, { list_id: this.props.list.id });
-      this.props.newTask(task);
+      this.props.newTask(task).then(() => {
+        this.props.fetchList(this.props.params.listId);
+      });
       this.setState({ title: "" });
     }
 
@@ -119,7 +121,8 @@ class ListItem extends React.Component {
     const list = this.props.list;
     let tasks;
     if (list.id) {
-      const path = `/lists/${list.id}/tasks`;
+      const openPath = `/lists/${list.id}/tasks`;
+      const closePath = `/lists/${list.id}`;
       tasks = list.tasks;
       tasks = this.state.incompleteTasks === "highlight" ? this.findIncompleteTasks(tasks) : this.findCompleteTasks(tasks);
       tasks = tasks.map( (task, index) => {
@@ -129,7 +132,8 @@ class ListItem extends React.Component {
             key={ index }
             handleSelectTask={ this.handleSelectTask }
             selectedTask={ this.state.selectedTask }
-            path={ path } />
+            openPath={ openPath }
+            closePath={ closePath } />
           );
       });
     }

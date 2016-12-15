@@ -126,7 +126,8 @@ class Search extends React.Component {
   }
 
   render() {
-    const path = `/search/${this.state.query}/tasks`;
+    const closePath = `/search/${this.state.query}`;
+    const openPath = `/search/${this.state.query}/tasks`;
     const tasks = this.getSearchedTasks();
     let findTasks = this.state.incompleteTasks === "highlight" ? this.findIncompleteTasks(tasks) : this.findCompleteTasks(tasks);
     let renderedTasks;
@@ -138,7 +139,8 @@ class Search extends React.Component {
           key={ index }
           handleSelectTask={ this.handleSelectTask }
           selectedTask={ this.state.selectedTask }
-          path={ path } />
+          closePath={ closePath }
+          openPath={ openPath } />
         );
       });
     }
