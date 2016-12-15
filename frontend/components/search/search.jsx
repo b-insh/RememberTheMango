@@ -28,17 +28,9 @@ class Search extends React.Component {
     let location = hashHistory.getCurrentLocation().pathname;
     const query = location.slice(location.indexOf("/search/") + 8);
     this.setState({ query: query });
-    this.props.tasks = this.props.searchTasks(query);
+    this.props.searchTasks(query);
   }
-
-  componentWillReceiveProps(newProps) {
-    let theseTasks = Object.keys(this.props.tasks).map(id => this.props.tasks[id]);
-    let thoseTasks = Object.keys(newProps.tasks).map(id => newProps.tasks[id]);
-    if (theseTasks.length !== thoseTasks.length) {
-      this.props.tasks = this.props.searchTasks(this.state.query);
-    }
-  }
-
+  
   getSearchedTasks() {
     let tasks = this.props.tasks;
     if (tasks) {
