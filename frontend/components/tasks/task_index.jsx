@@ -25,10 +25,6 @@ class TaskIndex extends React.Component {
       this.props.fetchTasks();
   }
 
-  componentWillReceiveProps(newProps) {
-
-  }
-
   updateTask(e) {
     this.setState({ title: e.target.value });
   }
@@ -130,44 +126,50 @@ class TaskIndex extends React.Component {
         );
       });
     }
+
+    if (renderedTasks && renderedTasks.length === 0) {
+      renderedTasks = ( <div className="task-mangoes">Well, what are you waiting for?</div> );
+    }
+
     const inputClass = this.state.title === "" ? "add-task-button inactive" : "add-task-button";
     const buttonClass = inputClass + " " + this.state.buttonStatus;
-
-    return(
-      <section className="tasks group">
+      return(
+        <section className="tasks group">
 
         <section className="task-bar">
-          <ul className="task-status group">
-            <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
-            <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
-          </ul>
+        <ul className="task-status group">
+        <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
+        <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
+        </ul>
 
-          <ul className={ this.state.iconDisplay }>
-            <li className="delete-task" onClick={ this.handleDeleteTask }>delete</li>
-            <li className="complete-task" onClick={ this.toggleCompleteTask }>check circle</li>
-            <li className="uncomplete-task" onClick={ this.toggleIncompleteTask }>restore</li>
-          </ul>
+        <ul className={ this.state.iconDisplay }>
+        <li className="delete-task" onClick={ this.handleDeleteTask }>delete</li>
+        <li className="complete-task" onClick={ this.toggleCompleteTask }>check circle</li>
+        <li className="uncomplete-task" onClick={ this.toggleIncompleteTask }>restore</li>
+        </ul>
 
         </section>
 
         <section className="add-task group" onFocus={ this.displayButton } onBlur={ this.undisplayButton }>
 
-          <input className="task-text" type="text" value={ this.state.title } placeholder="Add a task..." onChange={ (e) => this.updateTask(e) }/>
+        <input className="task-text" type="text" value={ this.state.title } placeholder="Add a task..." onChange={ (e) => this.updateTask(e) }/>
 
-          <div className="button-wrapper" >
-            <input type="submit" onClick={ this.handleNewTask } className={ buttonClass } value="Add Task" />
-          </div>
+        <div className="button-wrapper" >
+        <input type="submit" onClick={ this.handleNewTask } className={ buttonClass } value="Add Task" />
+        </div>
         </section>
 
         <section className="tasks-index">
-          <ul className="tasks-list">
-            { renderedTasks }
-          </ul>
+        <ul className="tasks-list">
+        { renderedTasks }
+        </ul>
         </section>
 
         { this.props.children }
-      </section>
-    );
+        </section>
+      );
+
+
   }
 }
 

@@ -15,7 +15,6 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchList: (id) => dispatch(fetchList(id)),
     createTaskForList: (task, listId) => dispatch(createTaskForList(task, listId)),
-    // removeTaskFromList: (taskId, listId) => dispatch(removeTaskFromList(taskId, listId)),
     updateTaskForList: (task, listId) => dispatch(updateTaskForList(task,listId)),
     removeTask: (task) => dispatch(removeTask(task)),
     newTask: (task) => dispatch(newTask(task)),

@@ -72,7 +72,6 @@ class Sidebar extends React.Component {
         )
       })
     }
-
     return(
       <section className="sidebar">
       <section className="logo"></section>

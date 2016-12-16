@@ -91,7 +91,7 @@ class Greeting extends React.Component {
               <li><h3 className="name"> { currentUser.fname } { currentUser.lname }</h3></li>
               <li><h3 className="email">{ currentUser.email }</h3></li>
 
-              <div clasName="input-container">
+              <div className="input-container">
                 <li><input type="file" className="image-upload" encType="multipart/form-data" onChange={ this.updateFile }/></li>
               </div>
 

@@ -65,7 +65,7 @@ class SearchSummary extends React.Component{
       [hours, minutes] = this.parseTimeEstimate(tasks);
     }
 
-    return (
+      return (
       <section className="list-detail">
         <h3 className="list-detail-title">
           Search

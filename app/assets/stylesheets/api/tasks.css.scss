@@ -16,11 +16,40 @@ section, div, span, input, ul, li {
 .task-text:focus:-moz-placeholder { opacity: 0; }
 .task-text:focus:-ms-input-placeholder { opacity: 0; }
 
+
+.list-mangoes, .search-mangoes, .task-mangoes {
+  display: block;
+  background-position: center;
+  background-size: cover;
+  opacity: .25;
+  height: 758px;
+  width: auto;
+  overflow: hidden;
+  border-radius: 3px;
+
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.list-mangoes {
+  background-image: image-url("blue_mangoes.jpg");
+}
+
+.search-mangoes {
+  background-image: image-url("mangoes.jpg");
+}
+
+.task-mangoes {
+  background-image: image-url("mango_repeat.jpg");
+}
+
 .tasks {
   height: 100vh;
   float: left;
-  margin-top: 45px;
-  margin-left: 5px;
+  margin: 45px 5px 0 5px;
   background: #fff;
   border-radius: 6px;
   width: 40%;
@@ -102,8 +131,7 @@ section, div, span, input, ul, li {
   box-sizing: border-box;
   border-radius: 3px;
   padding: 10px;
-  margin: 10px 17px 10px 0;
-  max-width: 98%;
+  margin: 10px 0;
 }
 
 .button-wrapper {

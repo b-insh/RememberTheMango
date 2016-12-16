@@ -71,38 +71,38 @@ class AllListSummary extends React.Component{
 
     return (
       <section className="list-detail">
-        <h3 className="list-detail-title">
-          All Tasks
-        </h3>
+      <h3 className="list-detail-title">
+      All Tasks
+      </h3>
 
-        <div className="task-summary group">
-          <div className="task-amount">
-            <span className="num-tasks"><strong>{ numTasks }</strong></span>
-            <span className="task-noun">{ taskNoun }</span>
-          </div>
-
-          <div className="sum-text">
-            <span className="formatted-estimate">
-              <strong>{ hours }</strong>
-              <small>hrs</small>&nbsp;
-              <strong>{ minutes }</strong>
-              <small>min</small>
-            </span>
-            <span className="estimate-word">estimated</span>
-          </div>
+      <div className="task-summary group">
+        <div className="task-amount">
+          <span className="num-tasks"><strong>{ numTasks }</strong></span>
+          <span className="task-noun">{ taskNoun }</span>
         </div>
-        <div className="overdue-completed">
-          <div className="overdue-tasks">
-            <span className="overdue-num"><strong>{ overdueTasks }</strong></span>
-            <span className="overdue-text">overdue</span>
-          </div>
 
-          <div className="completed-tasks">
-            <span className="completed-num"><strong>{ completedTasks }</strong></span>
-            <span className="completed-text">completed</span>
-          </div>
+        <div className="sum-text">
+          <span className="formatted-estimate">
+            <strong>{ hours }</strong>
+            <small>hrs</small>&nbsp;
+            <strong>{ minutes }</strong>
+            <small>min</small>
+          </span>
+          <span className="estimate-word">estimated</span>
         </div>
-        { this.props.children}
+      </div>
+      <div className="overdue-completed">
+        <div className="overdue-tasks">
+          <span className="overdue-num"><strong>{ overdueTasks }</strong></span>
+          <span className="overdue-text">overdue</span>
+        </div>
+
+        <div className="completed-tasks">
+          <span className="completed-num"><strong>{ completedTasks }</strong></span>
+          <span className="completed-text">completed</span>
+        </div>
+      </div>
+      { this.props.children}
       </section>
     );
   }
