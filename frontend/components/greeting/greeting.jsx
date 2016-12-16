@@ -102,7 +102,9 @@ class Greeting extends React.Component {
               <li><h3 className="email">{ currentUser.email }</h3></li>
 
               <div className="input-container">
-                <li><input type="file" className="image-upload" encType="multipart/form-data" onChange={ this.updateFile }/></li>
+                <li>
+                <label for="image-upload" className="fake-input">Choose File
+                <input type="file" className="image-upload" encType="multipart/form-data" onChange={ this.updateFile }/></label></li>
               </div>
 
               <li><button className="image-submit" onClick={ this.handleImageSubmit }>Upload Photo</button></li>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchLists, newList, deleteList, fetchList } from '../../actions/list_actions';
+import { fetchLists, newList, removeList, fetchList } from '../../actions/list_actions';
 import { selectAllLists } from '../../reducers/selectors';
 import Sidebar from './sidebar';
 
@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
     fetchLists: () => dispatch(fetchLists()),
     fetchList: (list) => dispatch(fetchList(list)),
     newList: (list) => dispatch(newList(list)),
-    deleteList: (list) => dispatch(deleteList(list)),
+    removeList: (list) => dispatch(removeList(list)),
   };
 };
 

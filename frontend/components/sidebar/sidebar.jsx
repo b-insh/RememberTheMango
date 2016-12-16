@@ -34,6 +34,12 @@ class Sidebar extends React.Component {
 
   }
 
+  removeList(list) {
+    this.props.removeList(list).then(() => {
+      this.props.fetchLists();
+    });
+  }
+
   createList() {
     const list = Object.assign({}, this.state);
     this.props.newList(list);
@@ -63,10 +69,12 @@ class Sidebar extends React.Component {
   if (lists) {
     lists = lists.map( (list) => {
       let className = this.state.selectedListIdx === list.id ? "list-highlight" : "";
+      let removeButton = this.state.selectedListIdx === list.id ? (<span className="delete-list" onClick={ () => this.removeList(list) }>remove circle</span>) : "";
       return (
         <Link to={ `/lists/${list.id}` }>
           <li key={ list.id } className={ `${className}` } onClick={ () => this.toggleList(list.id) }>
           { list.title }
+          { removeButton }
           </li>
         </Link>
         )

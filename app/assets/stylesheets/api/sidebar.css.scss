@@ -26,10 +26,9 @@ section, p {
 
 .sidebar {
   float: left;
-  margin-top: 45px;
   margin-left: 5px;
   background: #e4eef8;
-  height: 100vh;
+  height: 100%;
   width: 180px;
   padding: 10px;
   box-sizing: border-box;
@@ -45,6 +44,7 @@ section, p {
   background-size: contain;
   width: 100%;
   height: 58px;
+  margin-top: 45px;
 }
 
 .sidebar a {
@@ -124,7 +124,19 @@ section, p {
   cursor: pointer;
 }
 
-
+.delete-list {
+  display: inline-block;
+  font-family: "Material Icons";
+  font-size: 12px;
+  float: right;
+  color: #fff;
+  background: red;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 5px;
+}
 
 .close-modal {
   float: right;

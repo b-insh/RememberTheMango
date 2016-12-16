@@ -22,7 +22,7 @@ section, div, span, input, ul, li {
   background-position: center;
   background-size: cover;
   opacity: .25;
-  height: 758px;
+  height: 100%;
   width: auto;
   overflow: hidden;
   border-radius: 3px;
@@ -47,7 +47,7 @@ section, div, span, input, ul, li {
 }
 
 .tasks {
-  height: 100vh;
+  // height: 100%;
   float: left;
   margin: 45px 5px 0 5px;
   background: #fff;
@@ -160,8 +160,12 @@ section, div, span, input, ul, li {
 
 .tasks-index {
   display: block;
+  height: calc(100% - 86px);
 }
 
+.tasks-list {
+  height: 100%;
+}
 
 .tasks-list li {
   border-top: 1px dotted #e5e5e5;

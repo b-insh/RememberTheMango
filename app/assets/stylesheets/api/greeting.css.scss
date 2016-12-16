@@ -58,16 +58,17 @@ nav, div, h3 {
 }
 
 .user-icon {
-  width: 64px;
+  width: 80px;
   height: auto;
   position: absolute;
-  right: 10px;
+  right: 20px;
   bottom: 10px;
 }
 
 .image-upload {
   margin-top: 10px;
   z-index: 10;
+  display: none;
 }
 
 .image-submit, .fake-input {
@@ -79,6 +80,10 @@ nav, div, h3 {
   font-size: 13px;
 }
 
+.fake-input {
+  text-align: left;
+}
+
 .image-submit {
   margin-bottom: 10px;
 }
@@ -88,11 +93,8 @@ nav, div, h3 {
 }
 
 .fake-input {
-  position: absolute;
-  top: 50px;
   display: inline-block;
-  padding: 2px 0 2px 5px;
-  width: 90px;
+  padding: 2px 5px 2px 5px;
   z-index: 1;
 }
 
@@ -167,6 +169,7 @@ nav, div, h3 {
 
 .header-nav-links {
   float: left;
+  width: 100%;
 }
 
 .header-nav-links li {
