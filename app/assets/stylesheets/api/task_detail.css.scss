@@ -3,13 +3,13 @@
   right: 0;
   top: 45px;
   width: 37%;
-  // float: left;
-  height: 100vh;
+  height: calc(100% - 40px);
   box-sizing: border-box;
   border-left: 2px solid #ccc;
   background: #fff;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
   padding: 10px;
 }
 
@@ -46,12 +46,6 @@
   overflow-y: auto;
   height: 50px;
 }
-//
-// .task-data:hover .non-attributes {
-//   display: block;
-//   opacity: 1;
-//   width: 100%;
-// }
 
 .task-name:hover {
   border: 1px solid #ccc;

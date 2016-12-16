@@ -20,7 +20,7 @@ section, p {
 
   border-top: 4px solid #000;
   position: absolute;
-  top: 183px;
+  top: 199px;
   left: 25px;
 }
 
@@ -59,6 +59,7 @@ section, p {
 
 .sidebar-lists {
   padding: 10px;
+  border-bottom: 1px solid #bfd9f1;
 }
 
 .sidebar-lists li {
@@ -86,11 +87,12 @@ section, p {
 }
 
 .all-tasks {
-  padding: 15px 0 0 10px;
+  padding: 15px 0 15px 10px;
   font-size: 15px;
   margin-bottom: 5px;
   font-weight: bold;
   cursor: pointer;
+  border-bottom: 1px solid #bfd9f1;
 }
 
 .lists-header {

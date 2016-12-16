@@ -13,6 +13,7 @@
 #  updated_at :datetime         not null
 #  list_id    :integer
 #  estimate   :integer
+#  priority   :integer
 #
 
 Rails.application.config.active_record.belongs_to_required_by_default = false

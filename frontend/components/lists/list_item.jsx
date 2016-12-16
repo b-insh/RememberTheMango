@@ -144,7 +144,7 @@ class ListItem extends React.Component {
     const inputClass = this.state.title === "" ? "add-task-button inactive" : "add-task-button";
     const buttonClass = inputClass + " " + this.state.buttonStatus;
     if (tasks && tasks.length === 0) {
-      tasks = ( <div className="list-mangoes">Nothing to do in here... get to it!</div> );
+      tasks = ( <div className="list-mangoes">Nothing in here... get to it!</div> );
     }
     return(
       <section className="tasks group">
