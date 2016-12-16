@@ -20,8 +20,8 @@ section, p {
 
   border-top: 4px solid #000;
   position: absolute;
-  top: 178px;
-  left: 18px;
+  top: 183px;
+  left: 25px;
 }
 
 .sidebar {
@@ -130,12 +130,13 @@ section, p {
   font-size: 12px;
   float: right;
   color: #fff;
-  background: red;
+  background: #F06560;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   cursor: pointer;
   margin-right: 5px;
+  margin-top: 2px;
 }
 
 .close-modal {
