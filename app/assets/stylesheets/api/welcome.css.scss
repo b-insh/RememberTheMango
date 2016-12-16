@@ -15,35 +15,38 @@ section, nav, br, div, ul, li{
 .welcome-page {
   height: 100vh;
   width: auto;
+  min-width: 633px;
   background-color: rgb(0, 96, 191);
   margin: 0 auto;
 }
 
 .welcome-nav {
-  position: relative;
+  // position: relative;
   height: 115px;
-  padding: 50px;
+  // padding: 50px;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.0470588);
   margin: 0 auto;
 }
 
 .welcome-logo {
-  position: absolute;
-  top: 20px;
-  left: 200px;
+  // position: absolute;
+  // top: 20px;
+  // left: 200px;
+  float: left;
   display: inline-block;
   background-image: image-url("logo.png");
   background-repeat: no-repeat;
   background-size: contain;
   width: 220px;
   height: 76px;
+  margin: 20px 0 0 50px;
 }
 
 .welcome-links {
   float: right;
   display: block;
-  margin-right: 180px;
+  margin: 50px 100px 0 0;
 }
 
 .welcome-links a {
@@ -92,7 +95,7 @@ section, nav, br, div, ul, li{
 }
 
 .welcome-content {
-  height: 100vh;
+  height: 100%;
 }
 
 .welcome-content a {
@@ -109,6 +112,7 @@ section, nav, br, div, ul, li{
   display: block;
   margin: 0 auto;
   max-width: 170px;
+  margin-bottom: 15px;
 }
 
 .smart-app-text {
@@ -118,3 +122,84 @@ section, nav, br, div, ul, li{
   padding: 30px;
   color: #fff;
 }
+
+.splash-images {
+  width: 480px;
+  height: auto;
+  background: inherit;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.clouds {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 166px;
+  margin-top: 10px;
+}
+
+.cloud1, .cloud2, .mango-man {
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+.cloud1, .cloud2{
+  background-image: image-url("hp_cloud.png");
+  background-size: 166px auto;
+  width: 166px;
+  height: 166px;
+  color: #000;
+  font-family: 'McLaren', cursive;
+  font-weight: bold;
+  font-size: 21px;
+}
+
+.mango-man {
+  background-image: image-url("hp_steve_1.png");
+  background-size: 261px auto;
+  width: 261px;
+  height: 306px;
+  margin-left: 110px;
+}
+
+.cloud-text {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// comment

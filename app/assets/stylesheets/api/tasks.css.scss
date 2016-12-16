@@ -169,6 +169,7 @@ section, div, span, input, ul, li {
   display: block;
   padding: 6px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .tasks-list a {

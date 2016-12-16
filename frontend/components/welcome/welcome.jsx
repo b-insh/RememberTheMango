@@ -25,7 +25,16 @@ class Welcome extends React.Component {
           <section className="welcome-content">
             <h1 className="smart-app-text">The smart to-do app for busy people.</h1>
             <Link to={'/signup'}>Sign up free</Link>
+
+            <section className="splash-images">
+              <div className="clouds">
+                <span className="cloud1"><span className="cloud-text">Call Sam at 5PM</span></span>
+                <span className="cloud2"><span className="cloud-text">Pick up the mangoes</span></span>
+              </div>
+              <span className="mango-man"></span>
+            </section>
           </section>
+
           { this.props.children }
         </section>
       );

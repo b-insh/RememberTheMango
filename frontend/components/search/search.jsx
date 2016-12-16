@@ -142,7 +142,7 @@ class Search extends React.Component {
     }
 
     if (renderedTasks && renderedTasks.length === 0) {
-      renderedTasks = ( <div className="search-mangoes">Haven't found anything like that here...</div> );
+      renderedTasks = ( <div className="search-mangoes">Can't find anything like that here...</div> );
     }
 
     const inputClass = this.state.title === "" ? "add-task-button inactive" : "add-task-button";
