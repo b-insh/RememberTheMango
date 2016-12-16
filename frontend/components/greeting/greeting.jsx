@@ -11,7 +11,9 @@ class Greeting extends React.Component {
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.updateFile = this.updateFile.bind(this);
     this.handleImageSubmit = this.handleImageSubmit.bind(this);
-    this.state = { dropDownStatus: "dropdown-close", query: "", activeSearchBar: "search-bar group", imageFile: "", imageUrl: "" };
+    this.renderIcon = this.renderIcon.bind(this);
+
+    this.state = { dropDownStatus: "dropdown-close", query: "", activeSearchBar: "search-bar group", imageFile: "", imageUrl: ""};
   }
 
   handleLogout(e) {
@@ -66,6 +68,14 @@ class Greeting extends React.Component {
     }
   }
 
+  renderIcon() {
+    if (this.state.imageUrl !== "") {
+      return <img className="user-icon" src={ this.state.imageUrl } />
+    } else {
+      return <img className="user-icon" src={ currentUser.image_url } />
+    }
+  }
+
   handleImageSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -86,7 +96,7 @@ class Greeting extends React.Component {
         <span><div className="settings" onClick={ this.handleClick }>settings</div>
           <div className={ this.state.dropDownStatus }>
             <span className="dropdown-arrow"></span>
-            <img className="user-icon" src={ currentUser.image_url } />
+            { this.renderIcon() }
             <ul className="header-nav-links">
               <li><h3 className="name"> { currentUser.fname } { currentUser.lname }</h3></li>
               <li><h3 className="email">{ currentUser.email }</h3></li>
