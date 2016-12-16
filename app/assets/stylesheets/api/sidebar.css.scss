@@ -26,14 +26,16 @@ section, p {
 
 .sidebar {
   float: left;
-  margin-top: 40px;
-
+  margin-top: 45px;
+  margin-left: 5px;
+  background: #e4eef8;
   height: 100vh;
   width: 180px;
   padding: 10px;
   box-sizing: border-box;
   font-family: "Helvetica Neue", sans-serif;
   font-size: 13px;
+  border-radius: 3px;
 }
 
 .logo {
