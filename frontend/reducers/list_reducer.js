@@ -21,11 +21,12 @@ const listReducer = (state = initialState, action) => {
       return newState;
     case CREATE_LIST:
       newState = merge({}, state);
-      newState[action.list.id] = action.list;
+      newState.lists[action.list.id] = action.list;
       return newState;
     case DELETE_LIST:
       newState = merge({}, state);
-      delete newState[action.list.id];
+      delete newState.lists[action.list.id].tasks;
+      delete newState.lists[action.list.id];
       return newState;
     case RECEIVE_LIST_ERRORS:
       return {

@@ -35,10 +35,12 @@ class Sidebar extends React.Component {
   }
 
   removeList(list) {
-    list.tasks.forEach((task) => this.props.removeTask(task));
-    this.props.removeList(list).then(() => {
-      this.props.fetchLists().then(() => this.props.router.push('/tasks'));
+    list.tasks.forEach((task) => {
+      this.props.removeTask(task);
     });
+    this.props.removeList(list).then(() => this.props.router.push('/tasks'));
+    // .then(() => { this.props.fetchLists();})
+
   }
 
   createList() {
