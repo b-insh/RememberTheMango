@@ -9,7 +9,6 @@ class TaskDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.handleEditTask = this.handleEditTask.bind(this);
     this.handleListChange = this.handleListChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.updateTask = this.updateTask.bind(this);
@@ -100,7 +99,7 @@ class TaskDetail extends React.Component {
 		              onChange={ this.handleDateChange("start_date") }
 		              isClearable={ true }
 		              placeholderText="No Start Date"
-		              selected={ this.state.start_date ? moment(this.state.start_date) : null } />
+		              selected={ this.state.start_date ? moment(this.state.start_date) : "" } />
 		          </div>
               <div>
 		            <span className="attr-name">due</span>
@@ -109,7 +108,7 @@ class TaskDetail extends React.Component {
 		              onChange={ this.handleDateChange("due_date") }
 		              isClearable={true}
 		              placeholderText="No Due Date"
-		              selected={ this.state.due_date ? moment(this.state.due_date) : null } />
+		              selected={ this.state.due_date ? moment(this.state.due_date) : "" } />
 		          </div>
               <div>
 		            <span className="attr-name">estimate</span>

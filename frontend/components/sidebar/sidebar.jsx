@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 import Modal from 'react-modal';
 import modalStyle from './modalstyle';
 
@@ -35,8 +35,9 @@ class Sidebar extends React.Component {
   }
 
   removeList(list) {
+    list.tasks.forEach((task) => this.props.removeTask(task));
     this.props.removeList(list).then(() => {
-      this.props.fetchLists();
+      this.props.fetchLists().then(() => this.props.router.push('/tasks'));
     });
   }
 
@@ -118,4 +119,4 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);

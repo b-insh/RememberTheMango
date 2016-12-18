@@ -13,10 +13,6 @@ const searchReducer = (state = initialState, action) => {
       newState = merge({}, state);
       delete newState[action.task.id];
       return newState;
-    case CREATE_TASK:
-      newState = merge({}, state);
-      newState[action.task.id] = action.task;
-      return newState;
     case UPDATE_TASK:
       newState = merge({}, state);
       newState[action.task.id] = action.task;
@@ -27,3 +23,9 @@ const searchReducer = (state = initialState, action) => {
 };
 
 export default searchReducer;
+
+
+// case CREATE_TASK:
+// newState = merge({}, state);
+// newState[action.task.id] = action.task;
+// return newState;

@@ -18,7 +18,7 @@ class List < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :author_id
 
-  has_many :tasks,
+  has_many :tasks, dependent: :destroy,
     class_name: :Task,
     primary_key: :id,
     foreign_key: :list_id
