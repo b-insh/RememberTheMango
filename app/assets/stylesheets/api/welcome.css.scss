@@ -21,18 +21,13 @@ section, nav, br, div, ul, li{
 }
 
 .welcome-nav {
-  // position: relative;
   height: 115px;
-  // padding: 50px;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.0470588);
   margin: 0 auto;
 }
 
 .welcome-logo {
-  // position: absolute;
-  // top: 20px;
-  // left: 200px;
   float: left;
   display: inline-block;
   background-image: image-url("logo.png");
@@ -96,6 +91,7 @@ section, nav, br, div, ul, li{
 
 .welcome-content {
   height: 100%;
+  background: rgb(0, 96, 191);
 }
 
 .welcome-content a {
