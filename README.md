@@ -5,7 +5,7 @@
 
 Remember the Mango is a single-page, full-stack web application inspired by Remember the Milk. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 
-![taskspage](tasks_page.png)
+![Remember The Mango](tasks_page.png)
 
 ## Features
 
