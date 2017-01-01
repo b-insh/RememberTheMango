@@ -39,26 +39,3 @@ export const deleteTask = (task) => {
     url: `/api/tasks/${task.id}`
   });
 };
-
-export const createTaskForList = (task, listId) => {
-  return $.ajax({
-    method: "POST",
-    url: `api/tasks?filter=${listId}`,
-    data: { task: task }
-  });
-};
-
-export const updateTaskForList = (task, listId) => {
-  return $.ajax({
-    method: "PATCH",
-    url: `api/lists/${listId}/update_task?filter=${task.id}`,
-    data: { task: task }
-  });
-};
-
-export const removeTaskFromList = (taskId, listId) => {
-  return $.ajax({
-    method: "DELETE",
-    url: `/api/lists/${listId}/remove_task?filter=${taskId}`,
-  });
-};

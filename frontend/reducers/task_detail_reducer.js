@@ -16,10 +16,3 @@ const taskDetailReducer = (state = defaultTask, action) => {
 };
 
 export default taskDetailReducer;
-
-
-
-
-// case DELETE_TASK:
-// debugger
-// return newState;

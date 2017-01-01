@@ -39,8 +39,6 @@ class Sidebar extends React.Component {
       this.props.removeTask(task);
     });
     this.props.removeList(list).then(() => this.props.router.push('/tasks'));
-    // .then(() => { this.props.fetchLists();})
-
   }
 
   createList() {

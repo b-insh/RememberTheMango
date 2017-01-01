@@ -35,19 +35,15 @@ class TaskDetail extends React.Component {
     return e => this.setState({ [property]: e.target.value });
   }
 
-  // handleEditTask(e) {
-  //   if(e.key === 'Enter') {
-  //     const newTask = merge({}, this.props.task, this.state);
-  //     this.props.editTask(newTask);
-  //   }
-  // } from title input: onKeyPress={ this.handleEditTask }
-
   updateTask() {
     const updatedTask = merge({}, this.props.task, this.state);
-    this.props.editTask(updatedTask).then(() => {
-      this.props.fetchTaskDetail(this.props.params.taskId)}).then(() => {
-      this.props.fetchList(this.props.task.list_id);
-    });
+    this.props.editTask(updatedTask)
+      .then(() => {
+        this.props.fetchTaskDetail(this.props.params.taskId);
+      })
+      .then(() => {
+        this.props.fetchList(this.props.task.list_id);
+      });
   }
 
   handleListChange(e) {
@@ -57,7 +53,11 @@ class TaskDetail extends React.Component {
 
   handleDateChange(type) {
 		return (date) => {
-			this.setState({ [type]: date._d }, () => {this.props.editTask({id: this.props.task.id, [type]: this.state[type]})
+			this.setState({ [type]: date._d }, () => {
+        this.props.editTask({
+          id: this.props.task.id,
+          [type]: this.state[type]
+        });
       });
 		};
 	}

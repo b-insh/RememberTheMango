@@ -23,9 +23,3 @@ const searchReducer = (state = initialState, action) => {
 };
 
 export default searchReducer;
-
-
-// case CREATE_TASK:
-// newState = merge({}, state);
-// newState[action.task.id] = action.task;
-// return newState;

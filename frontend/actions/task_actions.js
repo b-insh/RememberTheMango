@@ -52,30 +52,6 @@ export const deleteTask = task => ({
   task
 });
 
-// export function updateTaskForList(task, listId) {
-//   return (dispatch) => {
-//     return taskAPIUtil.updateTaskForList(task, listId).then(
-//       list => { dispatch(receiveList(list));
-//     });
-//   };
-// }
-//
-// export function createTaskForList(task, listId) {
-//   return (dispatch) => {
-//     return taskAPIUtil.createTaskForList(task, listId).then(
-//       list => { dispatch(receiveList(list));
-//     });
-//   };
-// }
-//
-// export function removeTaskFromList(taskId, listId) {
-//   return (dispatch) => {
-//     return taskAPIUtil.removeTaskFromList(taskId, listId).then(
-//       list => { dispatch(receiveList(list));
-//     });
-//   };
-// }
-
 export function fetchTasks() {
   return (dispatch) => {
     return taskAPIUtil.fetchTasks().then(

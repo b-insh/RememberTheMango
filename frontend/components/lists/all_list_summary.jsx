@@ -10,13 +10,6 @@ class AllListSummary extends React.Component{
     this.overdueTasks = this.overdueTasks.bind(this);
   }
 
-  // getAllTasks(lists) {
-  //   let allTasks = [];
-  //   let allLists = values(lists);
-  //   allLists.forEach( list => list.tasks.forEach( task => allTasks.push(task)));
-  //   return allTasks;
-  // }
-
   componentDidMount() {
     this.props.fetchTasks();
   }
