@@ -88,34 +88,38 @@ class Greeting extends React.Component {
 
   render() {
     const { currentUser, logout } = this.props;
-    return(
-      <nav className="nav-bar group">
+    if (currentUser) {
+      return(
+        <nav className="nav-bar group">
         <section className={ this.state.activeSearchBar } onClick={ this.handleSearchClick } onBlur={ this.handleSearchClick }>
-          <div className="search-icon">search</div>
-          <input className="search-input" type="text" value={ this.state.query } onChange={ this.update("query") } onKeyPress={ this.searchTasks } />
+        <div className="search-icon">search</div>
+        <input className="search-input" type="text" value={ this.state.query } onChange={ this.update("query") } onKeyPress={ this.searchTasks } />
         </section>
 
         <span><div className="settings" onClick={ this.handleClick }>settings</div>
-          <div className={ this.state.dropDownStatus }>
-            <span className="dropdown-arrow"></span>
-            { this.renderIcon() }
-            <ul className="header-nav-links">
-              <li><h3 className="name"> { currentUser.fname } { currentUser.lname }</h3></li>
-              <li><h3 className="email">{ currentUser.email }</h3></li>
+        <div className={ this.state.dropDownStatus }>
+        <span className="dropdown-arrow"></span>
+        { this.renderIcon() }
+        <ul className="header-nav-links">
+        <li><h3 className="name"> { currentUser.fname } { currentUser.lname }</h3></li>
+        <li><h3 className="email">{ currentUser.email }</h3></li>
 
-              <div className="input-container">
-                <li>
-                <label for="image-upload" className="fake-input">Choose File
-                <input type="file" className="image-upload" encType="multipart/form-data" onChange={ this.updateFile }/></label></li>
-              </div>
+        <div className="input-container">
+        <li>
+        <label for="image-upload" className="fake-input">Choose File
+        <input type="file" className="image-upload" encType="multipart/form-data" onChange={ this.updateFile }/></label></li>
+        </div>
 
-              <li><button className="image-submit" onClick={ this.handleImageSubmit }>Upload Photo</button></li>
-              <li><input className="logout" type="submit" value="Log Out" onClick={ this.handleLogout } /></li>
-            </ul>
-          </div>
+        <li><button className="image-submit" onClick={ this.handleImageSubmit }>Upload Photo</button></li>
+        <li><input className="logout" type="submit" value="Log Out" onClick={ this.handleLogout } /></li>
+        </ul>
+        </div>
         </span>
-      </nav>
-    );
+        </nav>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
