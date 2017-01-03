@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchTasks, newTask, removeTask } from '../../actions/task_actions';
+import { fetchTasks, newTask, removeTask, editTask } from '../../actions/task_actions';
 import { selectAllTasks } from '../../reducers/selectors';
 import TaskIndex from './task_index';
 

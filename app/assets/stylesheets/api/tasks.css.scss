@@ -47,7 +47,6 @@ section, div, span, input, ul, li {
 }
 
 .tasks {
-  // height: 100%;
   float: left;
   margin: 45px 5px 0 5px;
   background: #fff;
@@ -76,12 +75,13 @@ section, div, span, input, ul, li {
 }
 
 .action-icons {
+  position: relative;
   text-align: center;
   float: left;
-  font-family: "Material Icons";
   color: #f7c247;
   margin-left: 5px;
   font-size: 28px;
+  font-family: "Material Icons";
 }
 
 .actions-icons li {
@@ -200,4 +200,53 @@ section, div, span, input, ul, li {
 
  .completed {
    text-decoration: line-through;
+ }
+
+ .tooltiptext {
+   font-family: "Open Sans", sans-serif;
+   font-size: 10px;
+
+   opacity: 0;
+   width: 90px;
+   background-color: #555;
+   color: #fff;
+   text-align: center;
+   padding: 5px 0;
+   border-radius: 6px;
+
+   position: absolute;
+   top: -30px;
+  //  margin-left: -60px;
+ }
+
+ .tooltiptext:after {
+   content: "";
+   position: absolute;
+   top: 100%;
+   left: 50%;
+   margin-left: -5px;
+   border-width: 5px;
+   border-style: solid;
+   border-color: #555 transparent transparent transparent;
+ }
+
+ .complete-task:hover .complete-tip {
+   display: block;
+   opacity: 1;
+   z-index: 4;
+   left: 0;
+ }
+
+ .uncomplete-task:hover .uncomplete-tip {
+   display: block;
+   opacity: 1;
+   z-index: 4;
+   left: 30px;
+ }
+
+ .delete-task:hover .delete-tip {
+   display: block;
+   opacity: 1;
+   z-index: 4;
+   left: -30px;
  }

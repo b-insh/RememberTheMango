@@ -143,9 +143,9 @@ class TaskIndex extends React.Component {
         </ul>
 
         <ul className={ this.state.iconDisplay }>
-        <li className="delete-task" onClick={ this.handleDeleteTask }>delete</li>
-        <li className="complete-task" onClick={ this.toggleCompleteTask }>check circle</li>
-        <li className="uncomplete-task" onClick={ this.toggleIncompleteTask }>restore</li>
+        <li className="delete-task" onClick={ this.handleDeleteTask }>delete<span className="tooltiptext delete-tip">Delete task</span></li>
+        <li className="complete-task" onClick={ this.toggleCompleteTask }>check circle<span className="tooltiptext complete-tip">Mark complete</span></li>
+        <li className="uncomplete-task" onClick={ this.toggleIncompleteTask }>restore<span className="tooltiptext uncomplete-tip">Mark incomplete</span></li>
         </ul>
 
         </section>
