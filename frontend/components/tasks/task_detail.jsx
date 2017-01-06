@@ -99,6 +99,11 @@ class TaskDetail extends React.Component {
     }
 
     const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    new google.maps.Marker({
+      map: map,
+      icon: 'https://s28.postimg.org/iph3cpxod/map_icon.png',
+      position: JSON.parse(this.state.google_location).location
+    })
 
     let locInput = document.getElementById('loc-input');
     const searchLoc = new google.maps.places.SearchBox(locInput);
