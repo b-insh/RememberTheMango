@@ -30,6 +30,8 @@ class TaskDetail extends React.Component {
   if (prevProps.params.taskId !== this.props.params.taskId) {
       this.props.fetchTaskDetail(this.props.params.taskId).then(() => {
         this.setState({ title: this.props.task.title, location: this.props.task.location, google_location: this.props.task.google_location, start_date: this.props.task.start_date, due_date: this.props.task.due_date, estimate: this.props.task.estimate, list_id: this.props.task.list_id });
+      }).then(() => {
+        this.createLocationMap();
       });
     }
   }
@@ -84,26 +86,36 @@ class TaskDetail extends React.Component {
 
   createLocationMap() {
     let mapOptions;
-    if (this.state.google_location.length === 0) {
+    if (this.state.google_location) {
+      if (this.state.google_location.length !== 0) {
+        mapOptions = {
+          center: {
+            lat: JSON.parse(this.state.google_location).location.lat,
+            lng: JSON.parse(this.state.google_location).location.lng },
+            zoom: 18
+          }
+        } else {
+          mapOptions = {
+            center: { lat: 40.7128, lng: -74.0059 },
+            zoom: 12
+          }
+        }
+
+    } else {
       mapOptions = {
         center: { lat: 40.7128, lng: -74.0059 },
         zoom: 12
       }
-    } else {
-      mapOptions = {
-        center: {
-          lat: JSON.parse(this.state.google_location).location.lat,
-          lng: JSON.parse(this.state.google_location).location.lng },
-        zoom: 18
-      }
     }
 
     const map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    new google.maps.Marker({
-      map: map,
-      icon: 'https://s28.postimg.org/iph3cpxod/map_icon.png',
-      position: JSON.parse(this.state.google_location).location
-    })
+    if (this.state.google_location) {
+      new google.maps.Marker({
+        map: map,
+        icon: 'https://s28.postimg.org/iph3cpxod/map_icon.png',
+        position: JSON.parse(this.state.google_location).location
+      })
+    }
 
     let locInput = document.getElementById('loc-input');
     const searchLoc = new google.maps.places.SearchBox(locInput);
@@ -124,7 +136,6 @@ class TaskDetail extends React.Component {
 
     let bounds = new google.maps.LatLngBounds();
     location.forEach( loc => {
-      console.log(loc);
       markers.push(new google.maps.Marker({
         map: map,
         icon: 'https://s28.postimg.org/iph3cpxod/map_icon.png',
