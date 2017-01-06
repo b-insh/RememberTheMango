@@ -144,6 +144,7 @@ class TaskDetail extends React.Component {
     this.setState({ google_location: JSON.stringify(location[0].geometry) });
     this.setState({ location: location[0].name})
     map.fitBounds(bounds);
+    map.setZoom(18);
   });
 }
 
