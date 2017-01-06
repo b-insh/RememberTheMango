@@ -201,12 +201,12 @@ class TaskDetail extends React.Component {
                   className="task-input location"
                   onChange={ this.update("location") }
                   type="text"
-                  value={ this.state.location }
+                  value={ this.state.location ? this.state.location : "" }
                   placeholder="Add Location"/>
               </div>
             <span className="attr-name">list</span>
             <select className="task-input list-name-dropdown" value={ this.state.list_id } onChange={ this.handleListChange }>
-              <option value={ null }>No List</option>
+              <option value={ "" }>No List</option>
               { this.getLists() }
             </select>
             <input type="submit" className="update-task" value="Update" onClick={ this.updateTask }/>
