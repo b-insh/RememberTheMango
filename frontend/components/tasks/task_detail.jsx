@@ -32,7 +32,7 @@ class TaskDetail extends React.Component {
         this.setState({ title: this.props.task.title, location: this.props.task.location, google_location: this.props.task.google_location, start_date: this.props.task.start_date, due_date: this.props.task.due_date, estimate: this.props.task.estimate, list_id: this.props.task.list_id });
       }).then(() => {
         this.createLocationMap();
-      }).then(() => { console.log(this.state);});
+      });
     }
   }
 
