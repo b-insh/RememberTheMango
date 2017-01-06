@@ -124,6 +124,7 @@ class TaskDetail extends React.Component {
 
     let bounds = new google.maps.LatLngBounds();
     location.forEach( loc => {
+      console.log(loc);
       markers.push(new google.maps.Marker({
         map: map,
         icon: 'https://s28.postimg.org/iph3cpxod/map_icon.png',
@@ -138,6 +139,7 @@ class TaskDetail extends React.Component {
       }
     });
     this.setState({ google_location: JSON.stringify(location[0].geometry) });
+    this.setState({ location: location[0].name})
     map.fitBounds(bounds);
   });
 }
