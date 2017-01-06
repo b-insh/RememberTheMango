@@ -15,6 +15,7 @@ bundle.js.map
 .byebug_history
 .DS_Store
 npm-debug.log
+Gemfile.lock
 
 # Ignore application configuration
 /config/application.yml

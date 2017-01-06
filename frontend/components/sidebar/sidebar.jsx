@@ -102,7 +102,8 @@ class Sidebar extends React.Component {
         <Modal
           isOpen={ this.state.modalOpen }
           onRequestClose={ this.onModalClose }
-          style={ modalStyle }>
+          style={ modalStyle }
+          contentLabel="Modal">
 
           <aside className="modal-content group">
             <input type="submit" className="close-modal" onClick={ this.onModalClose } value="X"/>

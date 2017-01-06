@@ -97,3 +97,14 @@
 .update-task:hover {
   background: #19527f;
 }
+
+.location:focus {
+  width: 400px;
+}
+
+#map {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  margin-top: 15px;
+}

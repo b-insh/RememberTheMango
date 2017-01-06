@@ -14,19 +14,22 @@ class TaskDetail extends React.Component {
     this.updateTask = this.updateTask.bind(this);
     this.goBack = this.goBack.bind(this);
     this.update = this.update.bind(this);
-    this.state = { title: "", location: "", start_date: "", due_date: "", estimate: "", list_id: ""};
+    this.createLocationMap = this.createLocationMap.bind(this);
+    this.state = { title: "", location: "", google_location: "", start_date: "", due_date: "", estimate: "", list_id: ""};
   }
 
   componentDidMount() {
     this.props.fetchTaskDetail(this.props.params.taskId).then(() => {
-      this.setState({ title: this.props.task.title, location: this.props.task.location, start_date: this.props.task.start_date, due_date: this.props.task.due_date, estimate: this.props.task.estimate, list_id: this.props.task.list_id });
+      this.setState({ title: this.props.task.title, location: this.props.task.location, google_location: this.props.task.google_location, start_date: this.props.task.start_date, due_date: this.props.task.due_date, estimate: this.props.task.estimate, list_id: this.props.task.list_id });
+    }).then(() => {
+      this.createLocationMap();
     });
  }
 
  componentDidUpdate(prevProps) {
   if (prevProps.params.taskId !== this.props.params.taskId) {
       this.props.fetchTaskDetail(this.props.params.taskId).then(() => {
-        this.setState({ title: this.props.task.title, location: this.props.task.location, start_date: this.props.task.start_date, due_date: this.props.task.due_date, estimate: this.props.task.estimate, list_id: this.props.task.list_id });
+        this.setState({ title: this.props.task.title, location: this.props.task.location, google_location: this.props.task.google_location, start_date: this.props.task.start_date, due_date: this.props.task.due_date, estimate: this.props.task.estimate, list_id: this.props.task.list_id });
       });
     }
   }
@@ -79,6 +82,61 @@ class TaskDetail extends React.Component {
     hashHistory.push(location);
   }
 
+  createLocationMap() {
+    let mapOptions;
+    if (this.state.google_location.length === 0) {
+      mapOptions = {
+        center: { lat: 40.7128, lng: -74.0059 },
+        zoom: 12
+      }
+    } else {
+      mapOptions = {
+        center: {
+          lat: JSON.parse(this.state.google_location).location.lat,
+          lng: JSON.parse(this.state.google_location).location.lng },
+        zoom: 18
+      }
+    }
+
+    const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    let locInput = document.getElementById('loc-input');
+    const searchLoc = new google.maps.places.SearchBox(locInput);
+
+    map.addListener('bounds_changed', () => {
+      searchLoc.setBounds(map.getBounds());
+    });
+
+    let markers = [];
+    searchLoc.addListener('places_changed', () => {
+      let location = searchLoc.getPlaces();
+      if (location.length === 0 ) return;
+
+      markers.forEach( marker => {
+        marker.setMap(null);
+      });
+      markers = [];
+
+    let bounds = new google.maps.LatLngBounds();
+    location.forEach( loc => {
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: 'https://s28.postimg.org/iph3cpxod/map_icon.png',
+        title: loc.name,
+        position: loc.geometry.location
+      }))
+
+      if (loc.geometry.viewport) {
+        bounds.union(loc.geometry.viewport);
+      } else {
+        bounds.extend(loc.geometry.location)
+      }
+    });
+    this.setState({ google_location: JSON.stringify(location[0].geometry) });
+    map.fitBounds(bounds);
+  });
+}
+
   render() {
     const task = this.props.task;
     if (task) {
@@ -121,10 +179,12 @@ class TaskDetail extends React.Component {
               <div>
                 <span className="attr-name">location</span>
                 <input
+                  id="loc-input"
                   className="task-input location"
                   onChange={ this.update("location") }
                   type="text"
-                  value={ this.state.location }/>
+                  value={ this.state.location }
+                  placeholder="Add Location"/>
               </div>
             <span className="attr-name">list</span>
             <select className="task-input list-name-dropdown" value={ this.state.list_id } onChange={ this.handleListChange }>
@@ -132,6 +192,7 @@ class TaskDetail extends React.Component {
               { this.getLists() }
             </select>
             <input type="submit" className="update-task" value="Update" onClick={ this.updateTask }/>
+            <div id="map"></div>
           {this.props.children}
         </section>
       )
