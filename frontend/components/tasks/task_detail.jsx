@@ -85,7 +85,10 @@ class TaskDetail extends React.Component {
   }
 
   createLocationMap() {
-    let mapOptions;
+    let mapOptions = {
+      center: { lat: 40.7128, lng: -74.0059 },
+      zoom: 12
+    }
     if (this.state.google_location) {
       if (this.state.google_location.length !== 0) {
         mapOptions = {
@@ -94,19 +97,8 @@ class TaskDetail extends React.Component {
             lng: JSON.parse(this.state.google_location).location.lng },
             zoom: 18
           }
-        } else {
-          mapOptions = {
-            center: { lat: 40.7128, lng: -74.0059 },
-            zoom: 12
-          }
         }
-
-    } else {
-      mapOptions = {
-        center: { lat: 40.7128, lng: -74.0059 },
-        zoom: 12
       }
-    }
 
     const map = new google.maps.Map(document.getElementById('map'), mapOptions);
     if (this.state.google_location) {
