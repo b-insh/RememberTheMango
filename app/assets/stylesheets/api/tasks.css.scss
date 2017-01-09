@@ -78,7 +78,7 @@ section, div, span, input, ul, li {
   position: relative;
   text-align: center;
   float: left;
-  color: #f7c247;
+  color: #ebae4d;
   margin-left: 5px;
   font-size: 28px;
   font-family: "Material Icons";
@@ -108,6 +108,10 @@ section, div, span, input, ul, li {
   cursor: pointer;
   height: 30px;
   width: 30px;
+}
+
+.delete-task:hover, .complete-task:hover, .uncomplete-task:hover {
+  color: #f0c37c;
 }
 
 .highlight {
@@ -217,7 +221,6 @@ section, div, span, input, ul, li {
 
    position: absolute;
    top: -30px;
-  //  margin-left: -60px;
  }
 
  .tooltiptext:after {
