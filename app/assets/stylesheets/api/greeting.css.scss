@@ -29,7 +29,7 @@ nav, div, h3 {
   float: left;
   height: 30px;
   width: 294px;
-  margin-left: 184px;
+  margin-left: 188px;
   margin-top: 5px;
   background-color: #fff;
   opacity: .2;
@@ -57,6 +57,10 @@ nav, div, h3 {
   margin-left: 32px;
 }
 
+.active {
+  opacity: 1;
+}
+
 .user-icon {
   width: 80px;
   height: auto;
@@ -78,6 +82,7 @@ nav, div, h3 {
   border-radius: 3px;
   background: #fff;
   font-size: 13px;
+  cursor: pointer;
 }
 
 .fake-input {
@@ -88,8 +93,16 @@ nav, div, h3 {
   margin-bottom: 10px;
 }
 
-.image-submit:hover {
+.image-submit:hover, .fake-input:hover {
   background: #e4eef8;
+}
+
+.image-submit:active, .fake-input:active {
+  background: #fff;
+}
+
+.fake-input:active {
+  box-shadow: 0 0 1px 1px #38aafc;
 }
 
 .fake-input {
@@ -102,14 +115,10 @@ nav, div, h3 {
   position: relative;
 }
 
-.active {
-  opacity: 1;
-}
 
 .dropdown-close {
   display: none;
 }
-
 
 .settings {
   font-family: "Material Icons";
@@ -121,6 +130,10 @@ nav, div, h3 {
   margin: 8px 18px 4px 0;
   position: relative;
   height: 50px;
+}
+
+.settings:hover {
+  color: #fff;
 }
 
 .dropdown-open {
@@ -149,8 +162,24 @@ nav, div, h3 {
   font-size: 14px;
   cursor: pointer;
   float: left;
-  margin-top: 5px;
-  margin-left: 3px;
+  color: #ccc;
+  margin-top: 3px;
+  margin-left: 2px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 3px 5px;
+}
+
+.logout:hover {
+  border: 1px solid #000;
+  color: #000;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding: 3px 5px;
+  background: #fff;
+}
+.logout:active {
+  background: #e4eef8;
 }
 
 .name {
