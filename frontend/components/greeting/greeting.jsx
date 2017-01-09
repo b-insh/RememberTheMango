@@ -69,6 +69,7 @@ class Greeting extends React.Component {
   }
 
   renderIcon() {
+    debugger
     if (this.state.imageUrl !== "") {
       return <img className="user-icon" src={ this.state.imageUrl } />
     } else {
@@ -88,6 +89,7 @@ class Greeting extends React.Component {
 
   render() {
     const { currentUser, logout } = this.props;
+    let renderIcon = this.renderIcon();
     if (currentUser) {
       return(
         <nav className="nav-bar group">
@@ -99,7 +101,7 @@ class Greeting extends React.Component {
         <span><div className="settings" onClick={ this.handleClick }>settings</div>
         <div className={ this.state.dropDownStatus }>
         <span className="dropdown-arrow"></span>
-        { this.renderIcon() }
+        { renderIcon }
         <ul className="header-nav-links">
         <li><h3 className="name"> { currentUser.fname } { currentUser.lname }</h3></li>
         <li><h3 className="email">{ currentUser.email }</h3></li>
