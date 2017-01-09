@@ -20,7 +20,7 @@ section, p {
 
   border-top: 4px solid #000;
   position: absolute;
-  top: 199px;
+  top: 202px;
   left: 25px;
 }
 
@@ -32,7 +32,7 @@ section, p {
   width: 180px;
   padding: 10px;
   box-sizing: border-box;
-  font-family: "Helvetica Neue", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 13px;
   border-radius: 3px;
 }
@@ -113,6 +113,15 @@ section, p {
   height: 14px;
   border-radius: 50%;
   cursor: pointer;
+  margin-top: 3px;
+}
+
+.lists-header:hover .add-list:hover {
+  background: #4c8fd2;
+}
+
+.lists-header:hover .add-list:active {
+  background: #0060bf;
 }
 
 .lists {
@@ -139,6 +148,14 @@ section, p {
   cursor: pointer;
   margin-right: 5px;
   margin-top: 2px;
+}
+
+.delete-list:hover {
+  background: #903c39;
+}
+
+.delete-list:active {
+  background: #f06560;
 }
 
 .close-modal {
@@ -182,4 +199,12 @@ section, p {
   font-size: 14px;
   padding: 6px 13px;
   margin-top: 15px;
+}
+
+.add-list-button:hover {
+  background: #6caef1;
+}
+
+.add-list-button:active {
+  background: #2e8ceb;
 }

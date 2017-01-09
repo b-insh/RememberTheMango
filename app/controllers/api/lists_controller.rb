@@ -20,7 +20,7 @@ class Api::ListsController < ApplicationController
 
   def destroy
     @list = current_user.lists.find(params[:id])
-    @list.delete
+    @list.destroy
     render :show
   end
 

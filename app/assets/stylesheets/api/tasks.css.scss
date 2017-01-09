@@ -27,11 +27,13 @@ section, div, span, input, ul, li {
   overflow: hidden;
   border-radius: 3px;
 
+  font-family: "Open Sans", sans-serif;
   text-align: center;
   font-weight: bold;
   font-size: 16px;
-  padding: 10px;
+
   box-sizing: border-box;
+  padding: 10px;
 }
 
 .list-mangoes {
@@ -157,6 +159,15 @@ section, div, span, input, ul, li {
   margin-right: 2%;
   display: block;
   float: right;
+  cursor: pointer;
+}
+
+.button-open:hover {
+  background: #4c8fd2;
+}
+
+.button-open:active {
+  background: #0060bf;
 }
 
 .hidden {
