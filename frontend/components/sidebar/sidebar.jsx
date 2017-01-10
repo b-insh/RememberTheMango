@@ -70,7 +70,7 @@ class Sidebar extends React.Component {
   if (lists) {
     lists = lists.map( (list) => {
       let className = this.state.selectedListIdx === list.id ? "list-highlight" : "";
-      let removeButton = this.state.selectedListIdx === list.id ? (<span className="delete-list" onClick={ () => this.removeList(list) }>remove circle</span>) : "";
+      let removeButton = this.state.selectedListIdx === list.id ? (<span className="delete-list" onClick={ () => this.removeList(list) }>remove circle<span className="tooltiptext delete-list-tip">Delete list</span></span>) : "";
       return (
         <Link to={ `/lists/${list.id}` }>
           <li key={ list.id } className={ `${className}` } onClick={ () => this.toggleList(list.id) }>
@@ -91,7 +91,7 @@ class Sidebar extends React.Component {
           <ul className="lists group">
             <li className="lists-header" onClick={ this.dropDownLists }>
             <div className="pull-down-arrow"></div>Lists
-              <span className="add-list" onClick={ this.toggleModal }>add circle</span>
+              <span className="add-list" onClick={ this.toggleModal }>add circle<span className="tooltiptext add-list-tip">Create list</span></span>
               </li>
             <ul className={ this.state.visibleLists }>
             { lists }

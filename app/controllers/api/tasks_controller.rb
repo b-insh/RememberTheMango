@@ -5,20 +5,12 @@ class Api::TasksController < ApplicationController
   end
 
   def create
-    # if params[:filter]
-    #   @task = current_user.tasks.new(task_params)
-    #   @task.list_id = params[:filter].to_i
-    #   @task.save
-    #   @list = List.find(params[:filter])
-    #   render "api/lists/show"
-    # else
-      @task = current_user.tasks.new(task_params)
-      if @task.save
-        render :show
-      else
-        render json: @task.errors, status: 422
-      end
-    # end
+    @task = current_user.tasks.new(task_params)
+    if @task.save
+      render :show
+    else
+      render json: @task.errors, status: 422
+    end
   end
 
   def update

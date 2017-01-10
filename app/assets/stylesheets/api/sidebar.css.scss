@@ -79,6 +79,15 @@ section, p {
 
 .add-list {
   display: none;
+  position: relative;
+}
+
+.add-list:hover .add-list-tip{
+  display: block;
+  width: 70px;
+  opacity: 1;
+  z-index: 4;
+  left: -28px;
 }
 
 .list-highlight {
@@ -136,16 +145,19 @@ section, p {
 }
 
 .delete-list {
-  display: inline-block;
   font-family: "Material Icons";
   font-size: 12px;
-  float: right;
   color: #fff;
   background: #F06560;
+  cursor: pointer;
+
+  float: right;
+  position: relative;
+
+  display: inline-block;
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  cursor: pointer;
   margin-right: 5px;
   margin-top: 2px;
 }
@@ -156,6 +168,14 @@ section, p {
 
 .delete-list:active {
   background: #f06560;
+}
+
+.delete-list:hover .delete-list-tip {
+  display: block;
+  opacity: 1;
+  z-index: 4;
+  width: 70px;
+  left: -30px;
 }
 
 .close-modal {
