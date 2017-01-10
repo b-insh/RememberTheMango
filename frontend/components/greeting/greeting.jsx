@@ -69,7 +69,6 @@ class Greeting extends React.Component {
   }
 
   renderIcon() {
-    debugger
     if (this.state.imageUrl !== "") {
       return <img className="user-icon" src={ this.state.imageUrl } />
     } else {
