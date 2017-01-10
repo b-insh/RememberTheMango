@@ -15,7 +15,7 @@ module RememberTheMango
         :bucket => ENV["s3_bucket"],
         :access_key_id => ENV["s3_access_key_id"],
         :secret_access_key => ENV["s3_secret_access_key"],
-        :s3_region => ENV["AWS_REGION"]
+        :s3_region => ENV["s3_region"]
       }
     }
     config.active_record.raise_in_transactional_callbacks = true
