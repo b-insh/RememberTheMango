@@ -15,7 +15,7 @@ class TaskDetail extends React.Component {
     this.goBack = this.goBack.bind(this);
     this.update = this.update.bind(this);
     this.createLocationMap = this.createLocationMap.bind(this);
-    this.state = { title: "", location: "", google_location: "", start_date: "", due_date: "", estimate: "", list_id: ""};
+    this.state = { title: "", location: "", google_location: "", start_date: "", due_date: "", estimate: "", list_id: "" };
   }
 
   componentDidMount() {
@@ -204,7 +204,7 @@ class TaskDetail extends React.Component {
             </select>
             <input type="submit" className="update-task" value="Update" onClick={ this.updateTask }/>
             <div id="map"></div>
-          {this.props.children}
+          { this.props.children }
         </section>
       )
     } else {
