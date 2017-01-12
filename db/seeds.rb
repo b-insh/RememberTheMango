@@ -13,6 +13,7 @@ List.create(title: "App Academy", author_id: User.find_by(username: "mangomango"
 List.create(title: "Get It Together", author_id: User.find_by(username: "mangomango").id)
 List.create(title: "desserts to eat", author_id: User.find_by(username: "mangomango").id)
 List.create(title: "after a/A", author_id: User.find_by(username: "mangomango").id)
+List.create(title: "delete me!", author_id: User.find_by(username: "mangomango").id)
 
 Task.destroy_all
 Task.create(title: "walk the dog", author_id: User.find_by(username: "mangomango").id, list_id: List.find_by(title: "Get It Together").id, due_date: Date.new(2016, 12,28), estimate: 5)
@@ -35,3 +36,5 @@ Task.create(title: "cookies", author_id: User.find_by(username: "mangomango").id
 Task.create(title: "fudge", author_id: User.find_by(username: "mangomango").id, list_id: List.find_by(title: "desserts to eat").id, estimate: 45)
 Task.create(title: "chocolate covered pretzels", author_id: User.find_by(username: "mangomango").id, list_id: List.find_by(title: "desserts to eat").id, location: "Jen's house" )
 Task.create(title: "peanut m&ms", author_id: User.find_by(username: "mangomango").id, list_id: List.find_by(title: "desserts to eat").id, start_date: Date.new(2016, 12, 27))
+
+Task.create(title: "i will be deleted when my list gets deleted", author_id: User.find_by(username: "mangomango").id, list_id: List.find_by(title: "delete me!").id)
