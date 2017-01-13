@@ -129,6 +129,7 @@ section, nav, br, div, ul, li{
 
 .clouds {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   height: 166px;
@@ -144,12 +145,18 @@ section, nav, br, div, ul, li{
 .cloud1, .cloud2{
   background-image: image-url("hp_cloud.png");
   background-size: 166px auto;
+  position: absolute;
   width: 166px;
   height: 166px;
   color: #000;
   font-family: 'McLaren', cursive;
   font-weight: bold;
   font-size: 21px;
+  top: 28px;
+}
+
+.cloud2 {
+  left: 310px;
 }
 
 .mango-man {
