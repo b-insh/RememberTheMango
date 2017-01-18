@@ -60,7 +60,6 @@ nav, div, h3 {
   top: 0;
   left: -2px;
   margin-left: 32px;
-  //
   height: 100%;
   width: calc(100% - 35px);
 }
@@ -86,21 +85,27 @@ nav, div, h3 {
 
 .image-submit, .fake-input {
   background: #fff;
-  font-size: 13px;
   color: #045DBB;
+  border: 1px solid #045DBB;
   cursor: pointer;
 
   margin-top: 10px;
-  border: 1px solid #045DBB;
   border-radius: 3px;
 }
 
 .fake-input {
-  text-align: left;
+  font-size: 13px;
+  text-align: center;
+  display: inline-block;
+  padding: 3px 5px;
+  z-index: 1;
+  width: 90px;
 }
 
 .image-submit {
+  font-size: 12px;
   margin-bottom: 10px;
+  width: 101px;
 }
 
 .image-submit:hover, .fake-input:hover {
@@ -115,16 +120,9 @@ nav, div, h3 {
   box-shadow: 0 0 1px 1px #38aafc;
 }
 
-.fake-input {
-  display: inline-block;
-  padding: 2px 5px 2px 5px;
-  z-index: 1;
-}
-
 .input-container {
   position: relative;
 }
-
 
 .dropdown-close {
   display: none;
