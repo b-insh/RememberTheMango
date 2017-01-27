@@ -67,12 +67,6 @@ class TaskDetail extends React.Component {
 		};
 	}
 
-  getLists() {
-		return (
-			this.props.lists.map(list => <option key={list.id} value={list.id}>{list.title}</option>)
-		)
-  }
-
   goBack() {
     let location = hashHistory.getCurrentLocation().pathname;
     if (this.props.location.pathname.includes("lists") || this.props.location.pathname.includes("search")) {
@@ -88,7 +82,7 @@ class TaskDetail extends React.Component {
     let mapOptions = {
       center: { lat: 40.7128, lng: -74.0059 },
       zoom: 12
-    }
+    };
     if (this.state.google_location) {
       if (this.state.google_location.length !== 0) {
         mapOptions = {
@@ -96,7 +90,7 @@ class TaskDetail extends React.Component {
             lat: JSON.parse(this.state.google_location).location.lat,
             lng: JSON.parse(this.state.google_location).location.lng },
             zoom: 18
-          }
+          };
         }
       }
 
@@ -106,7 +100,7 @@ class TaskDetail extends React.Component {
         map: map,
         icon: 'https://s28.postimg.org/iph3cpxod/map_icon.png',
         position: JSON.parse(this.state.google_location).location
-      })
+      });
     }
 
     let locInput = document.getElementById('loc-input');
@@ -133,16 +127,16 @@ class TaskDetail extends React.Component {
         icon: 'https://s28.postimg.org/iph3cpxod/map_icon.png',
         title: loc.name,
         position: loc.geometry.location
-      }))
+      }));
 
       if (loc.geometry.viewport) {
         bounds.union(loc.geometry.viewport);
       } else {
-        bounds.extend(loc.geometry.location)
+        bounds.extend(loc.geometry.location);
       }
     });
     this.setState({ google_location: JSON.stringify(location[0].geometry) });
-    this.setState({ location: location[0].name})
+    this.setState({ location: location[0].name});
     map.fitBounds(bounds);
     map.setZoom(18);
   });
@@ -200,7 +194,9 @@ class TaskDetail extends React.Component {
             <span className="attr-name">list</span>
             <select className="task-input list-name-dropdown" value={ this.state.list_id } onChange={ this.handleListChange }>
               <option value={ "" }>No List</option>
-              { this.getLists() }
+              { this.props.lists.map(list => (
+                <option key={list.id} value={list.id}>{list.title}</option>)
+              )}
             </select>
             <input type="submit" className="update-task" value="Update" onClick={ this.updateTask }/>
             <div id="map"></div>
