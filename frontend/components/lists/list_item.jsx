@@ -18,11 +18,20 @@ class ListItem extends React.Component {
     this.findIncompleteTasks = this.findIncompleteTasks.bind(this);
     this.findCompleteTasks = this.findCompleteTasks.bind(this);
 
-    this.state = { title: "", selectedTask: "", buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight", tasks: this.props.list.tasks };
+    this.state = {
+      title: "",
+      selectedTask: "",
+      buttonStatus: "hidden",
+      iconDisplay: "hidden",
+      completeTasks: "",
+      incompleteTasks: "highlight",
+      tasks: this.props.list.tasks
+    };
   }
 
   componentDidMount() {
-    this.props.fetchList(this.props.params.listId);
+    const { fetchList, params } = this.props;
+    fetchList(params.listId);
   }
 
   componentWillReceiveProps(newProps) {
@@ -32,8 +41,10 @@ class ListItem extends React.Component {
   }
 
   handleSelectTask(task) {
-    this.setState({ selectedTask: task });
-    this.setState({ iconDisplay: "action-icons"});
+    this.setState({
+      selectedTask: task,
+      iconDisplay: "action-icons"
+    });
   }
 
     updateTask(e) {
@@ -41,18 +52,20 @@ class ListItem extends React.Component {
     }
 
     handleNewTask(e) {
-      let task = Object.assign({}, this.state, { list_id: this.props.list.id });
-      this.props.newTask(task).then(() => {
-        this.props.fetchList(this.props.params.listId);
+      const { list, newTask, fetchList, params } = this.props;
+      let task = Object.assign({}, this.state, { list_id: list.id });
+      newTask(task).then(() => {
+        fetchList(params.listId);
       });
       this.setState({ title: "" });
     }
 
     handleDeleteTask() {
-      this.props.removeTask(this.state.selectedTask).then(() => {
-        this.props.fetchList(this.props.params.listId);
+      const { removeTask, fetchList, params, router } = this.props;
+      removeTask(this.state.selectedTask).then(() => {
+        fetchList(params.listId);
       });
-      this.props.router.push(`lists/${this.props.params.listId}`);
+      router.push(`lists/${params.listId}`);
     }
 
     displayButton() {
@@ -83,20 +96,22 @@ class ListItem extends React.Component {
     }
 
     toggleCompleteTask() {
-      let listId = this.props.list.id;
+      const { editTask, fetchList, params, list } = this.props;
+      let listId = list.id;
       let completedTask = Object.assign({}, this.state.selectedTask, { completed: true });
-      this.props.editTask(completedTask).then(() => {
-        this.props.fetchList(this.props.params.listId);
+      editTask(completedTask).then(() => {
+        fetchList(params.listId);
       });
       this.setState({ selectedTask: "" });
 
     }
 
     toggleIncompleteTask() {
-      let listId = this.props.list.id;
+      const { list, editTask, fetchList, params } = this.props;
+      let listId = list.id;
       let incompleteTask = Object.assign({}, this.state.selectedTask, { completed: false });
-      this.props.editTask(incompleteTask).then(() => {
-        this.props.fetchList(this.props.params.listId);
+      editTask(incompleteTask).then(() => {
+        fetchList(params.listId);
       });
       this.setState({ selectedTask: "" });
     }
@@ -122,13 +137,20 @@ class ListItem extends React.Component {
     }
 
   render() {
-    const list = this.props.list;
+    const { list } = this.props;
+    const {
+      incompleteTasks,
+      selectedTask,
+      title,
+      buttonStatus,
+      completeTasks,
+      iconDisplay } = this.state;
+
     let tasks;
     if (list.id) {
       const openPath = `/lists/${list.id}/tasks`;
       const closePath = `/lists/${list.id}`;
-      tasks = list.tasks;
-      tasks = this.state.incompleteTasks === "highlight" ? this.findIncompleteTasks(tasks) : this.findCompleteTasks(tasks);
+      tasks = this.state.incompleteTasks === "highlight" ? this.findIncompleteTasks(list.tasks) : this.findCompleteTasks(list.tasks);
       tasks = tasks.map( (task, index) => {
         return(
           <TaskItem
@@ -148,27 +170,69 @@ class ListItem extends React.Component {
     }
     return(
       <section className="tasks group">
-
         <section className="task-bar">
           <ul className="task-status group">
-            <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
-            <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
+            <li
+              className={ this.state.incompleteTasks }
+              onClick={ this.toggleIncomplete }>
+              Incomplete
+            </li>
+            <li
+              className={ this.state.completeTasks }
+              onClick={ this.toggleComplete }>
+              Completed
+            </li>
           </ul>
 
           <ul className={ this.state.iconDisplay }>
-            <li className="delete-task" onClick={ this.handleDeleteTask }>delete<span className="tooltiptext delete-tip">Delete task</span></li>
-            <li className="complete-task" onClick={ this.toggleCompleteTask }>check circle<span className="tooltiptext complete-tip">Mark complete</span></li>
-            <li className="uncomplete-task" onClick={ this.toggleIncompleteTask }>restore<span className="tooltiptext uncomplete-tip">Mark incomplete</span></li>
+            <li
+              className="delete-task"
+              onClick={ this.handleDeleteTask }>
+              delete
+              <span
+                className="tooltiptext delete-tip">
+                Delete task
+              </span>
+            </li>
+            <li
+              className="complete-task"
+              onClick={ this.toggleCompleteTask }>
+              check circle
+              <span
+                className="tooltiptext complete-tip">
+                Mark complete
+              </span>
+            </li>
+            <li
+              className="uncomplete-task"
+              onClick={ this.toggleIncompleteTask }>
+              restore
+              <span
+                className="tooltiptext uncomplete-tip">
+                Mark incomplete
+              </span>
+            </li>
           </ul>
-
         </section>
 
-        <section className="add-task group" onFocus={ this.displayButton } onBlur={ this.undisplayButton }>
+        <section
+          className="add-task group"
+          onFocus={ this.displayButton }
+          onBlur={ this.undisplayButton }>
 
-          <input className="task-text" type="text" value={ this.state.title } placeholder="Add a task..." onChange={ (e) => this.updateTask(e) }/>
+          <input
+            className="task-text"
+            type="text"
+            value={ this.state.title }
+            placeholder="Add a task..."
+            onChange={ (e) => this.updateTask(e) }/>
 
           <div className="button-wrapper" >
-            <input type="submit" onClick={ this.handleNewTask } className={ buttonClass } value="Add Task" />
+            <input
+              type="submit"
+              onClick={ this.handleNewTask }
+              className={ buttonClass }
+              value="Add Task" />
           </div>
         </section>
 

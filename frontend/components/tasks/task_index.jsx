@@ -18,7 +18,14 @@ class TaskIndex extends React.Component {
     this.findIncompleteTasks = this.findIncompleteTasks.bind(this);
     this.findCompleteTasks = this.findCompleteTasks.bind(this);
 
-    this.state = { title: "", selectedTask: "", buttonStatus: "hidden", iconDisplay: "hidden", completeTasks: "", incompleteTasks: "highlight"};
+    this.state = {
+      title: "",
+      selectedTask: "",
+      buttonStatus: "hidden",
+      iconDisplay: "hidden",
+      completeTasks: "",
+      incompleteTasks: "highlight"
+    };
   }
 
   componentDidMount() {
@@ -36,16 +43,18 @@ class TaskIndex extends React.Component {
   }
 
   handleSelectTask(task) {
-    this.setState({ selectedTask: task });
-    this.setState({ iconDisplay: "action-icons"});
-
+    this.setState({
+      selectedTask: task,
+      iconDisplay: "action-icons"
+    });
   }
 
   handleDeleteTask() {
-    this.props.removeTask(this.state.selectedTask).then(() => {
-      this.props.fetchTasks();
+    const { removeTask, fetchTasks, router } = this.props;
+    removeTask(this.state.selectedTask).then(() => {
+      fetchTasks();
     });
-    this.props.router.push("/tasks");
+    router.push("/tasks");
   }
 
   displayButton() {
