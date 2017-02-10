@@ -44,18 +44,17 @@ class TaskDetail extends React.Component {
  }
 
  componentDidUpdate(prevProps) {
-   const { fetchTaskDetail, params, task } = this.props;
-
-   if (prevProps.params.taskId !== params.taskId) {
+  const { fetchTaskDetail, params } = this.props;
+  if (prevProps.params.taskId !== params.taskId) {
       fetchTaskDetail(params.taskId).then(() => {
         this.setState({
-          title: task.title,
-          location: task.location,
-          google_location: task.google_location,
-          start_date: task.start_date,
-          due_date: task.due_date,
-          estimate: task.estimate,
-          list_id: task.list_id
+          title: this.props.task.title,
+          location: this.props.task.location,
+          google_location: this.props.task.google_location,
+          start_date: this.props.task.start_date,
+          due_date: this.props.task.due_date,
+          estimate: this.props.task.estimate,
+          list_id: this.props.task.list_id
         });
       }).then(() => {
         this.createLocationMap();
@@ -68,7 +67,7 @@ class TaskDetail extends React.Component {
   }
 
   updateTask() {
-    const { task, editTask, fetchTaskDetail, params, fetchList } = this.props;
+    const { editTask, fetchTaskDetail, fetchList, params, task } = this.props;
     const updatedTask = merge({}, task, this.state);
     editTask(updatedTask)
       .then(() => {
@@ -85,7 +84,7 @@ class TaskDetail extends React.Component {
 
 
   handleDateChange(type) {
-    const { editTask, task } = this.props;
+    const { task, editTask } = this.props;
 		return (date) => {
 			this.setState({ [type]: date._d }, () => {
         editTask({
@@ -112,7 +111,6 @@ class TaskDetail extends React.Component {
       center: { lat: 40.7128, lng: -74.0059 },
       zoom: 12
     };
-
     const { google_location } = this.state;
     if (google_location) {
       if (google_location.length !== 0) {
@@ -190,65 +188,61 @@ class TaskDetail extends React.Component {
               <div className="close" onClick={ this.goBack }>close x</div>
             </li>
             <li>
-              <textarea
-                value={ title }
-                className="task-name"
-                onChange={ this.update("title")} />
+              <textarea value={ title } className="task-name" onChange={ this.update("title")} />
             </li>
           </ul>
-          <div>
-            <span className="attr-name">start</span>
-            <DatePicker
-              className="task-input datepicker"
-              onChange={ this.handleDateChange("start_date") }
-              isClearable={ true }
-              placeholderText="No Start Date"
-              selected={ start_date ? moment(start_date) : "" } />
-          </div>
-          <div>
-            <span className="attr-name">due</span>
-            <DatePicker
-              className="task-input datepicker"
-              onChange={ this.handleDateChange("due_date") }
-              isClearable={true}
-              placeholderText="No Due Date"
-              selected={ due_date ? moment(due_date) : "" } />
-          </div>
-          <div>
-            <span className="attr-name">estimate</span>
+            <div>
+		            <span className="attr-name">start</span>
+		            <DatePicker
+		              className="task-input datepicker"
+		              onChange={ this.handleDateChange("start_date") }
+		              isClearable={ true }
+		              placeholderText="No Start Date"
+		              selected={ start_date ? moment(start_date) : "" } />
+		          </div>
+              <div>
+		            <span className="attr-name">due</span>
+		            <DatePicker
+		              className="task-input datepicker"
+		              onChange={ this.handleDateChange("due_date") }
+		              isClearable={true}
+		              placeholderText="No Due Date"
+		              selected={ due_date ? moment(due_date) : "" } />
+		          </div>
+              <div>
+		            <span className="attr-name">estimate</span>
+		            <input
+		              className="task-input estimate"
+		              onChange={ this.update("estimate") }
+		              type="number" min="0"
+		              value={ estimate ? estimate : "" } />minutes
+		          </div>
+              <div>
+                <span className="attr-name">location</span>
+                <input
+                  id="loc-input"
+                  className="task-input location"
+                  onChange={ this.update("location") }
+                  type="text"
+                  value={ location ? location : "" }
+                  placeholder="Add Location"/>
+              </div>
+            <span className="attr-name">list</span>
+            <select
+              className="task-input list-name-dropdown"
+              value={ list_id }
+              onChange={ this.handleListChange }>
+              <option value={ "" }>No List</option>
+              { this.props.lists.map(list => (
+                <option key={list.id} value={list.id}>{list.title}</option>)
+              )}
+            </select>
             <input
-              className="task-input estimate"
-              onChange={ this.update("estimate") }
-              type="number" min="0"
-              value={ estimate } />
-              minutes
-          </div>
-          <div>
-            <span className="attr-name">location</span>
-            <input
-              id="loc-input"
-              className="task-input location"
-              onChange={ this.update("location") }
-              type="text"
-              value={ location ? location : "" }
-              placeholder="Add Location"/>
-          </div>
-          <span className="attr-name">list</span>
-          <select
-            className="task-input list-name-dropdown"
-            value={ list_id }
-            onChange={ this.handleListChange }>
-            <option value={ "" }>No List</option>
-            { this.props.lists.map(list => (
-              <option key={list.id} value={list.id}>{list.title}</option>)
-            )}
-          </select>
-          <input
-            type="submit"
-            className="update-task"
-            value="Update"
-            onClick={ this.updateTask }/>
-          <div id="map"></div>
+              type="submit" 
+              className="update-task" 
+              value="Update" 
+              onClick={ this.updateTask }/>
+            <div id="map"></div>
           { this.props.children }
         </section>
       )
