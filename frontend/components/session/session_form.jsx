@@ -4,28 +4,37 @@ import { Link } from 'react-router';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { fname: "", lname: "", email: "", username: "", password: "" };
 
     this.update = this.update.bind(this);
     this.allErrors = this.allErrors.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearErrors = this.props.clearErrors;
     this.guestLogin = this.guestLogin.bind(this);
+
+    this.state = {
+      fname: "",
+      lname: "",
+      email: "",
+      username: "",
+      password: ""
+    };
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    const { processForm, router } = this.props;
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(() => {
-      this.props.router.push('/tasks');
+    processForm(user).then(() => {
+      router.push('/tasks');
     });
   }
 
   guestLogin(e) {
     e.preventDefault();
-    const guestUser = {username: "mangomango", password: "ilovemangoes123"};
-    this.props.login(guestUser).then(() => {
-      this.props.router.push('/tasks');
+    const { login, router } = this.props;
+    const guestUser = { username: "mangomango", password: "ilovemangoes123" };
+    login(guestUser).then(() => {
+      router.push('/tasks');
     });
   }
 
@@ -34,66 +43,78 @@ class SessionForm extends React.Component {
   }
 
   allErrors(property) {
-    if (this.props.errors[property] === undefined) return null;
-    return this.props.errors[property].map((error, index) => {
+    const { errors } = this.props;
+    if (errors[property] === undefined) return null;
+    return errors[property].map((error, index) => {
       return <li key={ index }>{ error }</li>;
     });
   }
 
   render() {
-    const otherLinkUrl = this.props.formType === 'login' ? 'signup' : 'login';
-    const otherLinkText = this.props.formType === 'login' ? 'Sign up for free' : 'Log in';
-    const submitText = this.props.formType === 'login' ? 'Log in' : 'Sign up!';
-    const greetingText = this.props.formType === 'login' ? 'Been here before? Welcome back!' : 'Sign up for free.';
-    const fnameErr = this.props.errors["fname"] === undefined ? "" : "hasError";
-    const lnameErr = this.props.errors["lname"] === undefined ? "" : "hasError";
-    const unameErr = this.props.errors["username"] === undefined ? "" : "hasError";
-    const emailErr = this.props.errors["email"] === undefined ? "" : "hasError";
-    const passwordErr = this.props.errors["password"] === undefined ? "" : "hasError";
-    const baseErr = this.props.errors["base"] === undefined ? "" : "signinError";
+    const { formType, errors, location } = this.props;
+    const { fname, lname, email, username, password } = this.state;
 
-    const newUserFields = this.props.formType === 'login' ? "" : (
+    const otherLinkUrl = formType === 'login' ? 'signup' : 'login';
+    const otherLinkText = formType === 'login' ? 'Sign up for free' : 'Log in';
+    const submitText = formType === 'login' ? 'Log in' : 'Sign up!';
+    const greetingText = formType === 'login' ? 'Been here before? Welcome back!' : 'Sign up for free.';
+    const fnameErr = errors["fname"] === undefined ? "" : "hasError";
+    const lnameErr = errors["lname"] === undefined ? "" : "hasError";
+    const unameErr = errors["username"] === undefined ? "" : "hasError";
+    const emailErr = errors["email"] === undefined ? "" : "hasError";
+    const passwordErr = errors["password"] === undefined ? "" : "hasError";
+    const baseErr = errors["base"] === undefined ? "" : "signinError";
+
+    const newUserFields = formType === 'login' ? "" : (
       <div>
         <label>
-          <input className="authField" id={ fnameErr } type="text" value={ this.state.fname } onChange={ this.update("fname") } placeholder="First Name" />
+          <input
+            className="authField"
+            id={ fnameErr }
+            type="text"
+            value={ fname }
+            onChange={ this.update("fname") }
+            placeholder="First Name" />
         </label>
-
         <ul className="errorContainer">{ this.allErrors("fname") }</ul>
-
         <label>
-          <input className="authField" id={ lnameErr } type="text" value={ this.state.lname } onChange={ this.update("lname") } placeholder="Last Name" />
+          <input
+            className="authField"
+            id={ lnameErr }
+            type="text"
+            value={ lname }
+            onChange={ this.update("lname") }
+            placeholder="Last Name" />
         </label>
-
         <ul className="errorContainer">{ this.allErrors("lname") }</ul>
-
         <label>
-          <input className="authField" id={ emailErr } type="text" value={ this.state.email } onChange={ this.update("email") } placeholder="Email" />
+          <input
+            className="authField"
+            id={ emailErr }
+            type="text"
+            value={ email }
+            onChange={ this.update("email") }
+            placeholder="Email" />
         </label>
-
         <ul className="errorContainer">{ this.allErrors("email") }</ul>
       </div>
     );
 
     let leftSideGraphics = "";
-    if (this.props.formType === 'signup') {
+    if (formType === 'signup') {
       leftSideGraphics = (
         <div>
           <div className="row group">
-
             <span className="imageContainer">
               <div className="img signupImage1"></div>
             </span>
-
             <span className="imageContainer">
               <div className="img signupImage2"></div>
             </span>
-
             <span className="imageContainer">
               <div className="img signupImage3"></div>
             </span>
-
           </div>
-
           <div className="welcome join">
             <h2>Join millions of people getting more organized and productive!</h2>
           </div>
@@ -108,51 +129,64 @@ class SessionForm extends React.Component {
           </div>
         </div>
       );
-
     }
 
-    const guestUserLogin = this.props.location.pathname === '/login' ? (
+    const guestUserLogin = location.pathname === '/login' ? (
       <section className="guestLoginSection">
         <div className="divider">
           <hr />
           <span> OR </span>
         </div>
-        <input onClick={ this.guestLogin } className="guestLogIn authField" type="submit" value="Log in as guest"/>
+        <input
+          onClick={ this.guestLogin }
+          className="guestLogIn authField"
+          type="submit"
+          value="Log in as guest"/>
       </section>
     ) : "";
 
     return(
-      <section className="container group">
+      <main className="container group">
         <section className="leftSide">
           { leftSideGraphics }
         </section>
 
         <section className="group rightSide">
-          <Link onClick={ this.clearErrors } className="link" to={ otherLinkUrl }>{ otherLinkText }</Link>
+          <Link
+            onClick={ this.clearErrors }
+            className="link" to={ otherLinkUrl }>
+            { otherLinkText }
+          </Link>
 
           <form onSubmit={ this.handleSubmit }>
             <h3>{ greetingText }</h3>
-
             <ul className={ baseErr }>{ this.allErrors("base") }</ul>
-
             { newUserFields }
             <label>
-              <input className="authField" id={ unameErr } type="text" value={ this.state.username } onChange={ this.update("username") } placeholder="Username" />
+              <input
+                className="authField"
+                id={ unameErr }
+                type="text"
+                value={ username }
+                onChange={ this.update("username") }
+                placeholder="Username" />
             </label>
-
             <ul className="errorContainer">{ this.allErrors("username") }</ul>
-
             <label>
-              <input className="authField" id={ passwordErr } type="password" value={ this.state.password } onChange={ this.update("password") } placeholder="Password" />
+              <input
+                className="authField"
+                id={ passwordErr }
+                type="password"
+                value={ password }
+                onChange={ this.update("password") }
+                placeholder="Password" />
             </label>
-
             <ul className="errorContainer">{ this.allErrors("password") }</ul>
-
             <input className="submit authField" type="submit" value={ submitText } />
             { guestUserLogin }
           </form>
         </section>
-      </section>
+      </main>
     );
   }
 }

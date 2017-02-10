@@ -14,7 +14,12 @@ class Sidebar extends React.Component {
     this.toggleList = this.toggleList.bind(this);
     this.dropDownLists = this.dropDownLists.bind(this);
     this.clearSelectedList = this.clearSelectedList.bind(this);
-    this.state = { modalOpen: false, title: "", selectedListIdx: "", visibleLists: "list-items pullDown visible"};
+    this.state = {
+      modalOpen: false,
+      title: "",
+      selectedListIdx: "",
+      visibleLists: "list-items pullDown visible"
+    };
   }
 
   componentDidMount() {
@@ -35,17 +40,19 @@ class Sidebar extends React.Component {
   }
 
   removeList(list) {
+    const { removeTask, removeList, router } = this.props;
     list.tasks.forEach((task) => {
-      this.props.removeTask(task);
+      removeTask(task);
     });
-    this.props.removeList(list).then(() => this.props.router.push('/tasks'));
+    removeList(list).then(() => router.push('/tasks'));
   }
 
   createList() {
+    const { newList, fetchLists } = this.props;
     const list = Object.assign({}, this.state);
-    this.props.newList(list);
+    newList(list);
     this.onModalClose();
-    this.props.fetchLists();
+    fetchLists();
     this.setState({ visibleLists: "list-item pullDown visible"});
   }
 
@@ -70,7 +77,17 @@ class Sidebar extends React.Component {
   if (lists) {
     lists = lists.map( (list) => {
       let className = this.state.selectedListIdx === list.id ? "list-highlight" : "";
-      let removeButton = this.state.selectedListIdx === list.id ? (<span className="delete-list" onClick={ () => this.removeList(list) }>remove circle<span className="tooltiptext delete-list-tip">Delete list</span></span>) : "";
+      let removeButton = this.state.selectedListIdx === list.id ? (
+        <span
+          className="delete-list"
+          onClick={ () => this.removeList(list) }>
+          remove circle
+          <span
+            className="tooltiptext delete-list-tip">
+            Delete list
+          </span>
+        </span>) : "";
+
       return (
         <Link to={ `/lists/${list.id}` }>
           <li key={ list.id } className={ `${className}` } onClick={ () => this.toggleList(list.id) }>
@@ -81,20 +98,33 @@ class Sidebar extends React.Component {
         )
       })
     }
+
     return(
       <section className="sidebar">
       <section className="logo"></section>
         <section className="sidebar-tasks">
-          <Link to={ "/tasks" }><div className="all-tasks" onClick={ this.clearSelectedList }>All Tasks</div></Link>
+          <Link to={ "/tasks" }>
+            <div className="all-tasks" onClick={ this.clearSelectedList }>
+              All Tasks
+            </div>
+          </Link>
         </section>
         <section className="sidebar-lists">
           <ul className="lists group">
             <li className="lists-header" onClick={ this.dropDownLists }>
-            <div className="pull-down-arrow"></div>Lists
-              <span className="add-list" onClick={ this.toggleModal }>add circle<span className="tooltiptext add-list-tip">Create list</span></span>
-              </li>
+              <div className="pull-down-arrow"></div>
+              Lists
+              <span
+                className="add-list"
+                onClick={ this.toggleModal }>
+                add circle
+                <span className="tooltiptext add-list-tip">
+                  Create list
+                </span>
+              </span>
+            </li>
             <ul className={ this.state.visibleLists }>
-            { lists }
+              { lists }
             </ul>
           </ul>
         </section>
@@ -106,14 +136,22 @@ class Sidebar extends React.Component {
           contentLabel="Modal">
 
           <aside className="modal-content group">
-            <input type="submit" className="close-modal" onClick={ this.onModalClose } value="X"/>
+            <input
+              type="submit"
+              className="close-modal"
+              onClick={ this.onModalClose }
+              value="X"/>
             <h3>Add a list</h3>
             <label>Please enter a new list name:
               <input className="title-input" onChange={ this.update("title")} type="text"/>
             </label>
-            <input type="submit" className="add-list-button" onClick={ this.createList } value={ this.state.listTitle } value="Add"/>
+            <input
+              type="submit"
+              className="add-list-button"
+              onClick={ this.createList }
+              value={ this.state.listTitle }
+              value="Add"/>
           </aside>
-
         </Modal>
       </section>
     );

@@ -13,7 +13,12 @@ class Greeting extends React.Component {
     this.handleImageSubmit = this.handleImageSubmit.bind(this);
     this.renderIcon = this.renderIcon.bind(this);
 
-    this.state = { dropDownStatus: "dropdown-close", query: "", activeSearchBar: "search-bar group", imageFile: "", imageUrl: ""};
+    this.state = {
+      dropDownStatus: "dropdown-close",
+      query: "",
+      activeSearchBar: "search-bar group",
+      imageFile: "", imageUrl: ""
+    };
   }
 
   handleLogout(e) {
@@ -31,9 +36,10 @@ class Greeting extends React.Component {
   }
 
   searchTasks(e) {
+    const { searchTasks, router } = this.props;
     if(e.key === 'Enter') {
       const query = this.state.query;
-      this.props.searchTasks(this.state.query).then(() => this.props.router.push(`/search/${query}`));
+      searchTasks(query).then(() => router.push(`/search/${query}`));
       this.setState({ query: "" });
     }
   }
@@ -69,21 +75,24 @@ class Greeting extends React.Component {
   }
 
   renderIcon() {
-    if (this.state.imageUrl !== "") {
-      return <img className="user-icon" src={ this.state.imageUrl } />
+    const { imageUrl } = this.state;
+    const { currentUser } = this.props;
+    if (imageUrl !== "") {
+      return <img className="user-icon" src={ imageUrl } />
     } else {
-      if (this.props.currentUser) {
-        return <img className="user-icon" src={ this.props.currentUser.image_url } />
+      if (currentUser) {
+        return <img className="user-icon" src={ currentUser.image_url } />
       }
     }
   }
 
   handleImageSubmit(e) {
     e.preventDefault();
+    const { currentUser, editUser } = this.props;
     const formData = new FormData();
-    formData.append("user[id]", this.props.currentUser.id);
+    formData.append("user[id]", currentUser.id);
     formData.append("user[image]", this.state.imageFile);
-    this.props.editUser(formData);
+    editUser(formData);
   }
 
   render() {
@@ -92,30 +101,59 @@ class Greeting extends React.Component {
     if (currentUser) {
       return(
         <nav className="nav-bar group">
-        <section className={ this.state.activeSearchBar } onClick={ this.handleSearchClick } onBlur={ this.handleSearchClick }>
-        <div className="search-icon">search</div>
-        <input className="search-input" type="text" value={ this.state.query } onChange={ this.update("query") } onKeyPress={ this.searchTasks } />
-        </section>
+          <section
+            className={ this.state.activeSearchBar }
+            onClick={ this.handleSearchClick }
+            onBlur={ this.handleSearchClick }>
+            <div className="search-icon">search</div>
+            <input
+              className="search-input"
+              type="text"
+              value={ this.state.query }
+              onChange={ this.update("query") }
+              onKeyPress={ this.searchTasks } />
+          </section>
+          <section>
+            <div className="settings" onClick={ this.handleClick }>settings</div>
+            <div className={ this.state.dropDownStatus }>
+              <span className="dropdown-arrow"></span>
+              { renderIcon }
+              <ul className="header-nav-links">
+                <li>
+                  <h3 className="name"> { currentUser.fname } { currentUser.lname }</h3>
+                </li>
+                <li>
+                  <h3 className="email">{ currentUser.email }</h3>
+                </li>
 
-        <span><div className="settings" onClick={ this.handleClick }>settings</div>
-        <div className={ this.state.dropDownStatus }>
-        <span className="dropdown-arrow"></span>
-        { renderIcon }
-        <ul className="header-nav-links">
-        <li><h3 className="name"> { currentUser.fname } { currentUser.lname }</h3></li>
-        <li><h3 className="email">{ currentUser.email }</h3></li>
-
-        <div className="input-container">
-        <li>
-        <label className="fake-input">Choose File
-        <input type="file" className="image-upload" encType="multipart/form-data" onChange={ this.updateFile }/></label></li>
-        </div>
-
-        <li><button className="image-submit" onClick={ this.handleImageSubmit }>Upload Photo</button></li>
-        <li><input className="logout" type="submit" value="Log Out" onClick={ this.handleLogout } /></li>
-        </ul>
-        </div>
-        </span>
+                <div className="input-container">
+                  <li>
+                    <label className="fake-input">Choose File
+                      <input
+                        type="file"
+                        className="image-upload"
+                        encType="multipart/form-data"
+                        onChange={ this.updateFile }/>
+                    </label>
+                  </li>
+                </div>
+                <li>
+                  <button
+                    className="image-submit"
+                    onClick={ this.handleImageSubmit }>
+                    Upload Photo
+                  </button>
+                </li>
+                <li>
+                  <input
+                  className="logout"
+                  type="submit"
+                  value="Log Out"
+                  onClick={ this.handleLogout } />
+                </li>
+              </ul>
+            </div>
+          </section>
         </nav>
       );
     } else {
@@ -125,9 +163,3 @@ class Greeting extends React.Component {
 }
 
 export default withRouter(Greeting);
-
-
-
-
-
-// <li><div className="fake-input">Choose File</div></li>

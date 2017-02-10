@@ -5,6 +5,7 @@ class TaskItem extends React.Component {
 
   render() {
     let { task, selectedTask, handleSelectTask, openPath, closePath } = this.props;
+    
     let className = "";
     if (selectedTask && task.id === selectedTask.id) {
       className += "selected-task ";
@@ -22,7 +23,10 @@ class TaskItem extends React.Component {
 
     return (
       <Link to={ fullpath }>
-        <li className={ className } onClick={ () => handleSelectTask(task) } key={ task.id }>
+        <li
+          className={ className }
+          onClick={ () => handleSelectTask(task) }
+          key={ task.id }>
           { task.title }
         </li>
       </Link>

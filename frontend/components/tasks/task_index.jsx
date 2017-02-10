@@ -143,42 +143,82 @@ class TaskIndex extends React.Component {
     const inputClass = this.state.title === "" ? "add-task-button inactive" : "add-task-button";
     const buttonClass = inputClass + " " + this.state.buttonStatus;
       return(
-        <section className="tasks group">
+        <main className="tasks group">
+          <section className="task-bar">
+            <ul className="task-status group">
+              <li
+                className={ this.state.incompleteTasks }
+                onClick={ this.toggleIncomplete }>
+                Incomplete
+              </li>
+              <li
+                className={ this.state.completeTasks }
+                onClick={ this.toggleComplete }>
+                Completed
+              </li>
+            </ul>
 
-        <section className="task-bar">
-        <ul className="task-status group">
-        <li className={ this.state.incompleteTasks } onClick={ this.toggleIncomplete }>Incomplete</li>
-        <li className={ this.state.completeTasks } onClick={ this.toggleComplete }>Completed</li>
-        </ul>
+            <ul className={ this.state.iconDisplay }>
+              <li
+                className="delete-task"
+                onClick={ this.handleDeleteTask }>
+                delete
+                <span
+                  className="tooltiptext delete-tip">
+                  Delete task
+                </span>
+              </li>
+              <li
+                className="complete-task"
+                onClick={ this.toggleCompleteTask }>
+                check circle
+                <span
+                  className="tooltiptext complete-tip">
+                  Mark complete
+                </span>
+              </li>
+              <li
+                className="uncomplete-task"
+                onClick={ this.toggleIncompleteTask }>
+                restore
+                <span
+                  className="tooltiptext uncomplete-tip">
+                  Mark incomplete
+                </span>
+              </li>
+            </ul>
+          </section>
 
-        <ul className={ this.state.iconDisplay }>
-        <li className="delete-task" onClick={ this.handleDeleteTask }>delete<span className="tooltiptext delete-tip">Delete task</span></li>
-        <li className="complete-task" onClick={ this.toggleCompleteTask }>check circle<span className="tooltiptext complete-tip">Mark complete</span></li>
-        <li className="uncomplete-task" onClick={ this.toggleIncompleteTask }>restore<span className="tooltiptext uncomplete-tip">Mark incomplete</span></li>
-        </ul>
+          <section
+            className="add-task group"
+            onFocus={ this.displayButton }
+            onBlur={ this.undisplayButton }>
 
-        </section>
+            <input
+              className="task-text"
+              type="text"
+              value={ this.state.title }
+              placeholder="Add a task..."
+              onChange={ (e) => this.updateTask(e) }/>
 
-        <section className="add-task group" onFocus={ this.displayButton } onBlur={ this.undisplayButton }>
+            <div className="button-wrapper" >
+              <input
+                type="submit"
+                onClick={ this.handleNewTask }
+                className={ buttonClass }
+                value="Add Task" />
+            </div>
+          </section>
 
-        <input className="task-text" type="text" value={ this.state.title } placeholder="Add a task..." onChange={ (e) => this.updateTask(e) }/>
+          <section className="tasks-index">
+            <ul className="tasks-list">
+              { renderedTasks }
+            </ul>
+          </section>
 
-        <div className="button-wrapper" >
-        <input type="submit" onClick={ this.handleNewTask } className={ buttonClass } value="Add Task" />
-        </div>
-        </section>
-
-        <section className="tasks-index">
-        <ul className="tasks-list">
-        { renderedTasks }
-        </ul>
-        </section>
-
-        { this.props.children }
-        </section>
+          { this.props.children }
+        </main>
       );
-
-
   }
 }
 

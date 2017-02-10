@@ -16,6 +16,7 @@ class ListSummary extends React.Component{
         return minutes += task.estimate;
       }
     });
+
     let hours = 0;
     while (minutes >= 60) {
       hours ++;
@@ -62,13 +63,11 @@ class ListSummary extends React.Component{
         <h3 className="list-detail-title">
           { list.title }
         </h3>
-
         <div className="task-summary group">
           <div className="task-amount">
             <span className="num-tasks"><strong>{ numTasks }</strong></span>
             <span className="task-noun">{ taskNoun }</span>
           </div>
-
           <div className="sum-text">
             <span className="formatted-estimate">
               <strong>{ hours }</strong>
@@ -84,7 +83,6 @@ class ListSummary extends React.Component{
             <span className="overdue-num"><strong>{ overdueTasks }</strong></span>
             <span className="overdue-text">overdue</span>
           </div>
-
           <div className="completed-tasks">
             <span className="completed-num"><strong>{ completedTasks }</strong></span>
             <span className="completed-text">completed</span>

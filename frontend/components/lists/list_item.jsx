@@ -169,7 +169,7 @@ class ListItem extends React.Component {
       tasks = ( <div className="list-mangoes">Nothing in here... get to it!</div> );
     }
     return(
-      <section className="tasks group">
+      <main className="tasks group">
         <section className="task-bar">
           <ul className="task-status group">
             <li
@@ -243,7 +243,7 @@ class ListItem extends React.Component {
         </section>
 
         { this.props.children }
-      </section>
+      </main>
     );
   }
 }
