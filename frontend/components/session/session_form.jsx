@@ -42,6 +42,12 @@ class SessionForm extends React.Component {
     return e => this.setState({ [property]: e.target.value });
   }
 
+  hasError(property) {
+    return this.props.errors[property] ?
+      "hasError" :
+      "";
+  }
+
   allErrors(property) {
     const { errors } = this.props;
     if (errors[property] === undefined) return null;
@@ -58,19 +64,14 @@ class SessionForm extends React.Component {
     const otherLinkText = formType === 'login' ? 'Sign up for free' : 'Log in';
     const submitText = formType === 'login' ? 'Log in' : 'Sign up!';
     const greetingText = formType === 'login' ? 'Been here before? Welcome back!' : 'Sign up for free.';
-    const fnameErr = errors["fname"] === undefined ? "" : "hasError";
-    const lnameErr = errors["lname"] === undefined ? "" : "hasError";
-    const unameErr = errors["username"] === undefined ? "" : "hasError";
-    const emailErr = errors["email"] === undefined ? "" : "hasError";
-    const passwordErr = errors["password"] === undefined ? "" : "hasError";
+
     const baseErr = errors["base"] === undefined ? "" : "signinError";
 
     const newUserFields = formType === 'login' ? "" : (
       <div>
         <label>
           <input
-            className="authField"
-            id={ fnameErr }
+            className={`authField ${this.hasError("fname")}`}
             type="text"
             value={ fname }
             onChange={ this.update("fname") }
@@ -79,8 +80,7 @@ class SessionForm extends React.Component {
         <ul className="errorContainer">{ this.allErrors("fname") }</ul>
         <label>
           <input
-            className="authField"
-            id={ lnameErr }
+            className={`authField ${this.hasError("lname")}`}
             type="text"
             value={ lname }
             onChange={ this.update("lname") }
@@ -89,8 +89,7 @@ class SessionForm extends React.Component {
         <ul className="errorContainer">{ this.allErrors("lname") }</ul>
         <label>
           <input
-            className="authField"
-            id={ emailErr }
+            className={`authField ${this.hasError("email")}`}
             type="text"
             value={ email }
             onChange={ this.update("email") }
@@ -164,8 +163,7 @@ class SessionForm extends React.Component {
             { newUserFields }
             <label>
               <input
-                className="authField"
-                id={ unameErr }
+                className={`authField ${this.hasError("username")}`}
                 type="text"
                 value={ username }
                 onChange={ this.update("username") }
@@ -174,8 +172,7 @@ class SessionForm extends React.Component {
             <ul className="errorContainer">{ this.allErrors("username") }</ul>
             <label>
               <input
-                className="authField"
-                id={ passwordErr }
+                className={`authField ${this.hasError("password")}`}
                 type="password"
                 value={ password }
                 onChange={ this.update("password") }
