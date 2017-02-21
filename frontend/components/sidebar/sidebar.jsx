@@ -89,8 +89,8 @@ class Sidebar extends React.Component {
         </span>) : "";
 
       return (
-        <Link to={ `/lists/${list.id}` }>
-          <li key={ list.id } className={ `${className}` } onClick={ () => this.toggleList(list.id) }>
+        <Link key={ list.id } to={ `/lists/${list.id}` }>
+          <li  className={ `${className}` } onClick={ () => this.toggleList(list.id) }>
           { list.title }
           { removeButton }
           </li>
