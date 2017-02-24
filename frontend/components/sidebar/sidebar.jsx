@@ -111,9 +111,9 @@ class Sidebar extends React.Component {
         </section>
         <section className="sidebar-lists">
           <ul className="lists group">
-            <li className="lists-header" onClick={ this.dropDownLists }>
+            <li className="lists-header" >
               <div className="pull-down-arrow"></div>
-              Lists
+              <span onClick={ this.dropDownLists }>Lists</span>
               <span
                 className="add-list"
                 onClick={ this.toggleModal }>
