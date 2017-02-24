@@ -8,8 +8,6 @@ class TaskIndex extends React.Component {
     this.handleNewTask = this.handleNewTask.bind(this);
     this.handleSelectTask = this.handleSelectTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
-    this.displayButton = this.displayButton.bind(this);
-    this.undisplayButton = this.undisplayButton.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
     this.toggleIncomplete = this.toggleIncomplete.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
@@ -21,7 +19,6 @@ class TaskIndex extends React.Component {
     this.state = {
       title: "",
       selectedTask: "",
-      buttonStatus: "hidden",
       iconDisplay: "hidden",
       completeTasks: "",
       incompleteTasks: "highlight"
@@ -57,21 +54,6 @@ class TaskIndex extends React.Component {
       fetchTasks();
     });
     router.push("/tasks");
-  }
-
-  displayButton() {
-    if (this.state.buttonStatus === "hidden") {
-      this.setState({ buttonStatus: "button-open" });
-    }
-  }
-
-  undisplayButton(e) {
-    if (e.currentTarget.contains(e.relatedTarget)) {
-      this.handleNewTask(e);
-    }
-    if (this.state.buttonStatus === "button-open") {
-      this.setState({ buttonStatus: "hidden"});
-    }
   }
 
   toggleComplete() {
@@ -142,8 +124,6 @@ class TaskIndex extends React.Component {
       renderedTasks = ( <div className="task-mangoes">Well, what are you waiting for?</div> );
     }
 
-    const inputClass = this.state.title === "" ? "add-task-button inactive" : "add-task-button";
-    const buttonClass = inputClass + " " + this.state.buttonStatus;
       return(
         <main className="tasks group">
           <section className="task-bar">
@@ -191,11 +171,7 @@ class TaskIndex extends React.Component {
             </ul>
           </section>
 
-          <section
-            className="add-task group"
-            onFocus={ this.displayButton }
-            onBlur={ this.undisplayButton }>
-
+          <section className="add-task group">
             <input
               className="task-text"
               type="text"
@@ -203,7 +179,6 @@ class TaskIndex extends React.Component {
               placeholder="Add a task..."
               onChange={ (e) => this.updateTask(e)}
               onKeyDown={ this.handleNewTask }/>
-
           </section>
 
           <section className="tasks-index">

@@ -8,8 +8,6 @@ class ListItem extends React.Component {
     this.handleNewTask = this.handleNewTask.bind(this);
     this.handleSelectTask = this.handleSelectTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
-    this.displayButton = this.displayButton.bind(this);
-    this.undisplayButton = this.undisplayButton.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
     this.toggleIncomplete = this.toggleIncomplete.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
@@ -21,7 +19,6 @@ class ListItem extends React.Component {
     this.state = {
       title: "",
       selectedTask: "",
-      buttonStatus: "hidden",
       iconDisplay: "hidden",
       completeTasks: "",
       incompleteTasks: "highlight",
@@ -68,21 +65,6 @@ class ListItem extends React.Component {
         fetchList(params.listId);
       });
       router.push(`lists/${params.listId}`);
-    }
-
-    displayButton() {
-      if (this.state.buttonStatus === "hidden") {
-        this.setState({ buttonStatus: "button-open" });
-      }
-    }
-
-    undisplayButton(e) {
-      if (e.currentTarget.contains(e.relatedTarget)) {
-        this.handleNewTask(e);
-      }
-      if (this.state.buttonStatus === "button-open") {
-        this.setState({ buttonStatus: "hidden"});
-      }
     }
 
     toggleComplete() {
@@ -144,7 +126,6 @@ class ListItem extends React.Component {
       incompleteTasks,
       selectedTask,
       title,
-      buttonStatus,
       completeTasks,
       iconDisplay } = this.state;
 
@@ -165,8 +146,7 @@ class ListItem extends React.Component {
           );
       });
     }
-    const inputClass = this.state.title === "" ? "add-task-button inactive" : "add-task-button";
-    const buttonClass = inputClass + " " + this.state.buttonStatus;
+
     if (tasks && tasks.length === 0) {
       tasks = ( <div className="list-mangoes">Nothing in here... get to it!</div> );
     }
@@ -217,11 +197,7 @@ class ListItem extends React.Component {
           </ul>
         </section>
 
-        <section
-          className="add-task group"
-          onFocus={ this.displayButton }
-          onBlur={ this.undisplayButton }>
-
+        <section className="add-task group">
           <input
             className="task-text"
             type="text"
@@ -229,7 +205,6 @@ class ListItem extends React.Component {
             placeholder="Add a task..."
             onChange={ (e) => this.updateTask(e) }
             onKeyDown={ this.handleNewTask }/>
-
         </section>
 
         <section className="tasks-index">

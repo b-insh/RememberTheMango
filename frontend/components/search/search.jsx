@@ -10,8 +10,6 @@ class Search extends React.Component {
     this.handleNewTask = this.handleNewTask.bind(this);
     this.handleSelectTask = this.handleSelectTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
-    this.displayButton = this.displayButton.bind(this);
-    this.undisplayButton = this.undisplayButton.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
     this.toggleIncomplete = this.toggleIncomplete.bind(this);
     this.handleDeleteTask = this.handleDeleteTask.bind(this);
@@ -24,7 +22,6 @@ class Search extends React.Component {
     this.state = {
       title: "",
       selectedTask: "",
-      buttonStatus: "hidden",
       iconDisplay: "hidden",
       completeTasks: "",
       incompleteTasks: "highlight",
@@ -74,21 +71,6 @@ class Search extends React.Component {
     router.push(`/search/${query}`);
   }
 
-  displayButton() {
-    if (this.state.buttonStatus === "hidden") {
-      this.setState({ buttonStatus: "button-open" });
-    }
-  }
-
-  undisplayButton(e) {
-    if (e.currentTarget.contains(e.relatedTarget)) {
-      this.handleNewTask(e);
-    }
-    if (this.state.buttonStatus === "button-open") {
-      this.setState({ buttonStatus: "hidden"});
-    }
-  }
-
   toggleComplete() {
     if (this.state.incompleteTasks === "highlight") {
       this.setState({ incompleteTasks: "", completeTasks: "highlight" });
@@ -135,7 +117,7 @@ class Search extends React.Component {
   }
 
   render() {
-    const { incompleteTasks, completeTasks, iconDisplay, title, query, selectedTask, buttonStatus } = this.state;
+    const { incompleteTasks, completeTasks, iconDisplay, title, query, selectedTask } = this.state;
     const closePath = `/search/${query}`;
     const openPath = `/search/${query}/tasks`;
     const tasks = this.getSearchedTasks();
@@ -158,8 +140,6 @@ class Search extends React.Component {
     if (renderedTasks && renderedTasks.length === 0) {
       renderedTasks = ( <div className="search-mangoes">Can't find anything like that here...</div> );
     }
-    const inputClass = title === "" ? "add-task-button inactive" : "add-task-button";
-    const buttonClass = inputClass + " " + buttonStatus;
 
     return (
       <main className="tasks group">
@@ -189,10 +169,8 @@ class Search extends React.Component {
             </li>
           </ul>
         </section>
-        <section
-          className="add-task group"
-          onFocus={ this.displayButton }
-          onBlur={ this.undisplayButton }>
+        
+        <section className="add-task group">
           <input
             className="task-text"
             type="text"
@@ -200,8 +178,8 @@ class Search extends React.Component {
             placeholder="Add a task..."
             onChange={ (e) => this.updateTask(e) }
             onKeyDown={ this.handleNewTask }/>
-
         </section>
+
         <section className="tasks-index">
           <ul className="tasks-list">
             { renderedTasks }
