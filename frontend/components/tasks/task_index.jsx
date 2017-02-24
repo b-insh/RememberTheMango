@@ -37,9 +37,11 @@ class TaskIndex extends React.Component {
   }
 
   handleNewTask(e) {
-    let task = Object.assign({}, this.state);
-    this.props.newTask(task);
-    this.setState({ title: "" });
+    if(e.keyCode == 13) {
+      let task = Object.assign({}, this.state);
+      this.props.newTask(task);
+      this.setState({ title: "" });
+    }
   }
 
   handleSelectTask(task) {
@@ -199,15 +201,9 @@ class TaskIndex extends React.Component {
               type="text"
               value={ this.state.title }
               placeholder="Add a task..."
-              onChange={ (e) => this.updateTask(e) }/>
+              onChange={ (e) => this.updateTask(e)}
+              onKeyDown={ this.handleNewTask }/>
 
-            <div className="button-wrapper" >
-              <input
-                type="submit"
-                onClick={ this.handleNewTask }
-                className={ buttonClass }
-                value="Add Task" />
-            </div>
           </section>
 
           <section className="tasks-index">

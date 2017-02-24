@@ -52,12 +52,14 @@ class ListItem extends React.Component {
     }
 
     handleNewTask(e) {
-      const { list, newTask, fetchList, params } = this.props;
-      let task = Object.assign({}, this.state, { list_id: list.id });
-      newTask(task).then(() => {
-        fetchList(params.listId);
-      });
-      this.setState({ title: "" });
+      if(e.keyCode == 13) {
+        const { list, newTask, fetchList, params } = this.props;
+        let task = Object.assign({}, this.state, { list_id: list.id });
+        newTask(task).then(() => {
+          fetchList(params.listId);
+        });
+        this.setState({ title: "" });
+      }
     }
 
     handleDeleteTask() {
@@ -225,15 +227,9 @@ class ListItem extends React.Component {
             type="text"
             value={ this.state.title }
             placeholder="Add a task..."
-            onChange={ (e) => this.updateTask(e) }/>
+            onChange={ (e) => this.updateTask(e) }
+            onKeyDown={ this.handleNewTask }/>
 
-          <div className="button-wrapper" >
-            <input
-              type="submit"
-              onClick={ this.handleNewTask }
-              className={ buttonClass }
-              value="Add Task" />
-          </div>
         </section>
 
         <section className="tasks-index">

@@ -51,9 +51,11 @@ class Search extends React.Component {
   }
 
   handleNewTask(e) {
-    let task = Object.assign({}, this.state);
-    this.props.newTask(task);
-    this.setState({ title: "" });
+    if(e.keyCode == 13){
+      let task = Object.assign({}, this.state);
+      this.props.newTask(task);
+      this.setState({ title: "" });
+    }
   }
 
   handleSelectTask(task) {
@@ -196,14 +198,9 @@ class Search extends React.Component {
             type="text"
             value={ title }
             placeholder="Add a task..."
-            onChange={ (e) => this.updateTask(e) }/>
-          <div className="button-wrapper" >
-            <input
-              type="submit"
-              onClick={ this.handleNewTask }
-              className={ buttonClass }
-              value="Add Task" />
-          </div>
+            onChange={ (e) => this.updateTask(e) }
+            onKeyDown={ this.handleNewTask }/>
+
         </section>
         <section className="tasks-index">
           <ul className="tasks-list">
